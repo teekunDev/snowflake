@@ -6,9 +6,9 @@
 #       ├─ hosts.nix *
 #       └─ ./common AND ./desktop OR ./laptop
 #            ├─ ./configuration
-#            ├─  └─ configuration.nix
+#            ├─  └─ configuration.nix +
 #            └─ ./home 
-#                └─ home.nix
+#                └─ home.nix +
 #
 
 { inputs, nixpkgs, user, location, secrets, ... }:

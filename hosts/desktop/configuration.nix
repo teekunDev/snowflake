@@ -6,7 +6,7 @@
 #       ├─ hosts.nix !
 #       └─ ./desktop
 #           ├─ configuration.nix *
-#           └─ hardware-configuration.nix
+#           └─ hardware-configuration.nix +
 #
 
 { pkgs, lib, user, ... }:
