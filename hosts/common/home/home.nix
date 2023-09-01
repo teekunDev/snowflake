@@ -20,7 +20,6 @@
 #                   ├─ obs-studio.nix +
 #                   ├─ theming.nix +
 #                   ├─ vm.nix +
-#                   ├─ vscode.nix +
 #                   ├─ waybar.nix +
 #                   ├─ wofi.nix +
 #                   └─ zsh.nix +
@@ -42,7 +41,6 @@
     ./modules/obs-studio.nix
     ./modules/theming.nix
     ./modules/vm.nix
-    ./modules/vscode.nix
     ./modules/waybar.nix
     ./modules/wofi.nix
     ./modules/zsh.nix
@@ -75,16 +73,11 @@
       unrar             # Rar Files
       zip               # Zip
 
-      # Social
-      webcord-vencord
-      # (discord.override {
-      #   withVencord = true;
-      # })
-
       # Other
       libsForQt5.polkit-kde-agent # Polkit Agent
       networkmanagerapplet        # Networkmanager app
       mako                        # Notification Daemon
+      vscode                      # vscode
     ];
 
     stateVersion = "23.05";

@@ -11,7 +11,7 @@
 #                └─ home.nix +
 #
 
-{ inputs, nixpkgs, user, location, secrets, ... }:
+{ inputs, nixpkgs, user, location, symlink, secrets, ... }:
 
 let
   system = "x86_64-linux";
@@ -20,7 +20,7 @@ in
   desktop = nixpkgs.lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system user location secrets;
+      inherit inputs system user location symlink secrets;
       host = {
         hostName = "desktop";
       };
@@ -33,7 +33,7 @@ in
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit inputs user location secrets;
+          inherit inputs user location symlink secrets;
           host = {
             hostName = "desktop";
           };
@@ -50,7 +50,7 @@ in
   /* laptop = nixpkgs.lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system user location secrets;
+      inherit inputs system user location symlink  secrets;
       host = {
         hostName = "laptop";
       };
@@ -63,7 +63,7 @@ in
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit inputs user location secrets;
+          inherit inputs user location symlink  secrets;
           host = {
             hostName = "laptop";
           };

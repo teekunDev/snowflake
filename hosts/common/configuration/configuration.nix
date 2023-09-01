@@ -15,6 +15,7 @@
 #                   ├─ hyprland.nix +
 #                   ├─ mullvad.nix +
 #                   ├─ ssh.nix +
+#                   ├─ symlink.nix +
 #                   ├─ thunar.nix +
 #                   └─ vm.nix +
 #
@@ -30,6 +31,7 @@
     ./modules/hyprland.nix
     ./modules/mullvad.nix
     ./modules/ssh.nix
+    ./modules/symlink.nix
     ./modules/thunar.nix
     ./modules/vm.nix
   ];

@@ -23,11 +23,12 @@
     let
       user = "keifufu";
       location = "/home/keifufu/.nixos-config";
+      symlink = "/stuff/symlink";
       secrets = "/stuff/secrets";
     in {
       nixosConfigurations = (
         import ./hosts/hosts.nix {
-          inherit inputs nixpkgs user location secrets;
+          inherit inputs nixpkgs user location symlink  secrets;
         }
       );
     };
