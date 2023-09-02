@@ -100,6 +100,7 @@
   };
 
   services = {
+    xserver.layout = "de"; # some programs think it's 'us' otherwise and mess up keybinds
     printing.enable = true;
     printing.drivers = with pkgs; [ hplip ];
     avahi = {

@@ -134,6 +134,9 @@ let
     exec-once = waybar
     exec-once = mako
 
+    ### ENV ###
+    env=XCURSOR_SIZE,24
+
     ### KEYBINDS ###
 
     $scriptsDir = ${location}/files/scripts
@@ -143,7 +146,7 @@ let
     $screenshot = $scriptsDir/screenshot.sh
     $brightness = $scriptsDir/brightness.sh
     $colorpicker = $scriptsDir/colorpicker.sh
-    $randomcahrs = $scriptsDir/randomchars.sh
+    $randomchars = $scriptsDir/randomchars.sh
     $files = thunar
     $browser = firefox
 
