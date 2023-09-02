@@ -68,7 +68,11 @@ let
     }
 
     misc {
+      disable_hyprland_logo = true
+      disable_splash_rendering = true
+      animate_manual_resizes = true
       enable_swallow = true
+      swallow_regex = ^(kitty)$
     }
 
     decoration {
@@ -307,6 +311,9 @@ let
     windowrulev2 = opacity 0,title:^(.*Sharing Indicator.*)$
     windowrulev2 = noblur,title:^(.*Sharing Indicator.*)$
     windowrulev2 = nofocus,title:^(.*Sharing Indicator.*)$
+
+    # Borders
+    windowrulev2 = noborder,class:^(wofi)$
 
     # windowrulev2 = move 50% 44%title:^(Volume Control)$
 
