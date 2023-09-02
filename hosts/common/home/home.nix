@@ -14,7 +14,6 @@
 #                   ├─ gpg.nix +
 #                   ├─ hyprland.nix +
 #                   ├─ kitty.nix +
-#                   ├─ looking-glass.nix +
 #                   ├─ mako.nix +
 #                   ├─ neofetch.nix +
 #                   ├─ obs-studio.nix +
@@ -35,7 +34,6 @@
     ./modules/gpg.nix
     ./modules/hyprland.nix
     ./modules/kitty.nix
-    ./modules/looking-glass.nix
     ./modules/mako.nix
     ./modules/neofetch.nix
     ./modules/obs-studio.nix

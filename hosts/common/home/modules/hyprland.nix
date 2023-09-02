@@ -67,6 +67,10 @@ let
       layout = dwindle
     }
 
+    misc {
+      enable_swallow = true
+    }
+
     decoration {
       rounding = 8
 

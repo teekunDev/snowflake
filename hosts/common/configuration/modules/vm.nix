@@ -10,7 +10,7 @@
 #                   └─ vm.nix *
 #
 
-{ pkgs, lib, ... }:
+{ pkgs, lib, user, ... }:
 
 let
   # RTX 3070
@@ -20,27 +20,43 @@ let
   ];
 in
 {
+  users.users.${user}.extraGroups = [ "libvirtd" ];
+  programs.dconf.enable = true;
+  boot = {
+    kernelModules = [
+      "kvm-amd"
+      "vfio_pci"
+      "vfio"
+      "vfio_iommu_type1"
+      "vfio_virqfd"
+    ];
+    kernelParams = [
+      "amd_iommu=on"
+      ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs)
+    ];
+  };
+
   environment.systemPackages = with pkgs; [
     virt-manager
+    virt-viewer
+    spice
+    spice-gtk
+    spice-protocol
+    win-virtio
+    win-spice
+    gnome.adwaita-icon-theme
   ];
-  virtualisation.spiceUSBRedirection.enable = true;
-  virtualisation.libvirtd.enable = true;
-  programs.dconf.enable = true;
-  boot.kernelModules = [
-    "vfio_pci"
-    "vfio"
-    "vfio_iommu_type1"
-    "vfio_virqfd"
 
-    "nvidia"
-    "nvidia_modeset"
-    "nvidia_uvm"
-    "nvidia_drm"
-  ];
-  boot.kernelParams = [
-    "amd_iommu=on"
-    ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs)
-  ];
-  # TODO: general vm config
-  # TODO: sudo virsh net-autostart default
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu = {
+        swtpm.enable = true;
+        ovmf.enable = true;
+        ovmf.packages = [ pkgs.OVMFFull.fd ];
+      };
+    };
+    spiceUSBRedirection.enable = true;
+  };
+  services.spice-vdagentd.enable = true;
 }

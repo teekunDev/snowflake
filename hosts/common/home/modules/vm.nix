@@ -17,4 +17,7 @@
       uris = ["qemu:///system"];
     };
   };
+  programs.looking-glass-client = {
+    enable = true;
+  };
 }
