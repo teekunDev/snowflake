@@ -17,8 +17,8 @@
     progressColor = "over #323244";
     borderColor = "#cba6f7";
     textColor = "#cdd6f4";
-    borderRadius = 4;
-    borderSize = 2;
+    borderRadius = 8;
+    borderSize = 3;
     extraConfig = ''
       [urgency=high]
       border-color=#fab387
