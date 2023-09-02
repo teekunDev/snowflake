@@ -177,8 +177,8 @@ let
     # bind = SUPERSHIFT, v, exec, killall -s SIGINT wf-recorder
 
     # Brightness
-    bind = SUPER, Prior, exec, $brightness up
-    bind = SUPER, Next, exec, $brightness down
+    bind = SUPER, Prior, exec, $brightness 100
+    bind = SUPER, Next, exec, $brightness 0
 
     # Misc
     bind = CTRL_SHIFT, R, exec, $randomchars
