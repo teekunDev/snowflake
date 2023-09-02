@@ -13,5 +13,15 @@
 {
   services.mako = {
     enable = true;
+    backgroundColor = "#1e1e2e";
+    progressColor = "over #323244";
+    borderColor = "#cba6f7";
+    textColor = "#cdd6f4";
+    borderRadius = 4;
+    borderSize = 2;
+    extraConfig = ''
+      [urgency=high]
+      border-color=#fab387
+    '';
   };
 }
