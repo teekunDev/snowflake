@@ -178,19 +178,6 @@ let
     # submap
     submap = reset
 
-    # Ctrl + Alt replacements
-    bind = CTRL_ALT, 2, exec, wtype "²"
-    bind = CTRL_ALT, 3, exec, wtype "³" # cant type ³ in vscode
-    bind = CTRL_ALT, 7, exec, wtype "{"
-    bind = CTRL_ALT, 8, exec, wtype "["
-    bind = CTRL_ALT, 9, exec, wtype "]"
-    bind = CTRL_ALT, 0, exec, wtype "}"
-    bind = CTRL_ALT, ssharp, exec, wtype "\\"
-    bind = CTRL_ALT, plus, exec, wtype "~"
-    bind = CTRL_ALT, less, exec, wtype "|"
-    bind = CTRL_ALT, Q, exec, wtype "@" # cant type the @ in vscode
-    bind = CTRL_ALT, E, exec, wtype "€" # cant type the € in vscode
-
     # Audio Control
     bind = , XF86AudioPlay, exec, playerctl play-pause
     bind = , XF86AudioPrev, exec, playerctl previous

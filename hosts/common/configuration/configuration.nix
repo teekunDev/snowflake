@@ -17,7 +17,8 @@
 #                   ├─ ssh.nix +
 #                   ├─ symlink.nix +
 #                   ├─ thunar.nix +
-#                   └─ vm.nix +
+#                   ├─ vm.nix +
+#                   └─ xremap.nix +
 #
 
 { config, lib, pkgs, inputs, user, location, secrets, ... }:
@@ -34,6 +35,7 @@
     ./modules/symlink.nix
     ./modules/thunar.nix
     ./modules/vm.nix
+    ./modules/xremap.nix
   ];
 
   programs.zsh.enable = true;

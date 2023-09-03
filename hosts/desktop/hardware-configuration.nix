@@ -10,7 +10,6 @@
 
 { config, lib, pkgs, modulesPath, user, host, secrets, ... }:
 
-
 {
   imports =
     [(modulesPath + "/installer/scan/not-detected.nix")];

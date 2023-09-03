@@ -17,6 +17,7 @@
     };
     nur.url = "github:nix-community/NUR";
     hyprland.url = "github:hyprwm/Hyprland";
+    xremap-flake.url = "github:xremap/nix-flake";
   };
 
   outputs = { nixpkgs, ... } @ inputs:
@@ -28,7 +29,7 @@
     in {
       nixosConfigurations = (
         import ./hosts/hosts.nix {
-          inherit inputs nixpkgs user location symlink  secrets;
+          inherit inputs nixpkgs user location symlink secrets;
         }
       );
     };
