@@ -1,7 +1,7 @@
 # Installing
 
 - `nix-shell -p git`
-- `git clone git@github.com:keifufu/nixos-config.git`
+- `git clone https://github.com/keifufu/nixos-config`
 
 ## Create Partitions
 
@@ -21,7 +21,9 @@
 - `n`
 - `2`
 - `default`
+- `+15G`
 - `t`
+- `2`
 - `19 (Linux swap)`
 
 ### root
@@ -36,6 +38,7 @@
 
 - `sudo mkfs.fat -F 32 /dev/nvme0n1p1`
 - `sudo fatlabel /dev/nvme0n1p1 BOOT`
+- `sudo mkswap /dev/nvme0n1p2`
 - `sudo mkfs.ext4 /dev/nvme0n1p3 -L ROOT`
 
 ## Mount Partitions
@@ -53,4 +56,4 @@
 - login as root
 - `passwd <user>`
 - login as \<user>
-- `git clone git@github.com:keifufu/nixos-config.git ~/.nixos-config`
+- `git clone https://github.com/keifufu/nixos-config ~/.nixos-config`
