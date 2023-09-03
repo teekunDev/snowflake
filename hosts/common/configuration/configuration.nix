@@ -7,6 +7,7 @@
 #       └─ ./common
 #           └─ ./configuration
 #               ├─ configuration.nix *
+#               ├─ hardware-configuration.nix +
 #               └─ ./modules
 #                   ├─ audio.nix +
 #                   ├─ code.nix +
@@ -25,6 +26,7 @@
 
 {
   imports = [
+    ./hardware-configuration.nix
     ./modules/audio.nix
     ./modules/code.nix
     ./modules/docker.nix

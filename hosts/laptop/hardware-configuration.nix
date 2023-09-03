@@ -1,10 +1,10 @@
 #
-#  Desktop specific hardware configuration.
+#  Laptop specific hardware configuration.
 #
 #  flake.nix
 #   └─ ./hosts
 #       ├─ hosts.nix
-#       └─ ./desktop
+#       └─ ./laptop
 #           ├─ configuration.nix !
 #           └─ hardware-configuration.nix *
 #
@@ -14,19 +14,8 @@
 {
   imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   boot.supportedFilesystems = [ "ntfs" ];
-  fileSystems."/stuff" =
-    {
-      device = "/dev/disk/by-label/STUFF";
-      fsType = "ext4";
-    };
-
-  fileSystems."/osu" =
-    {
-      device = "/dev/disk/by-label/OSU";
-      fsType = "ntfs-3g";
-    };
 
   networking = {
     useDHCP = false;
@@ -34,7 +23,7 @@
     enableIPv6 = false;
     interfaces = {
       enp4s0.ipv4.addresses = [{
-        address = "192.168.2.112";
+        address = "192.168.2.113";
         prefixLength = 24;
       }];
     };

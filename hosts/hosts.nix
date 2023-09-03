@@ -47,10 +47,10 @@ in
       }
     ];
   };
-  /* laptop = nixpkgs.lib.nixosSystem {
+  laptop = nixpkgs.lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system user location symlink  secrets;
+      inherit inputs system user location symlink secrets;
       host = {
         hostName = "laptop";
       };
@@ -58,12 +58,12 @@ in
     modules = [
       inputs.nur.nixosModules.nur
       ./common/configuration/configuration.nix
-      ./laptop/configuration/configuration.nix
+      ./laptop/configuration.nix
       inputs.home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit inputs user location symlink  secrets;
+          inherit inputs user location symlink secrets;
           host = {
             hostName = "laptop";
           };
@@ -71,10 +71,10 @@ in
         home-manager.users.${user} = {
           imports = [
            ./common/home/home.nix
-           ./laptop/home/home.nix
+           ./laptop/home.nix
           ];
         };
       }
     ];
-  }; */
+  };
 }
