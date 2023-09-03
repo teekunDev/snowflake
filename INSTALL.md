@@ -47,3 +47,10 @@
 ## Install NixOS
 
 `sudo nixos-install --flake .#<host>`
+
+## After install
+
+- login as root
+- `passwd <user>`
+- login as \<user>
+- `git clone git@github.com:keifufu/nixos-config.git ~/.nixos-config`
