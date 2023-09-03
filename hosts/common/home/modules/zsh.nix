@@ -10,13 +10,14 @@
 #                   └─ zsh.nix *
 #
 
-{ pkgs, ... }:
+{ pkgs, location, ... }:
 
 {
   programs.zsh = {
     enable = true;
     shellAliases = {
       ls = "exa --icons";
+      rebuild = "sudo nixos-rebuild switch --flake ${location}#";
     };
     oh-my-zsh = {
       enable = true;
