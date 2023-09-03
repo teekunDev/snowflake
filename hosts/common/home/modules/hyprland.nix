@@ -167,6 +167,7 @@ let
     $scriptsDir = ${location}/files/scripts
 
     $term = kitty
+    $alttab = $scriptsDir/alttab.sh
     $launcher = $scriptsDir/launcher.sh
     $screenshot = $scriptsDir/screenshot.sh
     $brightness = $scriptsDir/brightness.sh
@@ -184,6 +185,9 @@ let
     bind = , XF86AudioNext, exec, playerctl next
     # bind = , XF86AudioLowerVolume, exec, TODO
     # bind = , XF86AudioRaiseVolume, exec, TODO
+
+    # Alt Tab
+    bind = ALT, TAB, exec, $alttab
 
     # Screenshot
     bind = , Print, exec, $screenshot
