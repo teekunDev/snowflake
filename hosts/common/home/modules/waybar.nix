@@ -34,7 +34,7 @@ in
         margin-right = 0;
         modules-left = ["custom/launcher" "wlr/workspaces" "custom/playerctl" "custom/playerlabel"];
         modules-center = ["cpu" "memory" "disk" "disk#stuff"];
-        modules-right = ["tray" "custom/brightness" "custom/vpn" "pulseaudio" "clock"];
+        modules-right = ["custom/record" "tray" "custom/brightness" "custom/vpn" "pulseaudio" "clock"];
         # Modules
         clock = {
           format = " {:%H:%M}";
@@ -109,6 +109,11 @@ in
           exec = "mullvad status | awk '{print $1;}'";
           format = "󰱓󰅛 {}";
           interval = 5;
+        };
+        "custom/record" = {
+          exec = "record.sh status";
+          format = "{}";
+          interval = 1;
         };
         tray = {
           icon-size = 16;

@@ -167,6 +167,7 @@ let
 
     $term = kitty
     $alttab = $scriptsDir/alttab.sh
+    $record = $scriptsDir/record.sh
     $volume = $scriptsDir/volume.sh
     $launcher = $scriptsDir/launcher.sh
     $screenshot = $scriptsDir/screenshot.sh
@@ -190,8 +191,10 @@ let
     # Alt Tab
     bind = ALT, TAB, exec, $alttab
 
-    # Screenshot
+    # Screenshot & Recording
     bind = , Print, exec, $screenshot
+    bind = CTRL, Print, exec, $record
+    bind = CTRL_SHIFT, Print, exec, $record --audio
 
     # Brightness
     bind = SUPER, Prior, exec, $brightness set 100
