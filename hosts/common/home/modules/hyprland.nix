@@ -154,7 +154,6 @@ let
     exec-once = /usr/lib/polkit-kde-authentication-agent-1
     exec-once = hyprpaper
     exec-once = firefox
-    exec-once = webcord
     exec-once = waybar
     exec-once = mako
     exec-once = wl-paste --type text --watch cliphist store

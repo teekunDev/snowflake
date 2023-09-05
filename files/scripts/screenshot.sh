@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
-# This uploads to https://github.com/keifufu/yass
-
 TOKEN=$(cat $NIXOS_SECRETS/yass_token);
 HOST=$(cat $NIXOS_SECRETS/yass_host);
 FILENAME=$(date '+%y-%m-%dT%H-%M-%S.png')
 
-grim -g "$(slurp)" - | convert - -shave 1x1 PNG:- | swappy -f - -o - | curl -X PUT $HOST/upload?filename=$FILENAME -H "Authorization: $TOKEN" -H "Content-Type: application/octet-stream" --data-binary "@-" | wl-copy
+region="$(slurp)"
+if [ -n "$region" ]; then
+  grim -g "$region" - | convert - -shave 1x1 PNG:- | swappy -f - -o - | curl -X PUT $HOST/upload?filename=$FILENAME -H "Authorization: $TOKEN" -H "Content-Type: application/octet-stream" --data-binary "@-" | wl-copy
+fi
