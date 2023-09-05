@@ -17,7 +17,7 @@
     enable = true;
     shellAliases = {
       ls = "exa --icons";
-      rebuild = "sudo nixos-rebuild switch --flake ${location}#";
+      rebuild = "sudo nixos-rebuild switch --flake ${location}# && reload.sh";
     };
     oh-my-zsh = {
       enable = true;
