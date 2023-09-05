@@ -70,16 +70,17 @@
     keyMap = "de";
   };
 
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    font-awesome
-    jetbrains-mono
-    source-code-pro
-    corefonts
-    nerdfonts
-  ];
+  fonts = {
+    packages = with pkgs; [
+      nerdfonts
+    ];
+    fontconfig.defaultFonts = {
+      serif = [ "Source Code Pro" ];
+      sansSerif = [ "Source Code Pro" ];
+      monospace = [ "Source Code Pro" ];
+      emoji = [ "Hack Nerd Font" ];
+    };
+  };
 
   environment = {
     variables = {
