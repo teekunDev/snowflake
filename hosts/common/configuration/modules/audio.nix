@@ -16,6 +16,7 @@
   environment.systemPackages = with pkgs; [
     playerctl   # MPRIS cli
     pavucontrol # Audio Control
+    pipewire    # for pactl
   ];
 
   services.pipewire = {

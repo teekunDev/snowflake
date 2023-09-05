@@ -10,6 +10,16 @@
 #                   └─ waybar.nix *
 #
 
+{ host, ... }:
+
+let 
+  output = with host; 
+    if hostName == "desktop" then 
+      [ "DP-2" ] 
+    else if hostName == "laptop" then 
+      [ "DP-1" ]
+    else [ ];
+in
 {
   programs.waybar = {
     enable = true;
@@ -17,15 +27,14 @@
       mainBar = {
         position = "top";
         layer = "top";
-        output = [ "DP-2" ]; # TODO: this wont work for laptop
-        height = 16;
+        output = output;
         margin-top = 0;
         margin-bottom = 0;
         margin-left = 0;
         margin-right = 0;
         modules-left = ["custom/launcher" "wlr/workspaces" "custom/playerctl" "custom/playerlabel"];
-        modules-center = ["cpu" "memory" "disk"];
-        modules-right = ["tray" "backlight" "custom/vpn" "pulseaudio" "clock"];
+        modules-center = ["cpu" "memory" "disk" "disk#stuff"];
+        modules-right = ["tray" "custom/brightness" "custom/vpn" "pulseaudio" "clock"];
         # Modules
         clock = {
           format = " {:%H:%M}";
@@ -42,11 +51,6 @@
           format = "{icon}";
           on-click = "activate";
           format-icons = {
-            # "1": "一";
-            # "2": "二";
-            # "3": "三";
-            # "4": "四";
-            # "5": "五";
             urgent = "";
             active = "";
             default = "󰧞";
@@ -89,26 +93,35 @@
           format-alt = "󰻠 {avg_frequency} GHz";
           interval = 5;
         };
-        disk = {
-          format = "󰋊 {}%";
-          format-alt = "󰋊 {used}/{total} GiB";
+        "disk" = {
+          format = "󰋊 {percentage_used}%";
+          format-alt = "󰋊 {used} / {total}";
           interval = 5;
           path = "/";
         };
+        "disk#stuff" = {
+          format = "󰋊 {percentage_used}%";
+          format-alt = "󰋊 {used} / {total}";
+          interval = 5;
+          path = "/stuff";
+        };
         "custom/vpn" = {
           exec = "mullvad status | awk '{print $1;}'";
-          format = " {}";
+          format = "󰱓󰅛 {}";
           interval = 5;
         };
         tray = {
           icon-size = 16;
           spacing = 5;
         };
-        backlight = {
-          format = "{icon} {percent}%";
+        "custom/brightness" = {
+          interval = 1;
+          exec = "brightness.sh get --json";
+          return-type = "json";
+          format = "{icon} {percentage}%";
           format-icons = ["" "" "" "" "" "" "" "" ""];
-          # on-scroll-up = "";
-          # on-scroll-down = "";
+          on-scroll-up = "brightness.sh set +10";
+          on-scroll-down = "brightness.sh set -10";
         };
         pulseaudio = {
           format = "{icon} {volume}%";
@@ -116,9 +129,7 @@
           format-icons = {
             default = ["󰕿" "󰖀" "󰕾"];
           };
-          on-click = "bash ~/.scripts/volume mute";
-          on-scroll-up = "bash ~/.scripts/volume up";
-          on-scroll-down = "bash ~/.scripts/volume down";
+          on-click = "volume.sh toggle-mute";
           scroll-step = 5;
           on-click-right = "pavucontrol";
         };
@@ -164,8 +175,7 @@
       * {
         border: none;
         border-radius: 0px;
-        /*font-family: VictorMono, Iosevka Nerd Font, Noto Sans CJK;*/
-        font-family: Iosevka, FontAwesome, Noto Sans CJK;
+        font-family: Hack Nerd Font;
         font-size: 14px;
         font-style: normal;
         min-height: 0;
@@ -264,7 +274,7 @@
         border-radius: 5px 5px 5px 5px;
       }
 
-      #backlight {
+      #brightness {
         background-color: #24283b;
         color: #db4b4b;
         border-radius: 0px 0px 0px 0px;

@@ -167,6 +167,7 @@ let
 
     $term = kitty
     $alttab = $scriptsDir/alttab.sh
+    $volume = $scriptsDir/volume.sh
     $launcher = $scriptsDir/launcher.sh
     $screenshot = $scriptsDir/screenshot.sh
     $brightness = $scriptsDir/brightness.sh
@@ -182,8 +183,9 @@ let
     bind = , XF86AudioPlay, exec, playerctl play-pause
     bind = , XF86AudioPrev, exec, playerctl previous
     bind = , XF86AudioNext, exec, playerctl next
-    # bind = , XF86AudioLowerVolume, exec, TODO
-    # bind = , XF86AudioRaiseVolume, exec, TODO
+    bind = , XF86AudioLowerVolume, exec, $volume set -5
+    bind = , XF86AudioRaiseVolume, exec, $volume set +5
+    bind = , XF86AudioMute, exec, $volume toggle-mute
 
     # Alt Tab
     bind = ALT, TAB, exec, $alttab
@@ -192,8 +194,8 @@ let
     bind = , Print, exec, $screenshot
 
     # Brightness
-    bind = SUPER, Prior, exec, $brightness 100
-    bind = SUPER, Next, exec, $brightness 0
+    bind = SUPER, Prior, exec, $brightness set 100
+    bind = SUPER, Next, exec, $brightness set 0
 
     # Misc
     bind = CTRL_SHIFT, R, exec, $randomchars
