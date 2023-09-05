@@ -157,6 +157,8 @@ let
     exec-once = webcord
     exec-once = waybar
     exec-once = mako
+    exec-once = wl-paste --type text --watch cliphist store
+    exec-once = wl-paste --type image --watch cliphist store
 
     ### ENV ###
     env=XCURSOR_SIZE,24
@@ -208,6 +210,7 @@ let
     bind = CTRL_ALT, L, exec, swaylock
     bind = SUPER, X, exec, $term
     bind = SUPER, E, exec, $files
+    bind = SUPER, H, exec, cliphist list | wofi --dmenu --normal-window | cliphist decode | wl-copy
 
     # Window Manager
     bind = SUPER, C, killactive,

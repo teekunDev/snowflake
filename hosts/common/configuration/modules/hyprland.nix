@@ -38,6 +38,7 @@
       hyprpaper
       wlr-randr
       wf-recorder
+      cliphist
     ];
   };
 

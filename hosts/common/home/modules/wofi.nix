@@ -23,7 +23,6 @@
       no_actions = true;
       prompt = "Search";
       width = "40%";
-      columns = 2;
     };
     style = ''
       @define-color base   #1e1e2e;
