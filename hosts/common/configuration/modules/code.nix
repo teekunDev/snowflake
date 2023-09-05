@@ -16,7 +16,7 @@
   environment.systemPackages = with pkgs; [
     nodejs_18
     nodePackages.pnpm
-    cargo
-    rustc
+    rustup
+    gcc
   ];
 }
