@@ -57,11 +57,13 @@
       exa               # Modern ls replacement
       ddcutil           # I2C CLI
       libnotify         # Notification cli
+      ntfy              # Ntfy cli
 
       # Media
       feh               # Image Viewer
       mpv               # Media Player
       vlc               # Media Player
+      gimp              # Image Editor
 
       # File Management
       gnome.file-roller # Archive Manager
