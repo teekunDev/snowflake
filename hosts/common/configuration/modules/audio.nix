@@ -17,6 +17,7 @@
     playerctl   # MPRIS cli
     pavucontrol # Audio Control
     pipewire    # for pactl
+    helvum      # pipewire patchbay
   ];
 
   services.pipewire = {
