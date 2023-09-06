@@ -158,6 +158,7 @@ let
     exec-once = mako
     exec-once = wl-paste --type text --watch cliphist store
     exec-once = wl-paste --type image --watch cliphist store
+    exec-once = startwnp.sh
 
     ### ENV ###
     env=XCURSOR_SIZE,24

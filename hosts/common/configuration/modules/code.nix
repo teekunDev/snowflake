@@ -18,5 +18,6 @@
     nodePackages.pnpm
     rustup
     gcc
+    (pkgs.python3.withPackages(ps: with ps; [ aiohttp ]))
   ];
 }
