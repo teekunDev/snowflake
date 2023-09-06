@@ -14,7 +14,7 @@
 {
   imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
   boot.supportedFilesystems = [ "ntfs" ];
   fileSystems."/stuff" =
     {
