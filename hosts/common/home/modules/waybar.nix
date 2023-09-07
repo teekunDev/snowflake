@@ -57,7 +57,6 @@ in
         };
         "custom/wnp" = {
           format = "<span>{}</span>";
-          max-length = 48;
           interval = 1;
           tooltip = false;
           exec = "wnpctl.sh get formatted";
