@@ -15,6 +15,7 @@
 #                   ├─ games.nix +
 #                   ├─ hyprland.nix +
 #                   ├─ mullvad.nix +
+#                   ├─ openrgb.nix +
 #                   ├─ ssh.nix +
 #                   ├─ symlink.nix +
 #                   ├─ thunar.nix +
@@ -33,6 +34,7 @@
     ./modules/games.nix
     ./modules/hyprland.nix
     ./modules/mullvad.nix
+    ./modules/openrgb.nix
     ./modules/ssh.nix
     ./modules/symlink.nix
     ./modules/thunar.nix
