@@ -16,11 +16,6 @@
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
   boot.supportedFilesystems = [ "ntfs" ];
-  fileSystems."/stuff" =
-    {
-      device = "/dev/disk/by-label/STUFF";
-      fsType = "ext4";
-    };
 
   fileSystems."/osu" =
     {

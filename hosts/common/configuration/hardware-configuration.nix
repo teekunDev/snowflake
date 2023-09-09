@@ -40,6 +40,12 @@
       fsType = "vfat";
     };
 
+  fileSystems."/stuff" =
+    {
+      device = "/dev/disk/by-label/STUFF";
+      fsType = "ext4";
+    };
+
   # Note: having this enabled made steam not launch :nyaboom:
   /* fileSystems."/data" =
     {

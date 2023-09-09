@@ -15,7 +15,6 @@
   imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  boot.supportedFilesystems = [ "ntfs" ];
 
   networking = {
     useDHCP = false;
