@@ -35,7 +35,7 @@ let
       monitor = DP-2, 2560x1440@165, 1920x0, 1
       monitor = DP-3, 1920x1080@144, 4480x0, 1
     '' else if hostName == "laptop" then ''
-      monitor = , 1920x1080@144, 0x0, 1
+      monitor = eDP-1, 1920x1080@144, 0x0, 1
     '' else "";
   workspaces = with host;
     if hostName == "desktop" then ''

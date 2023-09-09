@@ -19,7 +19,7 @@ let
     if hostName == "desktop" then
       [ "DP-2" ]
     else if hostName == "laptop" then
-      [ "DP-1" ]
+      [ "eDP-1" ]
     else [ ];
 in
 {

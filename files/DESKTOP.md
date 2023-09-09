@@ -1,5 +1,7 @@
 # Installing
 
+## Cloning repo
+
 - `nix-shell -p git`
 - `git clone https://github.com/keifufu/nixos-config`
 

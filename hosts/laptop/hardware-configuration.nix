@@ -17,16 +17,8 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
   networking = {
-    useDHCP = false;
+    useDHCP = true;
     hostName = "${host.hostName}";
-    enableIPv6 = false;
-    interfaces = {
-      enp4s0.ipv4.addresses = [{
-        address = "192.168.2.113";
-        prefixLength = 24;
-      }];
-    };
-    defaultGateway = "192.168.2.1";
     nameservers = [ "192.168.2.111" "1.1.1.1" ];
   };
 }
