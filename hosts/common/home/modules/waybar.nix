@@ -21,6 +21,12 @@ let
     else if hostName == "laptop" then
       [ "eDP-1" ]
     else [ ];
+  modules-right = with host;
+    if hostName == "desktop" then
+      [ "custom/record" "tray" "custom/brightness" "idle_inhibitor" "custom/vpn" "pulseaudio" "clock" ]
+    else if hostName == "laptop" then
+      [ "custom/record" "tray" "battery" "backlight" "idle_inhibitor" "custom/vpn" "pulseaudio" "clock" ]
+    else [ ];
 in
 {
   programs.waybar = {
@@ -37,7 +43,7 @@ in
         modules-left = ["hyprland/workspaces" "cpu" "memory" ];
         modules-center = ["custom/wnp"];
         # TODO: microphone
-        modules-right = ["custom/record" "tray" "custom/brightness" "idle_inhibitor" "custom/vpn" "pulseaudio" "clock"];
+        modules-right = modules-right;
         clock = {
           format = " {:%H:%M}";
           format-alt = " {:%Y-%m-%d}";
