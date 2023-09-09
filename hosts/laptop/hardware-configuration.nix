@@ -17,7 +17,6 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
   networking = {
-    useDHCP = true;
     hostName = "${host.hostName}";
     nameservers = [ "192.168.2.111" "1.1.1.1" ];
   };

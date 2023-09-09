@@ -51,7 +51,14 @@ let
 
       windowrulev2 = workspace 4,class:^(firefox)$
     '' else if hostName == "laptop" then ''
-      # todo
+      workspace = 1, monitor:eDP-1, default:true
+      workspace = 2, monitor:eDP-1, default:false
+      workspace = 3, monitor:eDP-1, default:falsed
+    '' else "";
+  execonce = with host;
+    if hostName == "desktop" then ''
+    '' else if hostName == "laptop" then ''
+      exec-once = nm-applet
     '' else "";
 in
 let
@@ -159,6 +166,7 @@ let
     exec-once = wl-paste --type text --watch cliphist store
     exec-once = wl-paste --type image --watch cliphist store
     exec-once = startwnp.sh
+    ${execonce}
 
     ### ENV ###
     env=XCURSOR_SIZE,24
