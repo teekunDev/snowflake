@@ -23,6 +23,11 @@ in
       inherit inputs system user location symlink secrets;
       host = {
         hostName = "desktop";
+        # 3070
+        gpuIDs = [
+          "10de:2484" # Graphics
+          "10de:228b" # Audio
+        ];
       };
     };
     modules = [
@@ -53,6 +58,11 @@ in
       inherit inputs system user location symlink secrets;
       host = {
         hostName = "laptop";
+        # 3060 Mobile
+        gpuIDs = [
+          "10de:2520" # Graphics
+          "10de:228e" # Audio
+        ];
       };
     };
     modules = [

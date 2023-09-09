@@ -10,15 +10,8 @@
 #                   └─ vm.nix *
 #
 
-{ pkgs, lib, user, ... }:
+{ pkgs, lib, user, host, ... }:
 
-let
-  # RTX 3070
-  gpuIDs = [
-    "10de:2484" # Graphics
-    "10de:228b" # Audio
-  ];
-in
 {
   users.users.${user}.extraGroups = [ "libvirtd" ];
   programs.dconf.enable = true;
@@ -32,7 +25,7 @@ in
     ];
     kernelParams = [
       "amd_iommu=on"
-      ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs)
+      ("vfio-pci.ids=" + lib.concatStringsSep "," host.gpuIDs)
     ];
   };
 
