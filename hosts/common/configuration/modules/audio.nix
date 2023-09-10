@@ -16,7 +16,7 @@
   environment.systemPackages = with pkgs; [
     playerctl   # MPRIS cli
     pavucontrol # Audio Control
-    pipewire    # for pactl
+    pulseaudio  # for pactl
     helvum      # pipewire patchbay
   ];
 
