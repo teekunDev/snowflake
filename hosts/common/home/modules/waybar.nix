@@ -10,8 +10,6 @@
 #                   └─ waybar.nix *
 #
 
-# TODO: use webnowplaying for media info and control.
-
 { host, ... }:
 
 let 
@@ -23,9 +21,9 @@ let
     else [ ];
   modules-right = with host;
     if hostName == "desktop" then
-      [ "custom/record" "tray" "custom/brightness" "idle_inhibitor" "custom/vpn" "pulseaudio" "clock" ]
+      [ "custom/record" "tray" "custom/mic" "custom/vpn" "idle_inhibitor" "pulseaudio" "custom/brightness" "clock" ]
     else if hostName == "laptop" then
-      [ "custom/record" "tray" "battery" "backlight" "idle_inhibitor" "custom/vpn" "pulseaudio" "clock" ]
+      [ "custom/record" "tray" "custom/mic" "custom/vpn" "idle_inhibitor" "pulseaudio" "backlight" "battery" "clock" ]
     else [ ];
 in
 {
@@ -40,26 +38,29 @@ in
         margin-bottom = 0;
         margin-left = 0;
         margin-right = 0;
-        modules-left = ["hyprland/workspaces" "cpu" "memory" ];
-        modules-center = ["custom/wnp"];
-        # TODO: microphone
+        modules-left = ["hyprland/workspaces" "cpu" "memory" "custom/wnp" ];
+        modules-center = [ ];
         modules-right = modules-right;
-        clock = {
-          format = " {:%H:%M}";
-          format-alt = " {:%Y-%m-%d}";
-        };
         "hyprland/workspaces" = {
           all-outputs = true;
-          on-scroll-up = "hyprctl dispatch workspace -1";
-          on-scroll-down = "hyprctl dispatch workspace +1";
           format = "{icon}";
-          on-click = "activate";
           format-icons = {
-            urgent = "";
-            active = "";
-            default = "󰧞";
             sort-by-number = true;
+            default = "󰧞";
+            active = "";
+            urgent = "";
           };
+          on-click = "activate";
+        };
+        cpu = {
+          format = "󰻠  {usage}%";
+          format-alt = "󰻠  {avg_frequency} GHz";
+          interval = 5;
+        };
+        memory = {
+          format = "󰍛  {}%";
+          format-alt = "󰍛  {used}/{total} GiB";
+          interval = 5;
         };
         "custom/wnp" = {
           format = "<span>{}</span>";
@@ -72,23 +73,6 @@ in
           on-scroll-up = "wnpctl.sh execute volume_up";
           on-scroll-down = "wnpctl.sh execute volume_down";
         };
-        memory = {
-          format = "󰍛 {}%";
-          format-alt = "󰍛 {used}/{total} GiB";
-          interval = 5;
-        };
-        cpu = {
-          format = "󰻠 {usage}%";
-          format-alt = "󰻠 {avg_frequency} GHz";
-          interval = 5;
-        };
-        "custom/vpn" = {
-          exec = "mullvad status | awk '{print $1;}'";
-          on-click = "mullvad connect";
-          on-click-right = "mullvad disconnect";
-          format = "󰱓󰅛 {}";
-          interval = 5;
-        };
         "custom/record" = {
           exec = "record.sh status";
           format = "{}";
@@ -96,32 +80,80 @@ in
         };
         tray = {
           icon-size = 16;
-          spacing = 5;
+          spacing = 10;
+          reverse-direction = true;
         };
-        "custom/brightness" = {
-          interval = 1;
-          exec = "brightness.sh get --json";
+        "custom/mic" = {
+          exec = "audio.sh source get --waybar";
           return-type = "json";
-          format = "{icon} {percentage}%";
-          format-icons = ["" "" "" "" "" "" "" "" ""];
-          on-scroll-up = "brightness.sh set +10";
-          on-scroll-down = "brightness.sh set -10";
+          interval = 1;
+          on-click = "audio.sh source toggle-mute";
+          on-click-right = "pavucontrol";
+        };
+        "custom/vpn" = {
+          exec = "vpn.sh status --waybar";
+          return-type = "json";
+          interval = 1;
+          on-click = "vpn.sh connect";
+          on-click-right = "vpn.sh disconnect";
+        };
+        idle_inhibitor = {
+          format = "{icon}";
+          format-icons = {
+            "activated" = " ";
+            "deactivated" = " ";
+          };
         };
         pulseaudio = {
           format = "{icon} {volume}%";
           format-muted = "󰝟";
           format-icons = {
-            default = ["󰕿" "󰖀" "󰕾"];
+            default = ["󰕿 " "󰖀 " "󰕾 "];
           };
-          on-click = "volume.sh toggle-mute";
           scroll-step = 5;
+          reverse-scrolling = true;
+          smooth-scrolling-threshold = 5;
+          on-click = "volume.sh sink toggle-mute";
           on-click-right = "pavucontrol";
+        };
+        backlight = {
+          format = "{icon}  {percent}%";
+          format-icons = ["" "" "" "" "" "" "" "" ""];
+          scroll-step = 5;
+          reverse-scrolling = true;
+          smooth-scrolling-threshold = 5;
+        };
+        "custom/brightness" = {
+          exec = "brightness.sh get --json";
+          return-type = "json";
+          format = "{icon} {percentage}%";
+          interval = 1;
+          reverse-scrolling = true;
+          smooth-scrolling-threshold = 5;
+          format-icons = ["" "" "" "" "" "" "" "" ""];
+          on-scroll-up = "brightness.sh set +10";
+          on-scroll-down = "brightness.sh set -10";
+        };
+        battery = {
+          states = {
+            warning = 30;
+            critical = 15;
+          };
+          format = "{icon} {capacity}%";
+          format-charging = "󱐋 {capacity}%";
+          format-icons = ["  " "   " "  " "  " "  "];
+          interval = 5;
+        };
+        clock = {
+          format = "  {:%H:%M}";
+          format-alt = "  {:%Y-%m-%d}";
         };
       };
     };
     style = ''
       @define-color base   #1e1e2e;
       @define-color mantle #181825;
+      @define-color mantle_t rgba(24, 24, 37, 0.6);
       @define-color crust  #11111b;
 
       @define-color text     #cdd6f4;
@@ -129,6 +161,7 @@ in
       @define-color subtext1 #bac2de;
 
       @define-color surface0 #313244;
+      @define-color surface0_t rgba(49, 50, 68, 0.6);
       @define-color surface1 #45475a;
       @define-color surface2 #585b70;
 
@@ -158,15 +191,14 @@ in
       }
 
       #waybar {
-        background: transparent;
+        background: @mantle_t;
         color: @text;
-        margin: 5px 5px;
       }
 
       #workspaces {
         border-radius: 1rem;
         margin: 5px;
-        background-color: @surface0;
+        background-color: @surface0_t;
         margin-left: 1rem;
       }
 
@@ -177,7 +209,7 @@ in
       }
 
       #workspaces button.active {
-        color: @sky;
+        color: @mauve;
         border-radius: 1rem;
       }
 
@@ -186,17 +218,28 @@ in
         border-radius: 1rem;
       }
 
-      #custom-music,
       #tray,
       #backlight,
+      #custom-brightness,
       #clock,
       #battery,
       #pulseaudio,
-      #custom-lock,
-      #custom-power {
-        background-color: @surface0;
-        padding: 0.5rem 1rem;
+      #custom-vpn,
+      #idle_inhibitor,
+      #custom-mic,
+      #cpu,
+      #memory {
+        background-color: @surface0_t;
+        padding: 0.5rem 0.7rem;
         margin: 5px 0;
+      }
+
+      #custom-wnp {
+        /* color: @sky; */
+        background-color: @surface0_t;
+        margin: 5px 0;
+        padding: 0.5rem 1rem;
+        border-radius: 1rem 1rem;
       }
 
       #clock {
@@ -217,38 +260,40 @@ in
         color: @red;
       }
 
-      #backlight {
+      #backlight, #custom-brightness {
         color: @yellow;
       }
 
-      #backlight, #battery {
-          border-radius: 0;
+      #custom-record {
+        margin-right: 0.5rem;
+      }
+
+      #cpu {
+        border-radius: 1rem 0px 0px 1rem;
+        padding-right: 0rem;
+      }
+
+      #memory {
+        border-radius: 0px 1rem 1rem 0px;
+        margin-right: 0.5rem;
+      }
+
+      #custom-mic {
+        border-radius: 1rem 0px 0px 1rem;
+        margin-left: 0.5rem;
+      }
+
+      #idle_inhibitor {
+        border-radius: 0px 1rem 1rem 0px;
       }
 
       #pulseaudio {
         color: @maroon;
         border-radius: 1rem 0px 0px 1rem;
-        margin-left: 1rem;
-      }
-
-      #custom-music {
-        color: @mauve;
-        border-radius: 1rem;
-      }
-
-      #custom-lock {
-          border-radius: 1rem 0px 0px 1rem;
-          color: @lavender;
-      }
-
-      #custom-power {
-          margin-right: 1rem;
-          border-radius: 0px 1rem 1rem 0px;
-          color: @red;
+        margin-left: 0.5rem;
       }
 
       #tray {
-        margin-right: 1rem;
         border-radius: 1rem;
       }
     '';
