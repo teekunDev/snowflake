@@ -176,9 +176,9 @@ let
     $scriptsDir = ${location}/files/scripts
 
     $term = kitty
+    $audio = $scriptsDir/audio.sh
     $alttab = $scriptsDir/alttab.sh
     $record = $scriptsDir/record.sh
-    $volume = $scriptsDir/volume.sh
     $launcher = $scriptsDir/launcher.sh
     $screenshot = $scriptsDir/screenshot.sh
     $brightness = $scriptsDir/brightness.sh
@@ -194,9 +194,10 @@ let
     bind = , XF86AudioPlay, exec, playerctl play-pause
     bind = , XF86AudioPrev, exec, playerctl previous
     bind = , XF86AudioNext, exec, playerctl next
-    bind = , XF86AudioLowerVolume, exec, $volume set -5
-    bind = , XF86AudioRaiseVolume, exec, $volume set +5
-    bind = , XF86AudioMute, exec, $volume toggle-mute
+    bind = , XF86AudioLowerVolume, exec, $audio sink set -5
+    bind = , XF86AudioRaiseVolume, exec, $audio sink set +5
+    bind = , XF86AudioMute, exec, $volume sink toggle-mute
+    bind = SUPER, M, exec, $volume source toggle-mute
 
     # Alt Tab
     bind = ALT, TAB, exec, $alttab
