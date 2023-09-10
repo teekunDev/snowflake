@@ -14,7 +14,9 @@ if [[ "$1" == "get" ]]; then
   if [[ "$key" == "all" ]]; then
     echo "$json_data"
   elif [[ "$key" == "formatted" ]]; then
-    echo "$json_data" | jq -r '"\(.artist + " - " + .title | gsub("&"; "&amp;"))"'
+    artist=$(echo "$json_data" | jq -r ".artist" | sed 's/&/\&amp;/g')
+    title=$(echo "$json_data" | jq -r ".title" | sed 's/&/\&amp;/g')
+    echo "󰎈  $artist - $title"
   else
     echo "$json_data" | jq -r ".$key"
   fi
