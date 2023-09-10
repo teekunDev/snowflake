@@ -25,6 +25,9 @@ let
     else if hostName == "laptop" then
       [ "custom/record" "tray" "custom/mic" "custom/vpn" "idle_inhibitor" "pulseaudio" "backlight" "battery" "clock" ]
     else [ ];
+  smooth-scrolling-threshold = with host;
+    if hostName == "laptop" then 5
+    else 0;
 in
 {
   programs.waybar = {
@@ -112,8 +115,8 @@ in
           };
           scroll-step = 5;
           reverse-scrolling = true;
-          smooth-scrolling-threshold = 5;
-          on-click = "volume.sh sink toggle-mute";
+          smooth-scrolling-threshold = smooth-scrolling-threshold;
+          on-click = "audio.sh sink toggle-mute";
           on-click-right = "pavucontrol";
         };
         backlight = {
@@ -121,15 +124,15 @@ in
           format-icons = ["" "" "" "" "" "" "" "" ""];
           scroll-step = 5;
           reverse-scrolling = true;
-          smooth-scrolling-threshold = 5;
+          smooth-scrolling-threshold = smooth-scrolling-threshold;
         };
         "custom/brightness" = {
           exec = "brightness.sh get --json";
           return-type = "json";
-          format = "{icon} {percentage}%";
+          format = "{icon}  {percentage}%";
           interval = 1;
           reverse-scrolling = true;
-          smooth-scrolling-threshold = 5;
+          smooth-scrolling-threshold = smooth-scrolling-threshold;
           format-icons = ["" "" "" "" "" "" "" "" ""];
           on-scroll-up = "brightness.sh set +10";
           on-scroll-down = "brightness.sh set -10";
