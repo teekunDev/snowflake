@@ -50,11 +50,25 @@ set_volume() {
   fi
 }
 
+play_ping() {
+  if [[ "$1" == "--ping" ]]; then
+    if [[ "$muted" == "yes" ]]; then
+      paplay $NIXOS_FILES/sound/unmute.mp3
+    else
+      paplay $NIXOS_FILES/sound/mute.mp3
+    fi
+  fi
+}
+
 toggle_mute() {
   if [[ "$source" == "sink" ]]; then
+    muted=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2;}')
     pactl set-sink-mute @DEFAULT_SINK@ toggle
+    play_ping $1
   elif [[ "$source" == "source" ]]; then
+    muted=$(pactl get-source-mute @DEFAULT_SOURCE@ | awk '{print $2;}')
     pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    play_ping $1
   else
     echo "Usage: audio.sh <sink|source> <get|set|toggle-mute> [(+|-)volume]"
     exit 1
@@ -84,7 +98,7 @@ elif [ "$operation" == "set" ]; then
   fi
   set_volume "$3"
 elif [ "$operation" == "toggle-mute" ]; then
-  toggle_mute
+  toggle_mute "$3"
 else
   echo "Usage: audio.sh <sink|source> <get|set|toggle-mute> [(+|-)volume]"
   exit 1

@@ -196,8 +196,8 @@ let
     bind = , XF86AudioNext, exec, playerctl next
     bind = , XF86AudioLowerVolume, exec, $audio sink set -5
     bind = , XF86AudioRaiseVolume, exec, $audio sink set +5
-    bind = , XF86AudioMute, exec, $volume sink toggle-mute
-    bind = SUPER, M, exec, $volume source toggle-mute
+    bind = , XF86AudioMute, exec, $audio sink toggle-mute
+    bind = SUPER, M, exec, $audio source toggle-mute --ping
 
     # Alt Tab
     bind = ALT, TAB, exec, $alttab

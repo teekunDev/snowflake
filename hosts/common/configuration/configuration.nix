@@ -87,7 +87,8 @@
   environment = {
     variables = {
       NIXOS_ALLOW_UNFREE = "1";
-      NIXOS_SECRETS= "${secrets}";
+      NIXOS_SECRETS = "${secrets}";
+      NIXOS_FILES = "${location}/files";
       PATH = [
         "${location}/files/scripts"
       ];
