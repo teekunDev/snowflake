@@ -15,6 +15,7 @@
   imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  services.tlp.enable = true;
 
   networking = {
     hostName = "${host.hostName}";
