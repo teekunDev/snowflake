@@ -96,13 +96,14 @@
       VISUAL = "code";
     };
     systemPackages = with pkgs; [
-      imagemagick # image manipulation
-      cifs-utils  # samba
-      alsa-utils  # alsa
-      jq          # json parser
-      killall     # killall
-      nano        # nano
-      pciutils    # pciutils
+      imagemagick   # image manipulation
+      cifs-utils    # samba
+      alsa-utils    # alsa
+      jq            # json parser
+      killall       # killall
+      nano          # nano
+      pciutils      # pciutils
+      inotify-tools # mainly for inotifywait 
     ];
   };
 
