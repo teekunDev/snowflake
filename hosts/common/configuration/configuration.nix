@@ -77,9 +77,9 @@
       nerdfonts
     ];
     fontconfig.defaultFonts = {
-      serif = [ "Hack Nerd Font" ];
-      sansSerif = [ "Hack Nerd Font" ];
-      monospace = [ "Hack Nerd Font" ];
+      serif = [ "Source Code Pro" ];
+      sansSerif = [ "Source Code Pro" ];
+      monospace = [ "Source Code Pro" ];
       emoji = [ "Hack Nerd Font" ];
     };
   };
