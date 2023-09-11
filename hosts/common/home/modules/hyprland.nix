@@ -260,8 +260,6 @@ let
     bind = SUPER, 8, workspace, 8
     bind = SUPER, 9, workspace, 9
     bind = SUPER, 0, workspace, 10
-    bind = SUPER_ALT, up, workspace, e+1
-    bind = SUPER_ALT, down, workspace, e-1
 
     # Move
     bind = SUPER SHIFT, 1, movetoworkspace, 1
@@ -278,8 +276,6 @@ let
     # Mouse
     bindm = SUPER, mouse:272, movewindow
     bindm = SUPER, mouse:273, resizewindow
-    bind = SUPER, mouse_down, workspace, e+1
-    bind = SUPER, mouse_up, workspace, e-11
 
     # reset submap
     submap = none
