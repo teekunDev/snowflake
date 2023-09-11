@@ -1,0 +1,82 @@
+{
+  /* START general settings */
+  "keyboard.dispatch": "keyCode", // fixes wrong keyboard shortcut layout
+  "editor.codeLens": true,
+  "update.mode": "none",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.startupEditor": "newUntitledFile",
+  "diffEditor.ignoreTrimWhitespace": true,
+  "workbench.editor.untitled.hint": "hidden",
+  "security.workspace.trust.untrustedFiles": "open",
+  "security.workspace.trust.enabled": false,
+  "editor.wordWrap": "on",
+  "files.defaultLanguage": "",
+  "extensions.autoCheckUpdates": false,
+  "extensions.autoUpdate": false,
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.sideBar.location": "left",
+  /* END general settings */
+  /* START editor settings */
+  "editor.minimap.enabled": false,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.tabSize": 2,
+  "editor.fontSize": 14,
+  "editor.mouseWheelZoom": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.fontFamily": "Hack Nerd Font, monospace",
+  "editor.accessibilitySupport": "off",
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.renderWhitespace": "none",
+  "editor.unicodeHighlight.allowedCharacters": {
+    "ü": true,
+    "ä": true,
+    "ö": true,
+    "ß": true,
+    "Ü": true,
+    "©": true
+  },
+  "editor.suggestSelection": "first",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.sortImports": true
+  },
+  "[css]": { "editor.suggest.insertMode": "replace" },
+  // "[prisma]": { "editor.defaultFormatter": "Prisma.prisma" },
+  "[rust]": { "editor.defaultFormatter": "rust-lang.rust-analyzer" },
+  /* For some reason this is needed to get intellisense to work for .css files */
+  "files.associations": {
+    "*.css": "css",
+    "css": "css"
+  },
+  /* END editor settings */
+  /* START git settings */
+  "git.enableCommitSigning": true,
+  "git.confirmSync": false,
+  /* END git settings */
+  /* START eslint settings */
+  "eslint.lintTask.enable": true,
+  "eslint.format.enable": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  /* END eslint settings */
+  /* START extension settings */
+  "livePreview.portNumber": 3727,
+  "livePreview.customExternalBrowser": "Firefox",
+  "css.lint.unknownAtRules": "ignore",
+  /* END extension settings */
+  /* New from here, added automatically */
+  "git.openRepositoryInParentFolders": "never",
+  "rust-analyzer.check.command": "clippy",
+  "window.zoomLevel": 1,
+  "window.menuBarVisibility": "toggle",
+  "workbench.iconTheme": "catppuccin-mocha"
+}
