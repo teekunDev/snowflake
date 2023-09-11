@@ -18,6 +18,7 @@
 #                   ├─ neofetch.nix +
 #                   ├─ obs-studio.nix +
 #                   ├─ theming.nix +
+#                   ├─ thunar.nix +
 #                   ├─ vm.nix +
 #                   ├─ vscode.nix +
 #                   ├─ waybar.nix +
@@ -39,6 +40,7 @@
     ./modules/neofetch.nix
     ./modules/obs-studio.nix
     ./modules/theming.nix
+    ./modules/thunar.nix
     ./modules/vm.nix
     ./modules/vscode.nix
     ./modules/waybar.nix
