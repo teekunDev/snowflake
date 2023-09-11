@@ -15,6 +15,7 @@ fi
 if pgrep -f "wf-recorder" >/dev/null; then
   pkill -SIGINT -f "wf-recorder"
   sleep 3
+  # TODO: the sleep here is stupid though!!
   curl -X PUT $HOST/upload?filename=$FILENAME -H "Authorization: $TOKEN" -H "Content-Type: application/octet-stream" --data-binary "@$TMP_PATH" | sed 's/$/?raw/' | wl-copy
   notify-send -t 3000 "Finished uploading video"
 elif [ "$1" == "--audio" ]; then
