@@ -10,7 +10,7 @@
 #               └─ hardware-configuration.nix *
 #
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, secrets, ... }:
 
 {
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
@@ -46,15 +46,14 @@
       fsType = "ext4";
     };
 
-  # Note: having this enabled made steam not launch :nyaboom:
-  /* fileSystems."/data" =
+  fileSystems."/smb" =
     {
       device = "//192.168.2.111/data";
       fsType = "cifs";
       options = let
         automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
       in [ "${automount_opts},credentials=${secrets}/smb,uid=33,gid=33" ];
-    }; */
+    };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
