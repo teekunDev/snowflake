@@ -25,6 +25,7 @@
     extraConfig = {
       core.sshcommand = "ssh -i ${secrets}/git-ssh-key";
       init.defaultBranch = "main";
+      pull.rebase = false;
       url = {
         "ssh://git@github.com/" = {
           insteadOf = "https://github.com/";
