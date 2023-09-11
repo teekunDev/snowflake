@@ -208,12 +208,15 @@ in
       #workspaces button {
         color: @lavender;
         border-radius: 1rem;
-        padding: 0.4rem;
+        padding-left: 0.7rem;
+        padding-right: 0.7rem;
+        transition: none;
       }
 
       #workspaces button.active {
         color: @mauve;
         border-radius: 1rem;
+        padding-left: 0.4rem;
       }
 
       #workspaces button:hover {
