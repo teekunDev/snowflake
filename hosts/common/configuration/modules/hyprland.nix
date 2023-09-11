@@ -42,7 +42,7 @@
     ];
   };
 
-  security.pam.services.swaylcok = {
+  security.pam.services.swaylock = {
     text = ''
       auth include login
     '';
