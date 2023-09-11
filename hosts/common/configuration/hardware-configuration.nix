@@ -12,6 +12,15 @@
 
 { config, lib, pkgs, secrets, ... }:
 
+
+let
+  getSambaHost = path: fallback:
+    if lib.pathExists path then
+      builtins.readFile path
+    else
+      fallback;
+  smb-host = getSambaHost "${secrets}/smb_host" "192.168.2.111";
+in
 {
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
@@ -48,7 +57,7 @@
 
   fileSystems."/smb" =
     {
-      device = "//192.168.2.111/data";
+      device = "//${smb-host}/data";
       fsType = "cifs";
       options = let
         automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
