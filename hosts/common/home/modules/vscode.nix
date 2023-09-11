@@ -33,6 +33,13 @@
       bbenoist.nix
       esbenp.prettier-vscode
       humao.rest-client
+    ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      {
+        name = "markdown-preview-github-styles";
+        publisher = "bierner";
+        version = "2.0.2";
+        sha256 = "sha256-GiSS9gCCmOfsBrzahJe89DfyFyJJhQ8tkXVJbfibHQY=";
+      }
     ];
   };
 }
