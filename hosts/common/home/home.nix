@@ -17,6 +17,7 @@
 #                   ├─ mako.nix +
 #                   ├─ neofetch.nix +
 #                   ├─ obs-studio.nix +
+#                   ├─ swaylock.nix +
 #                   ├─ theming.nix +
 #                   ├─ thunar.nix +
 #                   ├─ vm.nix +
@@ -39,6 +40,7 @@
     ./modules/mako.nix
     ./modules/neofetch.nix
     ./modules/obs-studio.nix
+    ./modules/swaylock.nix
     ./modules/theming.nix
     ./modules/thunar.nix
     ./modules/vm.nix

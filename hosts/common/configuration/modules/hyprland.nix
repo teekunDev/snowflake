@@ -31,7 +31,6 @@
       grim
       slurp
       swappy
-      swaylock-effects
       wl-clipboard
       wtype
       hyprpicker
