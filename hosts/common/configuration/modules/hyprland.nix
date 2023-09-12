@@ -10,7 +10,7 @@
 #                   └─ hyprland.nix *
 #
 
-{ config, lib, pkgs, host, system, inputs, ... }:
+{ config, lib, pkgs, host, system, inputs, user, ... }:
 
 {
   environment = {
@@ -31,7 +31,7 @@
       grim
       slurp
       swappy
-      swaylock
+      swaylock-effects
       wl-clipboard
       wtype
       hyprpicker
@@ -61,6 +61,9 @@
     AllowSuspendThenHibernate=no
     AllowHybridSleep=yes
   '';
+
+  services.getty.autologinUser = "${user}";
+  programs.zsh.loginShellInit = "Hyprland";
 
   nix.settings = {
     substituters = ["https://hyprland.cachix.org"];
