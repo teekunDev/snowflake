@@ -10,6 +10,14 @@
 #                   └─ mako.nix *
 #
 
+{ host, ... }:
+
+let
+  output = with host; 
+    if hostName == "desktop" then "DP-2"
+    else if hostName == "laptop" then "eDP-1"
+    else "";
+in
 {
   services.mako = {
     enable = true;
@@ -19,6 +27,9 @@
     textColor = "#cdd6f4";
     borderRadius = 8;
     borderSize = 3;
+    output = "${output}";
+    defaultTimeout = 3000;
+    margin = "20";
     extraConfig = ''
       [urgency=high]
       border-color=#fab387
