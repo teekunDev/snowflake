@@ -45,6 +45,7 @@
   programs.zsh.enable = true;
   users.users.${user} = {
     isNormalUser = true;
+    password = "123";
     extraGroups = [ "wheel" "networkmanager" ];
     shell = pkgs.zsh;
   };
@@ -105,7 +106,7 @@
   };
 
   services = {
-    xserver.layout = "de"; # some programs think it's 'us' otherwise and mess up keybinds
+    xserver.layout = "de";
     flatpak.enable = true;
     printing.enable = true;
     printing.drivers = with pkgs; [ hplip ];
