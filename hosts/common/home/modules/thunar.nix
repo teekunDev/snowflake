@@ -13,9 +13,10 @@
 {
   home.file.".config/gtk-3.0/bookmarks".text = ''
     file:///stuff
-    file:///stuff/pictures
-    file:///stuff/other
-    file:///home/keifufu/Downloads
+    file:///stuff/code
     file:///smb
+    file:///smb/pictures
+    file:///smb/other
+    file:///home/keifufu/Downloads
   '';
 }
