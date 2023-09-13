@@ -14,7 +14,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    prismlauncher
+    prismlauncher-qt5
     temurin-jre-bin-17
   ];
 
