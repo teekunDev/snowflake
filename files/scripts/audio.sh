@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# could use wpctl here
+
 if [ "$#" -lt 1 ]; then
   echo "Usage: audio.sh <sink|source> <get|set|toggle-mute> [(+|-)volume]"
   exit 1
