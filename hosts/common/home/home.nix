@@ -8,6 +8,7 @@
 #           └─ ./home
 #               ├─ home.nix *
 #               └─ ./modules
+#                   ├─ bat.nix +
 #                   ├─ btop.nix +
 #                   ├─ firefox.nix +
 #                   ├─ git.nix +
@@ -17,6 +18,7 @@
 #                   ├─ mako.nix +
 #                   ├─ neofetch.nix +
 #                   ├─ obs-studio.nix +
+#                   ├─ rnnoise.nix +
 #                   ├─ swaylock.nix +
 #                   ├─ theming.nix +
 #                   ├─ thunar.nix +
@@ -31,6 +33,7 @@
 
 {
   imports = [
+    ./modules/bat.nix
     ./modules/btop.nix
     ./modules/firefox.nix
     ./modules/git.nix
