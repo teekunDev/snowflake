@@ -8,4 +8,4 @@ Maybe I'll put something in the readme one day :3
 
 ## Credits
 
-- Wallpaper by [-Shiyoi-](https://www.pixiv.net/en/artworks/107336687)
+- Wallpaper by ???
