@@ -215,6 +215,7 @@ let
     # Misc
     bind = CTRL_SHIFT, R, exec, $randomchars
     bind = CTRL_SHIFT, SPACE, exec, $launcher
+    bind = CTRL_SHIFT, C, exec, anyrun
     bind = CTRL_SHIFT, Escape, exec, $term --hold btop
     bind = SUPER, P, exec, $colorpicker
     bind = CTRL_ALT, L, exec, swaylock
@@ -352,6 +353,8 @@ let
     windowrulev2  =  noanim,class:^(xwaylandvideobridge)$
     windowrulev2  =  nofocus,class:^(xwaylandvideobridge)$
     windowrulev2  =  noinitialfocus,class:^(xwaylandvideobridge)$
+
+    layerrule = noanim, ^(gtk-layer-shell|anyrun)$
   '';
 in
 {
@@ -360,18 +363,4 @@ in
     preload=${location}/files/wall.png
     wallpaper=,${location}/files/wall.png
   '';
-
-  # services.swayidle = with host; if hostName == "laptop" then {
-  #   enable = true;
-  #   events = [
-  #     { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -f"; }
-  #     { event = "lock"; command = "lock"; }
-  #   ];
-  #   timeouts = [
-  #     { timeout = 300; command = "${pkgs.swaylock}/bin/swaylock -f"; }
-  #   ];
-  #   systemdTarget = "hyprland-session.target";
-  # } else {
-  #   enable = false;
-  # };
 }

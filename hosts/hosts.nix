@@ -45,6 +45,7 @@ in
         };
         home-manager.users.${user} = {
           imports = [
+            inputs.anyrun.homeManagerModules.default
            ./common/home/home.nix
            ./desktop/home.nix
           ];
@@ -80,6 +81,7 @@ in
         };
         home-manager.users.${user} = {
           imports = [
+            inputs.anyrun.homeManagerModules.default
            ./common/home/home.nix
            ./laptop/home.nix
           ];

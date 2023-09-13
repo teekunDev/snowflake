@@ -8,6 +8,7 @@
 #           └─ ./home
 #               ├─ home.nix *
 #               └─ ./modules
+#                   ├─ anyrun.nix +
 #                   ├─ bat.nix +
 #                   ├─ btop.nix +
 #                   ├─ firefox.nix +
@@ -33,6 +34,7 @@
 
 {
   imports = [
+    ./modules/anyrun.nix
     ./modules/bat.nix
     ./modules/btop.nix
     ./modules/firefox.nix
