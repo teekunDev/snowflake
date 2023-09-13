@@ -16,7 +16,7 @@
   programs.zsh = {
     enable = true;
     shellAliases = {
-      ls = "exa --icons";
+      ls = "eza --icons -a --group-directories-first";
       rebuild = "sudo nixos-rebuild switch --flake ${location}# --impure && reload.sh";
     };
     oh-my-zsh = {
