@@ -59,7 +59,7 @@
     flavour = ["mocha"];
     accents = ["mauve"];
     winDecStyles = ["modern"];
-  })}/share/color-schemes/CatppuccinMochaPeach.colors";
+  })}/share/color-schemes/CatppuccinMochaMauve.colors";
 
   qt.enable = true;
   qt.style = {

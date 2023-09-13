@@ -105,6 +105,8 @@
     ];
   };
 
+  programs.thefuck.enable = true;
+
   services = {
     xserver.layout = "de";
     flatpak.enable = true;
