@@ -1,6 +1,19 @@
-{pkgs, ...}: let
-  json = pkgs.formats.json {};
+#
+#  rnnoise home-manager configuration.
+#
+#  flake.nix
+#   └─ ./hosts
+#       └─ ./common
+#           └─ ./home
+#               ├─ home.nix !
+#               └─ ./modules
+#                   └─ rnnoise.nix *
+#
 
+{pkgs, ...}:
+
+let
+  json = pkgs.formats.json {};
   pw_rnnoise_config = {
     "context.modules" = [
       {
@@ -34,7 +47,8 @@
       }
     ];
   };
-in {
+in
+{
   xdg.configFile."pipewire/pipewire.conf.d/99-input-denoising.conf" = {
     source = json.generate "99-input-denoising.conf" pw_rnnoise_config;
   };
