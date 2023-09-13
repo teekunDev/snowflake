@@ -40,6 +40,7 @@
     ./modules/mako.nix
     ./modules/neofetch.nix
     ./modules/obs-studio.nix
+    ./modules/rnnoise.nix
     ./modules/swaylock.nix
     ./modules/theming.nix
     ./modules/thunar.nix
