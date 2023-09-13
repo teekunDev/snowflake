@@ -101,7 +101,7 @@
       killall       # killall
       nano          # nano
       pciutils      # pciutils
-      inotify-tools # mainly for inotifywait 
+      inotify-tools # mainly for inotifywait
     ];
   };
 
