@@ -215,7 +215,7 @@ let
     # Misc
     bind = CTRL_SHIFT, R, exec, $randomchars
     bind = CTRL_SHIFT, SPACE, exec, $launcher
-    bind = CTRL_SHIFT, C, exec, anyrun
+    bind = CTRL_SHIFT, B, exec, anyrun
     bind = CTRL_SHIFT, Escape, exec, $term --hold btop
     bind = SUPER, P, exec, $colorpicker
     bind = CTRL_ALT, L, exec, swaylock
