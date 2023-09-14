@@ -102,6 +102,7 @@
       nano          # nano
       pciutils      # pciutils
       inotify-tools # mainly for inotifywait
+      wget          # some scripts use wget instead of curl
     ];
   };
 
