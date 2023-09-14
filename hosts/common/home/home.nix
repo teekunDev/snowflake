@@ -26,6 +26,7 @@
 #                   ├─ vm.nix +
 #                   ├─ vscode.nix +
 #                   ├─ waybar.nix +
+#                   ├─ wlogout.nix +
 #                   ├─ wofi.nix +
 #                   └─ zsh.nix +
 #
@@ -52,6 +53,7 @@
     ./modules/vm.nix
     ./modules/vscode.nix
     ./modules/waybar.nix
+    ./modules/wlogout.nix
     ./modules/wofi.nix
     ./modules/zsh.nix
   ];

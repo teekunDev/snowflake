@@ -223,6 +223,7 @@ let
     bind = SUPER, E, exec, $files
     bind = SUPER, H, exec, cliphist list | wofi --dmenu --normal-window | cliphist decode | wl-copy
     bind = SUPER, L, exec, swaylock
+    bind = SUPER, Q, exec, wlogout
 
     # Window Manager
     bind = SUPER, C, killactive,
@@ -347,14 +348,18 @@ let
 
     windowrulev2 = idleinhibit focus,class:^(mpv)$
     windowrulev2 = idleinhibit fullscren,class:^(firefox)$
+    windowrulev2 = idleinhibit fullscren,class:^(.*Minecraft.*)$
 
     # xwaylandvideobridge
-    windowrulev2  =  opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$
-    windowrulev2  =  noanim,class:^(xwaylandvideobridge)$
-    windowrulev2  =  nofocus,class:^(xwaylandvideobridge)$
-    windowrulev2  =  noinitialfocus,class:^(xwaylandvideobridge)$
+    windowrulev2 = opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$
+    windowrulev2 = noanim,class:^(xwaylandvideobridge)$
+    windowrulev2 = nofocus,class:^(xwaylandvideobridge)$
+    windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
 
     layerrule = noanim, ^(gtk-layer-shell|anyrun)$
+
+    windowrulev2 = float, class:^(wlogout)$
+    windowrulev2 = fullscreen, class:^(wlogout)$
   '';
 in
 {
