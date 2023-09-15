@@ -18,6 +18,7 @@
     shellAliases = {
       ls = "eza --icons -a --group-directories-first";
       rebuild = "sudo nixos-rebuild switch --flake ${location}# --impure && reload.sh";
+      rebuild-upgrade = "nix flake update ${location} && sudo nixos-rebuild switch --flake ${location}# --impure && reload.sh";
     };
     oh-my-zsh = {
       enable = true;

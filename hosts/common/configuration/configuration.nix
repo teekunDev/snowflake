@@ -126,6 +126,7 @@
 
   nix = {
     settings = {
+      trusted-users = [ "${user}" "@wheel" ];
       auto-optimise-store = true;
     };
     gc = {
@@ -142,5 +143,5 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
 }
