@@ -154,7 +154,7 @@ let
     ### STARTUP ###
 
     exec-once = swaylock
-    exex-once = exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+    exec-once = exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     exec-once = ssh-add ${secrets}/git-ssh-key
     exec-once = gpg --import ${secrets}/git-gpg-key
     exec-once = ${location}/files/scripts/mullvadlogin.sh
