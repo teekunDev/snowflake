@@ -13,6 +13,14 @@
 { config, lib, pkgs, host, location, secrets, ... }:
 
 let
+  monitor-size = with host;
+    if hostName == "desktop" then "6400 1440"
+    else if hostName == "laptop" then "1920 1080"
+    else "";
+  leftmost-monitor = with host;
+    if hostName == "desktop" then "HDMI-A-1"
+    else if hostName == "laptop" then "eDP-1"
+    else "";
   touchpad = with host;
     if hostName == "laptop" then ''
       touchpad {
@@ -330,6 +338,13 @@ let
     windowrulev2 = opacity 0,title:^(.*Sharing Indicator.*)$
     windowrulev2 = noblur,title:^(.*Sharing Indicator.*)$
     windowrulev2 = nofocus,title:^(.*Sharing Indicator.*)$
+
+    # Screenshot Overlay
+    windowrulev2 = monitor ${leftmost-monitor},class:^(screenshot-overlay)$
+    windowrulev2 = float,class:^(screenshot-overlay)$
+    windowrulev2 = noanim,class:^(screenshot-overlay)$
+    windowrulev2 = move 0 0, class:^(screenshot-overlay)$
+    windowrulev2 = size ${monitor-size},class:^(screenshot-overlay)$
 
     # Borders
     windowrulev2 = noborder,class:^(wofi)$

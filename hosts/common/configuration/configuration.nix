@@ -95,6 +95,7 @@
     };
     systemPackages = with pkgs; [
       imagemagick   # image manipulation
+      ffmpeg        # ffmpeg
       cifs-utils    # samba
       alsa-utils    # alsa
       jq            # json parser
