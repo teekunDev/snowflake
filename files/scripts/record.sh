@@ -36,8 +36,8 @@ if pgrep -f "wf-recorder" >/dev/null; then
     notify-send -t 5000 -r $id -i $TMPIMG "Failed to upload: $HTTP_STATUS"
   fi
 elif [ "$1" == "--audio" ]; then
-  wf-recorder -x yuv420p --audio="$(pactl get-default-sink).monitor" -g "$(slurp  -b "#cad3f533" -c "#ffffffff" -d)" -f $TMPVIDEO <<<Y
+  wf-recorder -x yuv420p --audio="$(pactl get-default-sink).monitor" -g "$(slurp -b "#cad3f533" -c "#ffffffff" -d)" -f $TMPVIDEO <<<Y
 else
   # "-x yuv420p" see https://github.com/ammen99/wf-recorder/issues/218#issuecomment-1710702237
-  wf-recorder -x yuv420p -g "$(slurp  -b "#cad3f533" -c "#ffffffff" -d)" -f $TMPVIDEO <<<Y
+  wf-recorder -x yuv420p -g "$(slurp -b "#cad3f533" -c "#ffffffff" -d)" -f $TMPVIDEO <<<Y
 fi
