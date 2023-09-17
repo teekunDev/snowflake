@@ -28,7 +28,7 @@ in
     borderRadius = 8;
     borderSize = 3;
     output = "${output}";
-    defaultTimeout = 3000;
+    defaultTimeout = 5000;
     margin = "20";
     extraConfig = ''
       [urgency=high]
