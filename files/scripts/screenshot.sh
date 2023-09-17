@@ -14,7 +14,7 @@ fi
 grim -c -t ppm "$PPMIMG"
 feh --class "$FEHCLASS" "$PPMIMG" & # hyprland handles positioning and sizing feh
 sleep 0.1 # wait for feh to open :/
-region="$(slurp -f %w:%h:%x:%y -d)" # TODO: maybe make the slurp colors nicer (slurp -help)
+region="$(slurp -f %w:%h:%x:%y -b "#cad3f533" -c "#ffffffff" -d)"
 pkill -f "$FEHCLASS"
 if [[ -n "$region" ]]; then
   ffmpeg -loglevel warning -i "$PPMIMG" -vf "crop=$region" -y \
