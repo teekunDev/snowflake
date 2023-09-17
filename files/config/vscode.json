@@ -1,4 +1,5 @@
 {
+  "window.titleBarStyle": "custom", // temporary crash fix
   /* START general settings */
   "keyboard.dispatch": "keyCode", // fixes wrong keyboard shortcut layout
   "editor.codeLens": true,
