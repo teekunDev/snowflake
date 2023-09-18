@@ -92,7 +92,6 @@
       networkmanagerapplet        # Networkmanager app
       mako                        # Notification Daemon
       appimage-run                # appimage
-      (pkgs.callPackage ./modules/armcord.nix {})
     ];
 
     stateVersion = "23.11";
