@@ -10,7 +10,7 @@
 #               └─ hardware-configuration.nix +
 #
 
-{ pkgs, inputs, user, location, secrets, ... }:
+{ lib, pkgs, inputs, user, location, secrets, ... }:
 
 {
   imports = [
