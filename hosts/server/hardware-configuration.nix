@@ -10,7 +10,7 @@
 #               └─ hardware-configuration.nix *
 #
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, host, ... }:
 
 {
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];

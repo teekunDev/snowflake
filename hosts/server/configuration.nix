@@ -10,7 +10,7 @@
 #               └─ hardware-configuration.nix +
 #
 
-{ pkgs, inputs, user, location, ... }:
+{ pkgs, inputs, user, location, secrets, ... }:
 
 {
   imports = [
@@ -37,7 +37,7 @@
 
   services.openssh = {
     enable = true;
-    settings.PasswordAuthentification = false;
+    settings.PasswordAuthentication = false;
     settings.KbdInteractiveAuthentication = false;
   };
   
