@@ -79,6 +79,15 @@ This isn't meant for anyone to follow really, it's just a reminder for myself.
   - 4 - 100GB STUFF
   - 5 - 784.5GB GAMES
 
+### Server
+
+- sda
+  - 1 - 500MB EFI
+  - 2 - 15GB Swap
+  - 3 - 208.1GB ROOT
+- nvme0n1
+  - p1 - 2TB STUFF
+
 </details>
 
 ### Clone repo
@@ -100,3 +109,4 @@ This isn't meant for anyone to follow really, it's just a reminder for myself.
 
 - set password
 - `git clone https://github.com/keifufu/nixos-config ~/.nixos-config`
+- server: sudo smbpasswd -a \<user>
