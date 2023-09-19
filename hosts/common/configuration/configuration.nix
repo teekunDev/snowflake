@@ -103,12 +103,12 @@
       nano          # nano
       pciutils      # pciutils
       inotify-tools # mainly for inotifywait
+      curl          # curl
       wget          # some scripts use wget instead of curl
     ];
   };
 
   programs.corectrl.enable = true;
-  programs.thefuck.enable = true;
 
   services = {
     xserver.layout = "de";
