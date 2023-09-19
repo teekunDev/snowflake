@@ -32,8 +32,8 @@
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 80 443 53 445 8082 ];
-    allowedUDPPorts = [ 53 ];
+    allowedTCPPorts = [ 80 443 53 445 8082  ];
+    allowedUDPPorts = [ 53 67 68 ];
   };
 
   services.openssh = {
