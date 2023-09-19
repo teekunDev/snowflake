@@ -77,7 +77,6 @@
       ];
     };
     systemPackages = with pkgs; [
-      cifs-utils    # samba
       killall       # killall
       nano          # nano
       curl          # curl
