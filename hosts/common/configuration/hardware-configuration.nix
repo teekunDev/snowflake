@@ -12,7 +12,6 @@
 
 { config, lib, pkgs, secrets, ... }:
 
-
 let
   getSambaHost = path: fallback:
     if lib.pathExists path then
