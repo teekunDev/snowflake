@@ -89,4 +89,32 @@ in
       }
     ];
   };
+  server = nixpkgs.lib.nixosSystem {
+    inherit system;
+    specialArgs = {
+      inherit inputs system user location symlink secrets;
+      host = {
+        hostName = "server";
+      };
+    };
+    modules = [
+      inputs.nur.nixosModules.nur
+      ./server/configuration.nix
+      inputs.home-manager.nixosModules.home-manager {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = {
+          inherit inputs user location symlink secrets;
+          host = {
+            hostName = "laptop";
+          };
+        };
+        home-manager.users.${user} = {
+          imports = [
+            ./server/home.nix
+          ];
+        };
+      }
+    ];
+  };
 }
