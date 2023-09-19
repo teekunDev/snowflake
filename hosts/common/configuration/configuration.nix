@@ -46,7 +46,7 @@
   users.users.${user} = {
     isNormalUser = true;
     password = "123";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "corectrl" ];
     shell = pkgs.zsh;
   };
 
@@ -107,6 +107,7 @@
     ];
   };
 
+  programs.corectrl.enable = true;
   programs.thefuck.enable = true;
 
   services = {
