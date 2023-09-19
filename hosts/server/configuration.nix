@@ -68,6 +68,16 @@
     };
   };
 
+  system.activationScripts = {
+    sambaUserSetup = {
+      text = ''
+        PATH=$PATH:${lib.makeBinPath [ pkgs.samba ]}
+        pdbedit -i smbpasswd:/home/${user}/smbpasswd -e tdbsam:/var/lib/samba/private/passdb.tdb
+        '';
+      deps = [ ];
+    };
+  };
+
   environment = {
     variables = {
       NIXOS_ALLOW_UNFREE = "1";
