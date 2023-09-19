@@ -10,7 +10,7 @@
 #               └─ hardware-configuration.nix +
 #
 
-{ lib, pkgs, inputs, user, location, secrets, ... }:
+{ pkgs, inputs, user, location, secrets, ... }:
 
 {
   imports = [
@@ -65,16 +65,6 @@
         "force directory mode" = "0775";
         "inherit permissions" = "yes";
       };
-    };
-  };
-
-  system.activationScripts = {
-    sambaUserSetup = {
-      text = ''
-        PATH=$PATH:${lib.makeBinPath [ pkgs.samba ]}
-        pdbedit -i smbpasswd:/home/${user}/smbpasswd -e tdbsam:/var/lib/samba/private/passdb.tdb
-        '';
-      deps = [ ];
     };
   };
 
