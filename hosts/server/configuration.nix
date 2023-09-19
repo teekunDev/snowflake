@@ -33,6 +33,7 @@
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [ 80 443 53 445 ];
+    allowedUDPPorts = [ 53 ];
   };
 
   services.openssh = {
@@ -77,9 +78,11 @@
       ];
     };
     systemPackages = with pkgs; [
+      kitty         # because otherwise it'll cry
       killall       # killall
       nano          # nano
       curl          # curl
+      git           # git
       wget          # some scripts use wget instead of curl
     ];
   };
