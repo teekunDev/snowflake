@@ -19,6 +19,6 @@
 
   networking = {
     hostName = "${host.hostName}";
-    nameservers = [ "192.168.2.111" "1.1.1.1" ];
+    nameservers = [ "1.1.1.1" "1.0.0.1" ];
   };
 }
