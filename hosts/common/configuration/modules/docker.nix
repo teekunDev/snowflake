@@ -10,10 +10,10 @@
 #                   └─ docker.nix *
 #
 
-{ user, ... }:
+{ vars, ... }:
 
 {
-  users.users.${user}.extraGroups = [ "docker" ];
+  users.users.${vars.user}.extraGroups = [ "docker" ];
   virtualisation.docker = {
     enable = true;
   };

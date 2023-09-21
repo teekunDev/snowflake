@@ -10,7 +10,7 @@
 #                   └─ hyprland.nix *
 #
 
-{ config, lib, pkgs, host, location, secrets, ... }:
+{ config, lib, pkgs, host, vars, ... }:
 
 let
   monitor-size = with host;
@@ -163,9 +163,9 @@ let
 
     exec-once = swaylock
     exec-once = exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-    exec-once = ssh-add ${secrets}/git-ssh-key
-    exec-once = gpg --import ${secrets}/git-gpg-key
-    exec-once = ${location}/files/scripts/mullvadlogin.sh
+    exec-once = ssh-add ${vars.secrets}/git-ssh-key
+    exec-once = gpg --import ${vars.secrets}/git-gpg-key
+    exec-once = ${vars.location}/files/scripts/mullvadlogin.sh
     exec-once = /usr/lib/polkit-kde-authentication-agent-1
     exec-once = hyprpaper
     exec-once = firefox
@@ -181,7 +181,7 @@ let
 
     ### KEYBINDS ###
 
-    $scriptsDir = ${location}/files/scripts
+    $scriptsDir = ${vars.location}/files/scripts
 
     $term = kitty
     $audio = $scriptsDir/audio.sh
@@ -379,7 +379,7 @@ in
 {
   home.file.".config/hypr/hyprland.conf".text = hyprlandConf;
   home.file.".config/hypr/hyprpaper.conf".text = ''
-    preload=${location}/files/wall.png
-    wallpaper=,${location}/files/wall.png
+    preload=${vars.location}/files/wall.png
+    wallpaper=,${vars.location}/files/wall.png
   '';
 }

@@ -31,7 +31,7 @@
 #                   └─ zsh.nix +
 #
 
-{ config, lib, pkgs, user, ... }:
+{ config, lib, pkgs, vars, ... }:
 
 {
   imports = [
@@ -59,8 +59,8 @@
   ];
 
   home = {
-    username = "${user}";
-    homeDirectory = "/home/${user}";
+    username = "${vars.user}";
+    homeDirectory = "/home/${vars.user}";
 
     packages = with pkgs; [
       # Terminal

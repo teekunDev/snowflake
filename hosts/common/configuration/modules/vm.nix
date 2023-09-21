@@ -10,10 +10,10 @@
 #                   └─ vm.nix *
 #
 
-{ pkgs, lib, user, host, ... }:
+{ pkgs, lib, host, vars, ... }:
 
 {
-  users.users.${user}.extraGroups = [ "libvirtd" ];
+  users.users.${vars.user}.extraGroups = [ "libvirtd" ];
   programs.dconf.enable = true;
   boot = {
     kernelModules = [

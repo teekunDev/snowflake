@@ -10,16 +10,12 @@
 #                   └─ xremap.nix *
 #
 
-{ inputs, user, ... }:
+{ inputs, vars, ... }:
 
 {
-  imports = [
-    inputs.xremap-flake.nixosModules.default
-  ];
-
   services.xremap = {
     withHypr = true;
-    userName = "${user}";
+    userName = "${vars.user}";
     yamlConfig = ''
       keymap:
         - name: Global

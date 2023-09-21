@@ -9,8 +9,6 @@
 #           └─ hardware-configuration.nix +
 #
 
-{ pkgs, lib, user, ... }:
-
 {
   imports = [
     ./hardware-configuration.nix

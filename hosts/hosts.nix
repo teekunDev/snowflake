@@ -11,94 +11,94 @@
 #                └─ home.nix +
 #
 
-{ inputs, nixpkgs, user, location, symlink, secrets, ... }:
+{ inputs, vars, ... }:
 
 let
   system = "x86_64-linux";
+  hmModule = inputs.home-manager.nixosModules.home-manager;
+  hyprlandModule = inputs.hyprland.homeManagerModules.default;
+  anyrunModule = inputs.anyrun.homeManagerModules.default;
+  xremapModule = inputs.xremap.nixosModules.default;
+  inherit (inputs.nixpkgs.lib) nixosSystem;
 in
 {
-  desktop = nixpkgs.lib.nixosSystem {
+  desktop = nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system user location symlink secrets;
+      inherit inputs vars;
       host = {
         hostName = "desktop";
-        # 3070
         gpuIDs = [
-          "10de:2484" # Graphics
-          "10de:228b" # Audio
+          "10de:2484" # 3070 Graphics
+          "10de:228b" # 3070 Audio
         ];
       };
     };
     modules = [
-      inputs.nur.nixosModules.nur
       ./common/configuration/configuration.nix
       ./desktop/configuration.nix
-      inputs.home-manager.nixosModules.home-manager {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = {
-          inherit inputs user location symlink secrets;
-          host = {
-            hostName = "desktop";
+      xremapModule
+      hmModule {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          extraSpecialArgs = {
+            inherit inputs vars;
+            host.hostName = "desktop";
           };
-        };
-        home-manager.users.${user} = {
-          imports = [
-            inputs.anyrun.homeManagerModules.default
-            ./common/home/home.nix
-            ./desktop/home.nix
-          ];
+          users.${vars.user} = {
+            imports = [
+              anyrunModule
+              ./common/home/home.nix
+              ./desktop/home.nix
+            ];
+          };
         };
       }
     ];
   };
-  laptop = nixpkgs.lib.nixosSystem {
+  laptop = nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system user location symlink secrets;
+      inherit inputs vars;
       host = {
         hostName = "laptop";
-        # 3060 Mobile
         gpuIDs = [
-          "10de:2520" # Graphics
-          "10de:228e" # Audio
+          "10de:2520" # 3060 Mobile Graphics
+          "10de:228e" # 3060 Mobile Audio
         ];
       };
     };
     modules = [
-      inputs.nur.nixosModules.nur
       ./common/configuration/configuration.nix
       ./laptop/configuration.nix
-      inputs.home-manager.nixosModules.home-manager {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = {
-          inherit inputs user location symlink secrets;
-          host = {
-            hostName = "laptop";
+      xremapModule
+      hmModule {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          extraSpecialArgs = {
+            inherit inputs vars;
+            host.hostName = "desktop";
           };
-        };
-        home-manager.users.${user} = {
-          imports = [
-            inputs.anyrun.homeManagerModules.default
-            ./common/home/home.nix
-            ./laptop/home.nix
-          ];
+          users.${vars.user} = {
+            imports = [
+              anyrunModule
+              ./common/home/home.nix
+              ./laptop/home.nix
+            ];
+          };
         };
       }
     ];
   };
-  server = nixpkgs.lib.nixosSystem {
+  server = nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system user location symlink secrets;
-      host = {
-        hostName = "server";
-      };
+      inherit inputs vars;
+      host.hostName = "server";
     };
     modules = [
-      inputs.nur.nixosModules.nur
       ./server/configuration.nix
     ];
   };

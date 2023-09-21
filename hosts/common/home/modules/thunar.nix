@@ -10,7 +10,7 @@
 #                   └─ thunar.nix *
 #
 
-{ user, ... }:
+{ vars, ... }:
 
 {
   home.file.".config/gtk-3.0/bookmarks".text = ''
@@ -19,6 +19,6 @@
     file:///smb
     file:///smb/pictures
     file:///smb/other
-    file:///home/${user}/Downloads
+    file:///home/${vars.user}/Downloads
   '';
 }

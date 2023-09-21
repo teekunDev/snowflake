@@ -10,14 +10,14 @@
 #                   └─ swaylock.nix *
 #
 
-{ pkgs, location, ... }:
+{ pkgs, vars, ... }:
 
 {
   programs.swaylock = {
     enable = true;
     package = pkgs.swaylock-effects;
     settings = {
-      image = "${location}/files/wall.png";
+      image = "${vars.location}/files/wall.png";
       indicator = true;
       clock = true;
       datestr = "%a, %Y-%m-%d";

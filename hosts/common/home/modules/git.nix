@@ -10,7 +10,7 @@
 #                   └─ git.nix *
 #
 
-{ secrets, ... }:
+{ vars, ... }:
 
 {
   programs.git = {
@@ -23,7 +23,7 @@
       signByDefault = true;
     };
     extraConfig = {
-      core.sshcommand = "ssh -i ${secrets}/git-ssh-key";
+      core.sshcommand = "ssh -i ${vars.secrets}/git-ssh-key";
       init.defaultBranch = "main";
       pull.rebase = false;
       url = {

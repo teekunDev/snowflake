@@ -23,7 +23,7 @@
 #                   └─ xremap.nix +
 #
 
-{ config, lib, pkgs, inputs, user, location, secrets, ... }:
+{ config, lib, pkgs, inputs, vars, ... }:
 
 {
   imports = [
@@ -43,7 +43,7 @@
   ];
 
   programs.zsh.enable = true;
-  users.users.${user} = {
+  users.users.${vars.user} = {
     isNormalUser = true;
     password = "123";
     extraGroups = [ "wheel" "networkmanager" "corectrl" ];
@@ -84,10 +84,10 @@
   environment = {
     variables = {
       NIXOS_ALLOW_UNFREE = "1";
-      NIXOS_SECRETS = "${secrets}";
-      NIXOS_FILES = "${location}/files";
+      NIXOS_SECRETS = "${vars.secrets}";
+      NIXOS_FILES = "${vars.location}/files";
       PATH = [
-        "${location}/files/scripts"
+        "${vars.location}/files/scripts"
       ];
       TERMINAL = "kitty";
       EDITOR = "code";
@@ -128,7 +128,7 @@
 
   nix = {
     settings = {
-      trusted-users = [ "${user}" "@wheel" ];
+      trusted-users = [ "${vars.user}" "@wheel" ];
       auto-optimise-store = true;
       substituters = [ "https://nix-community.cachix.org" ];
       trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];

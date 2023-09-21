@@ -10,7 +10,7 @@
 #                   └─ hyprland.nix *
 #
 
-{ config, lib, pkgs, host, system, inputs, user, ... }:
+{ config, lib, pkgs, host, system, inputs, vars, ... }:
 
 {
   environment = {
@@ -61,7 +61,7 @@
     AllowHybridSleep=yes
   '';
 
-  services.getty.autologinUser = "${user}";
+  services.getty.autologinUser = "${vars.user}";
   programs.zsh.loginShellInit = "Hyprland";
 
   nix.settings = {

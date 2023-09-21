@@ -10,7 +10,7 @@
 #                   └─ symlink.nix *
 #
 
-{ symlink, location, ... }:
+{ vars, ... }:
 
 {
   # -h checks if it's a symbolic link, if it's not, we delete it and create a link
@@ -18,11 +18,11 @@
     if [[ ! -h "$HOME/.config/Code/User/settings.json" ]]; then
       mkdir -p $HOME/.config/Code/User
       rm -rf $HOME/.config/Code/User/settings.json
-      ln -s "${location}/files/config/vscode.json" "$HOME/.config/Code/User/settings.json"
+      ln -s "${vars.location}/files/config/vscode.json" "$HOME/.config/Code/User/settings.json"
     fi
     if [[ ! -h "$HOME/.mozilla" ]]; then
       rm -rf $HOME/.mozilla
-      ln -s "${symlink}/.mozilla" "$HOME/.mozilla"
+      ln -s "${vars.symlink}/.mozilla" "$HOME/.mozilla"
     fi
   '';
 }

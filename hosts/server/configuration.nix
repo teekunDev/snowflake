@@ -10,7 +10,7 @@
 #               └─ hardware-configuration.nix +
 #
 
-{ pkgs, inputs, user, location, secrets, ... }:
+{ pkgs, inputs, vars, ... }:
 
 {
   imports = [
@@ -21,7 +21,7 @@
   console.keyMap = "de";
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
-  users.users.${user} = {
+  users.users.${vars.user} = {
     isNormalUser = true;
     password = "123";
     extraGroups = [ "wheel" "docker" ];
@@ -59,7 +59,7 @@
         path = "/stuff/data";
         writeable = "yes";
         "guest ok" = "no";
-        "force user" = "${user}";
+        "force user" = "${vars.user}";
         "force group" = "users";
         "force create mode" = "0775";
         "force directory mode" = "0775";
@@ -71,10 +71,10 @@
   environment = {
     variables = {
       NIXOS_ALLOW_UNFREE = "1";
-      NIXOS_SECRETS = "${secrets}";
-      NIXOS_FILES = "${location}/files";
+      NIXOS_SECRETS = "${vars.secrets}";
+      NIXOS_FILES = "${vars.location}/files";
       PATH = [
-        "${location}/files/scripts"
+        "${vars.location}/files/scripts"
       ];
     };
     systemPackages = with pkgs; [
@@ -89,7 +89,7 @@
 
   nix = {
     settings = {
-      trusted-users = [ "${user}" "@wheel" ];
+      trusted-users = [ "${vars.user}" "@wheel" ];
       auto-optimise-store = true;
     };
     gc = {
