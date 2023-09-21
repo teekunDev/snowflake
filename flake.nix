@@ -23,7 +23,7 @@
   outputs = { nixpkgs, ... } @ inputs:
     let
       user = "keifufu";
-      location = "/home/keifufu/.nixos-config";
+      location = "/home/keifufu/.snowflake";
       symlink = "/stuff/symlink";
       secrets = "/stuff/secrets";
     in {

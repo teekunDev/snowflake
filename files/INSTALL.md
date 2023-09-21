@@ -93,7 +93,7 @@ This isn't meant for anyone to follow really, it's just a reminder for myself.
 ### Clone repo
 
 - `nix-shell -p git`
-- `git clone https://github.com/keifufu/nixos-config`
+- `git clone https://github.com/keifufu/snowflake`
 
 ## Mount Partitions
 
@@ -108,5 +108,5 @@ This isn't meant for anyone to follow really, it's just a reminder for myself.
 ## After install
 
 - set password
-- `git clone https://github.com/keifufu/nixos-config ~/.nixos-config`
+- `git clone https://github.com/keifufu/snowflake ~/.snowflake`
 - server: sudo smbpasswd -a \<user>
