@@ -20,5 +20,9 @@
   networking = {
     hostName = "${host.hostName}";
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
+    extraHosts = ''
+      192.168.2.1 speedport.ip
+      192.168.2.2 asus.router
+    '';
   };
 }
