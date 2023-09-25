@@ -14,7 +14,7 @@
 
 let
   output = with host; 
-    if hostName == "desktop" then "DP-2"
+    if hostName == "desktop" then "DP-1"
     else if hostName == "laptop" then "eDP-1"
     else "";
 in

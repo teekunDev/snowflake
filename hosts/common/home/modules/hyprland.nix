@@ -37,23 +37,23 @@ let
     '' else "";
   monitors = with host;
     if hostName == "desktop" then ''
-      monitor = HDMI-A-1, 1920x1080@60, 0x0, 1
-      monitor = DP-2, 2560x1440@165, 1920x0, 1
-      monitor = DP-3, 1920x1080@144, 4480x0, 1
+      monitor = HDMI-A-1, 1920x1080@144, 0x0, 1
+      monitor = DP-1, 2560x1440@165, 1920x0, 1
+      monitor = DP-2, 1920x1080@60, 4480x0, 1
     '' else if hostName == "laptop" then ''
       monitor = eDP-1, 1920x1080@144, 0x0, 1
     '' else "";
   workspaces = with host;
     if hostName == "desktop" then ''
-      workspace = 1, monitor:DP-2, default:true
-      workspace = 2, monitor:DP-2, default:false
-      workspace = 3, monitor:DP-2, default:false
+      workspace = 1, monitor:DP-1, default:true
+      workspace = 2, monitor:DP-1, default:false
+      workspace = 3, monitor:DP-1, default:false
       workspace = 4, monitor:HDMI-A-1, default:true
       workspace = 5, monitor:HDMI-A-1, default:false
       workspace = 6, monitor:HDMI-A-1, default:false
-      workspace = 7, monitor:DP-3, default:true
-      workspace = 8, monitor:DP-3, default:false
-      workspace = 9, monitor:DP-3, default:false
+      workspace = 7, monitor:DP-2, default:true
+      workspace = 8, monitor:DP-2, default:false
+      workspace = 9, monitor:DP-2, default:false
 
       windowrulev2 = workspace 4,class:^(firefox)$
     '' else if hostName == "laptop" then ''
@@ -346,8 +346,9 @@ let
     windowrulev2 = move 0 0, class:^(screenshot-overlay)$
     windowrulev2 = size ${monitor-size},class:^(screenshot-overlay)$
 
-    # Borders
+    # Wofi
     windowrulev2 = noborder,class:^(wofi)$
+    windowrulev2 = stayfocused,class:^(wofi)$
 
     # windowrulev2 = move 50% 44%title:^(Volume Control)$
 
