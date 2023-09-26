@@ -79,7 +79,7 @@ in
           useUserPackages = true;
           extraSpecialArgs = {
             inherit inputs vars;
-            host.hostName = "desktop";
+            host.hostName = "laptop";
           };
           users.${vars.user} = {
             imports = [
