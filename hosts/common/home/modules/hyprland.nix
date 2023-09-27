@@ -362,8 +362,8 @@ let
     windowrulev2 = size 800 600,class:^(Volume Control)$
 
     windowrulev2 = idleinhibit focus,class:^(mpv)$
-    windowrulev2 = idleinhibit fullscren,class:^(firefox)$
-    windowrulev2 = idleinhibit fullscren,class:^(.*Minecraft.*)$
+    windowrulev2 = idleinhibit fullscreen,class:^(firefox)$
+    windowrulev2 = idleinhibit fullscreen,class:^(.*Minecraft.*)$
 
     # xwaylandvideobridge
     windowrulev2 = opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$
