@@ -18,6 +18,7 @@
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";
       XDG_SESSION_DESKTOP = "Hyprland";
+      XKB_DEFAULT_LAYOUT = "de";
     };
     sessionVariables = {
       QT_QPA_PLATFORM = "wayland";

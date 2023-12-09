@@ -55,7 +55,7 @@
     hostName = "${host.hostName}";
     enableIPv6 = false;
     interfaces = {
-      enp4s0.ipv4.addresses = [{
+      enp5s0.ipv4.addresses = [{
         address = "192.168.2.111";
         prefixLength = 24;
       }];

@@ -32,7 +32,7 @@
     ];
     kernelParams = [
       "amd_iommu=on"
-      "iommu=pt"
+      "vfio-pci.ids=10de:2484,10de:228b"
     ];
   };
 

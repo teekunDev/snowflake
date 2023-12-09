@@ -146,7 +146,7 @@ let
       animation = border, 1, 1, linear
       animation = borderangle, 1, 30, linear, loop
       animation = fade, 1, 10, default
-      animation = workspaces, 1, 5, wind
+      animation = workspaces, 1, 3, wind, slidefadevert
     }
 
     dwindle {
@@ -165,7 +165,6 @@ let
     exec-once = exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     exec-once = ssh-add ${vars.secrets}/git-ssh-key
     exec-once = gpg --import ${vars.secrets}/git-gpg-key
-    exec-once = ${vars.location}/files/scripts/mullvadlogin.sh
     exec-once = /usr/lib/polkit-kde-authentication-agent-1
     exec-once = hyprpaper
     exec-once = firefox
@@ -184,6 +183,8 @@ let
     $scriptsDir = ${vars.location}/files/scripts
 
     $term = kitty
+    $wall = $scriptsDir/wall.sh
+    $wnp = $scriptsDir/wnpctl.sh
     $audio = $scriptsDir/audio.sh
     $alttab = $scriptsDir/alttab.sh
     $record = $scriptsDir/record.sh
@@ -198,12 +199,21 @@ let
     # submap
     submap = reset
 
+    # Networking
+    bind = SUPER_SHIFT, Prior, exec, nmcli networking on
+    bind = SUPER_SHIFT, Next, exec, nmcli networking off
+
+    # gtav CHEATS omg hacker hack3r holy shite
+    bind = , F12, exec, /stuff/code/gtav-fingerprint-solver/run.sh
+
     # Audio Control
-    bind = , XF86AudioPlay, exec, playerctl play-pause
-    bind = , XF86AudioPrev, exec, playerctl previous
-    bind = , XF86AudioNext, exec, playerctl next
-    bind = , XF86AudioLowerVolume, exec, $audio sink set -5
-    bind = , XF86AudioRaiseVolume, exec, $audio sink set +5
+    bind = , XF86AudioPlay, exec, $wnp execute play_pause
+    bind = , XF86AudioPrev, exec, $wnp execute skip_previous
+    bind = , XF86AudioNext, exec, $wnp execute skip_next
+    # bind = , XF86AudioRaiseVolume, exec, $audio sink set +5
+    # bind = , XF86AudioLowerVolume, exec, $audio sink set -5
+    bind = , XF86AudioRaiseVolume, exec, $wnp execute volume_up
+    bind = , XF86AudioLowerVolume, exec, $wnp execute volume_down
     bind = , XF86AudioMute, exec, $audio sink toggle-mute
     bind = SUPER, M, exec, $audio source toggle-mute --ping
 
@@ -220,9 +230,9 @@ let
     bind = SUPER, Next, exec, $brightness set 0
 
     # Misc
+    bind = SUPER, W, exec, $wall
     bind = CTRL_SHIFT, R, exec, $randomchars
     bind = CTRL_SHIFT, SPACE, exec, $launcher
-    bind = CTRL_SHIFT, B, exec, anyrun
     bind = CTRL_SHIFT, Escape, exec, $term --hold btop
     bind = SUPER, P, exec, $colorpicker
     bind = CTRL_ALT, L, exec, swaylock
@@ -345,6 +355,10 @@ let
     windowrulev2 = noanim,class:^(screenshot-overlay)$
     windowrulev2 = move 0 0, class:^(screenshot-overlay)$
     windowrulev2 = size ${monitor-size},class:^(screenshot-overlay)$
+    
+    windowrulev2 = stayfocused,class:^(swappy)$
+    windowrulev2 = float,class:^(swappy)$
+    windowrulev2 = center,class:^(swappy)$
 
     # Wofi
     windowrulev2 = noborder,class:^(wofi)$
@@ -371,10 +385,17 @@ let
     windowrulev2 = nofocus,class:^(xwaylandvideobridge)$
     windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
 
-    layerrule = noanim, ^(gtk-layer-shell|anyrun)$
+    layerrule = noanim, ^(gtk-layer-shell)$
 
     windowrulev2 = float, class:^(wlogout)$
     windowrulev2 = fullscreen, class:^(wlogout)$
+
+    # explorer.exe (wine)
+    windowrulev2 = float,class:^(.*explorer.exe.*)$
+    windowrulev2 = nomaximizerequest,class:^(.*explorer.exe.*)$
+    windowrulev2 = opacity 0,class:^(.*explorer.exe.*)$
+    windowrulev2 = noblur,class:^(.*explorer.exe.*)$
+    windowrulev2 = nofocus,class:^(.*explorer.exe.*)$
   '';
 in
 {

@@ -10,13 +10,13 @@
 #                   └─ theming.nix *
 #
 
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   gtk = {
     enable = true;
     theme = {
-      name = "Catppuccin-Mocha-Compact-Mauve-dark";
+      name = "Catppuccin-Mocha-Compact-Mauve-Dark";
       package = pkgs.catppuccin-gtk.override {
         accents = [ "mauve" ];
         variant = "mocha";
@@ -78,7 +78,7 @@
     QT_QPA_PLATFORM = "wayland;xcb";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     DISABLE_QT5_COMPAT = "0";
-    QT_STYLE_OVERRIDE = "kvantum";
+    QT_STYLE_OVERRIDE = lib.mkForce "kvantum";
 		CALIBRE_USE_DARK_PALETTE = "1";
   };
   xdg.configFile."Kvantum/catppuccin/catppuccin.kvconfig".source = builtins.fetchurl {

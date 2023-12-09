@@ -17,7 +17,7 @@
     nodejs_18
     nodePackages.pnpm
     rustup
-    gcc
-    (pkgs.python3.withPackages(ps: with ps; [ aiohttp ]))
+    clang-tools
+    (pkgs.python3.withPackages(ps: with ps; [ aiohttp opencv4 ]))
   ];
 }

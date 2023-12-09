@@ -34,6 +34,7 @@
       bbenoist.nix
       esbenp.prettier-vscode
       humao.rest-client
+      llvm-vs-code-extensions.vscode-clangd
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "markdown-preview-github-styles";

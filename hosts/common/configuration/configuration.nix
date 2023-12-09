@@ -14,7 +14,6 @@
 #                   ├─ docker.nix +
 #                   ├─ games.nix +
 #                   ├─ hyprland.nix +
-#                   ├─ mullvad.nix +
 #                   ├─ openrgb.nix +
 #                   ├─ ssh.nix +
 #                   ├─ symlink.nix +
@@ -33,7 +32,6 @@
     ./modules/docker.nix
     ./modules/games.nix
     ./modules/hyprland.nix
-    ./modules/mullvad.nix
     ./modules/openrgb.nix
     ./modules/ssh.nix
     ./modules/symlink.nix
@@ -46,7 +44,7 @@
   users.users.${vars.user} = {
     isNormalUser = true;
     password = "123";
-    extraGroups = [ "wheel" "networkmanager" "corectrl" ];
+    extraGroups = [ "wheel" "networkmanager" "corectrl" "wireshark" ];
     shell = pkgs.zsh;
   };
 
@@ -105,10 +103,17 @@
       inotify-tools # mainly for inotifywait
       curl          # curl
       wget          # some scripts use wget instead of curl
+      solaar        # Logitech device manager
+      parsec-bin
+      ungoogled-chromium # need it for stupid webdev
+      file
+      yt-dlp
     ];
   };
 
   programs.corectrl.enable = true;
+  programs.wireshark.enable = true;
+  programs.wireshark.package = pkgs.wireshark;
 
   services = {
     xserver.layout = "de";

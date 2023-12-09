@@ -21,9 +21,9 @@ let
     else [ ];
   modules-right = with host;
     if hostName == "desktop" then
-      [ "custom/record" "tray" "custom/mic" "custom/vpn" "idle_inhibitor" "pulseaudio" "custom/brightness" "clock" ]
+      [ "custom/record" "tray" "custom/mic" "idle_inhibitor" "pulseaudio" "custom/brightness" "clock" ]
     else if hostName == "laptop" then
-      [ "custom/record" "tray" "custom/mic" "custom/vpn" "idle_inhibitor" "pulseaudio" "backlight" "battery" "clock" ]
+      [ "custom/record" "tray" "custom/mic" "idle_inhibitor" "pulseaudio" "backlight" "battery" "clock" ]
     else [ ];
   smooth-scrolling-threshold = with host;
     if hostName == "laptop" then 5
@@ -92,13 +92,6 @@ in
           interval = 1;
           on-click = "audio.sh source toggle-mute";
           on-click-right = "pavucontrol";
-        };
-        "custom/vpn" = {
-          exec = "vpn.sh status --waybar";
-          return-type = "json";
-          interval = 1;
-          on-click = "vpn.sh connect";
-          on-click-right = "vpn.sh disconnect";
         };
         idle_inhibitor = {
           format = "{icon}";

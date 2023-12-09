@@ -15,6 +15,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./vm.nix
   ];
 
   security.sudo.wheelNeedsPassword = false;
@@ -32,8 +33,8 @@
 
   networking.firewall = {
     enable = true;
-    # http https smb qbit
-    allowedTCPPorts = [ 80 443 445 8999 ];
+    # http https smb qbit minecraft
+    allowedTCPPorts = [ 80 443 445 8999 25565 ];
     # qbit
     allowedUDPPorts = [ 8999 ];
   };
@@ -86,6 +87,7 @@
       curl          # curl
       git           # git
       wget          # some scripts use wget instead of curl
+      screen        # screen
     ];
   };
 

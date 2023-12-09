@@ -16,6 +16,8 @@
   environment.systemPackages = with pkgs; [
     prismlauncher-qt5
     temurin-jre-bin-17
+    lutris
+    mangohud
   ];
 
   programs = {

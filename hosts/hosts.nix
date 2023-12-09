@@ -17,7 +17,6 @@ let
   system = "x86_64-linux";
   hmModule = inputs.home-manager.nixosModules.home-manager;
   hyprlandModule = inputs.hyprland.homeManagerModules.default;
-  anyrunModule = inputs.anyrun.homeManagerModules.default;
   xremapModule = inputs.xremap.nixosModules.default;
   inherit (inputs.nixpkgs.lib) nixosSystem;
 in
@@ -48,7 +47,6 @@ in
           };
           users.${vars.user} = {
             imports = [
-              anyrunModule
               ./common/home/home.nix
               ./desktop/home.nix
             ];
@@ -83,7 +81,6 @@ in
           };
           users.${vars.user} = {
             imports = [
-              anyrunModule
               ./common/home/home.nix
               ./laptop/home.nix
             ];

@@ -8,7 +8,6 @@
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.startupEditor": "newUntitledFile",
   "diffEditor.ignoreTrimWhitespace": true,
-  "workbench.editor.untitled.hint": "hidden",
   "security.workspace.trust.untrustedFiles": "open",
   "security.workspace.trust.enabled": false,
   "editor.wordWrap": "on",
@@ -48,6 +47,8 @@
   "[css]": { "editor.suggest.insertMode": "replace" },
   // "[prisma]": { "editor.defaultFormatter": "Prisma.prisma" },
   "[rust]": { "editor.defaultFormatter": "rust-lang.rust-analyzer" },
+  "[c]": { "editor.defaultFormatter": "xaver.clang-format" },
+  "[cpp]": { "editor.defaultFormatter": "xaver.clang-format" },
   /* For some reason this is needed to get intellisense to work for .css files */
   "files.associations": {
     "*.css": "css",
@@ -70,14 +71,22 @@
   ],
   /* END eslint settings */
   /* START extension settings */
+  "clangd.fallbackFlags": [
+    "-I${workspaceFolder}/WebNowPlaying-Library/include",
+    "-I${workspaceFolder}/WebNowPlaying-Library/include/ws",
+    "-I${workspaceFolder}/WebNowPlaying-CLI/include"
+  ],
   "livePreview.portNumber": 3727,
   "livePreview.customExternalBrowser": "Firefox",
   "css.lint.unknownAtRules": "ignore",
+  "cmake.configureOnOpen": false,
   /* END extension settings */
   /* New from here, added automatically */
   "git.openRepositoryInParentFolders": "never",
   "rust-analyzer.check.command": "clippy",
-  "window.zoomLevel": 1,
   "window.menuBarVisibility": "toggle",
-  "workbench.iconTheme": "catppuccin-mocha"
+  "window.zoomLevel": 2,
+  "C_Cpp.default.compilerPath": "",
+  "workbench.iconTheme": "catppuccin-mocha",
+  "workbench.editor.empty.hint": "hidden"
 }

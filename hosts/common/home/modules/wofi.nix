@@ -22,7 +22,7 @@
       location = "center";
       no_actions = true;
       prompt = "Search";
-      width = "40%";
+      width = "1024";
     };
     style = ''
       @define-color base   #1e1e2e;

@@ -8,7 +8,6 @@
 #           └─ ./home
 #               ├─ home.nix *
 #               └─ ./modules
-#                   ├─ anyrun.nix +
 #                   ├─ bat.nix +
 #                   ├─ btop.nix +
 #                   ├─ firefox.nix +
@@ -35,7 +34,6 @@
 
 {
   imports = [
-    ./modules/anyrun.nix
     ./modules/bat.nix
     ./modules/btop.nix
     ./modules/firefox.nix
@@ -47,6 +45,7 @@
     ./modules/neofetch.nix
     ./modules/obs-studio.nix
     ./modules/rnnoise.nix
+    ./modules/wofi.nix
     ./modules/swaylock.nix
     ./modules/theming.nix
     ./modules/thunar.nix
@@ -54,7 +53,6 @@
     ./modules/vscode.nix
     ./modules/waybar.nix
     ./modules/wlogout.nix
-    ./modules/wofi.nix
     ./modules/zsh.nix
   ];
 
