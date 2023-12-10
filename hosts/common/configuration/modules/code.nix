@@ -18,6 +18,7 @@
     nodePackages.pnpm
     rustup
     clang-tools
+    gf
     (pkgs.python3.withPackages(ps: with ps; [ aiohttp opencv4 ]))
   ];
 }
