@@ -18,6 +18,7 @@
     temurin-jre-bin-17
     lutris
     mangohud
+    wineWowPackages.wayland
   ];
 
   programs = {
