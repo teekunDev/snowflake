@@ -24,7 +24,7 @@
       }
       {
         label = "hibernate";
-        action = "systemctl hibernate";
+        action = "swaylock & systemctl hibernate";
         text = "Hibernate";
         keybind = "h";
       }
@@ -42,7 +42,7 @@
       }
       {
         label = "suspend";
-        action = "systemctl suspend";
+        action = "swaylock & systemctl suspend";
         text = "Suspend";
         keybind = "u";
       }
