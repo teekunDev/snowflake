@@ -14,7 +14,7 @@
 
 {
   services.xremap = {
-    withHypr = true;
+    withWlroots = true;
     userName = "${vars.user}";
     yamlConfig = ''
       keymap:
