@@ -19,6 +19,7 @@
     lutris
     mangohud
     wineWowPackages.wayland
+    protontricks
   ];
 
   programs = {
