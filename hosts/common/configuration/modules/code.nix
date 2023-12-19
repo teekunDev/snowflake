@@ -19,6 +19,7 @@
     rustup
     clang-tools
     gf
+    virtualenv
     (pkgs.python3.withPackages(ps: with ps; [ aiohttp opencv4 ]))
   ];
 }
