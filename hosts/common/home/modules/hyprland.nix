@@ -173,6 +173,7 @@ let
     exec-once = wl-paste --type text --watch cliphist store
     exec-once = wl-paste --type image --watch cliphist store
     exec-once = startwnp.sh
+    exec-once = xwaylandvideobridge
     ${execonce}
 
     ### ENV ###
@@ -336,18 +337,14 @@ let
     windowrulev2 = float,title:^(Confirm to replace files)$
     windowrulev2 = float,title:^(File Operation Progress)$
 
-    # Fix flameshot
-    windowrulev2 = move -1920 0,class:^(flameshot)
-    windowrulev2 = nofullscreenrequest,class:^(flameshot)
-    windowrulev2 = float,class:^(flameshot)$
-    windowrulev2 = noanim,class:^(flameshot)$
-
     # Fuck "Sharing Indicator" window
     windowrulev2 = float,title:^(.*Sharing Indicator.*)$
     windowrulev2 = nomaximizerequest,title:^(.*Sharing Indicator.*)$
     windowrulev2 = opacity 0,title:^(.*Sharing Indicator.*)$
     windowrulev2 = noblur,title:^(.*Sharing Indicator.*)$
     windowrulev2 = nofocus,title:^(.*Sharing Indicator.*)$
+    windowrulev2 = noanim,title:^(.*Sharing Indicator.*)$
+    windowrulev2 = noinitialfocus,title:^(.*Sharing Indicator.*)$
 
     # Screenshot Overlay
     windowrulev2 = monitor ${leftmost-monitor},class:^(screenshot-overlay)$
@@ -380,9 +377,12 @@ let
     windowrulev2 = idleinhibit fullscreen,class:^(.*Minecraft.*)$
 
     # xwaylandvideobridge
-    windowrulev2 = opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$
-    windowrulev2 = noanim,class:^(xwaylandvideobridge)$
+    windowrulev2 = float,class:^(xwaylandvideobridge)$
+    windowrulev2 = nomaximizerequest,class:^(xwaylandvideobridge)$
+    windowrulev2 = opacity 0,class:^(xwaylandvideobridge)$
+    windowrulev2 = noblur,class:^(xwaylandvideobridge)$
     windowrulev2 = nofocus,class:^(xwaylandvideobridge)$
+    windowrulev2 = noanim,class:^(xwaylandvideobridge)$
     windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
 
     layerrule = noanim, ^(gtk-layer-shell)$

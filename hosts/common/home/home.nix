@@ -90,6 +90,9 @@
       networkmanagerapplet        # Networkmanager app
       mako                        # Notification Daemon
       appimage-run                # appimage
+
+      xwaylandvideobridge
+      vesktop
     ];
 
     stateVersion = "23.11";
