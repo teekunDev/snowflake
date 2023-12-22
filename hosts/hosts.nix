@@ -27,10 +27,6 @@ in
       inherit inputs vars;
       host = {
         hostName = "desktop";
-        gpuIDs = [
-          "10de:2484" # 3070 Graphics
-          "10de:228b" # 3070 Audio
-        ];
       };
     };
     modules = [
@@ -61,10 +57,6 @@ in
       inherit inputs vars;
       host = {
         hostName = "laptop";
-        gpuIDs = [
-          "10de:2520" # 3060 Mobile Graphics
-          "10de:228e" # 3060 Mobile Audio
-        ];
       };
     };
     modules = [
