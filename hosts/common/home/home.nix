@@ -29,7 +29,7 @@
 #                   └─ zsh.nix +
 #
 
-{ config, lib, pkgs, vars, ... }:
+{ inputs, config, lib, pkgs, vars, ... }:
 
 {
   imports = [
@@ -90,6 +90,7 @@
       appimage-run                # appimage
 
       xwaylandvideobridge
+      eww-wayland
     ];
 
     stateVersion = "23.11";
