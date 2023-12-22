@@ -1,7 +1,5 @@
 {
-  "window.titleBarStyle": "custom", // temporary crash fix
-  /* START general settings */
-  "window.menuBarVisibility": "toggle",
+  "window.titleBarStyle": "custom",
   "zenMode.fullScreen": false,
   "keyboard.dispatch": "keyCode", // fixes wrong keyboard shortcut layout
   "editor.codeLens": true,
@@ -89,5 +87,8 @@
   "window.zoomLevel": 2,
   "C_Cpp.default.compilerPath": "",
   "workbench.iconTheme": "catppuccin-mocha",
-  "workbench.editor.empty.hint": "hidden"
+  "workbench.editor.empty.hint": "hidden",
+  "workbench.layoutControl.enabled": false,
+  "breadcrumbs.enabled": false,
+  "window.menuBarVisibility": "compact"
 }
