@@ -27,7 +27,7 @@ in
 
   boot = {
     swraid.enable = false; # https://github.com/NixOS/nixpkgs/issues/254807
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
     loader = {
       systemd-boot = {
         enable = true;
