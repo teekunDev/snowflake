@@ -216,7 +216,6 @@ in
       #clock,
       #battery,
       #pulseaudio,
-      #custom-vpn,
       #custom-mic,
       #cpu,
       #memory {
