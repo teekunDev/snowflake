@@ -210,11 +210,13 @@ in
         border-radius: 1rem;
       }
 
+      #tray,
       #backlight,
       #custom-brightness,
       #clock,
       #battery,
       #pulseaudio,
+      #custom-vpn,
       #custom-mic,
       #cpu,
       #memory {
@@ -267,6 +269,13 @@ in
         margin-right: 0.5rem;
       }
 
+      #custom-mic {
+        border-radius: 1rem;
+        margin-left: 0.5rem;
+        padding: 0 0.7rem 0 0.7rem;
+        color: #DFDFDF;
+      }
+
       #pulseaudio {
         color: @maroon;
         border-radius: 1rem 0px 0px 1rem;
@@ -274,17 +283,7 @@ in
       }
 
       #tray {
-        border-radius: 1rem 0px 0px 1rem;
-        background-color: @surface0_t;
-        padding: 0px 0px 0px 0.7rem;
-        margin: 5px 0;
-      }
-
-      #custom-mic {
-        border-radius: 0px 1rem 1rem 0px;
-        padding: 0px 1rem 0px 0.7rem;
-        font-size: 1rem;
-        color: #DFDFDF;
+        border-radius: 1rem;
       }
     '';
   };

@@ -64,6 +64,7 @@ let
   execonce = with host;
     if hostName == "desktop" then ''
     '' else if hostName == "laptop" then ''
+      exec-once = nm-applet
     '' else "";
 in
 let
@@ -173,7 +174,6 @@ let
     exec-once = wl-paste --type image --watch cliphist store
     exec-once = startwnp.sh
     exec-once = xwaylandvideobridge
-    exec-once = nm-applet
     ${execonce}
 
     ### ENV ###
