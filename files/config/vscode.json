@@ -84,11 +84,11 @@
   /* New from here, added automatically */
   "git.openRepositoryInParentFolders": "never",
   "rust-analyzer.check.command": "clippy",
-  "window.zoomLevel": 2,
   "C_Cpp.default.compilerPath": "",
   "workbench.iconTheme": "catppuccin-mocha",
   "workbench.editor.empty.hint": "hidden",
   "workbench.layoutControl.enabled": false,
   "breadcrumbs.enabled": false,
-  "window.menuBarVisibility": "compact"
+  "window.menuBarVisibility": "compact",
+  "window.zoomLevel": 1
 }

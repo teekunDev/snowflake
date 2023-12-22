@@ -18,7 +18,6 @@
 #                   ├─ ssh.nix +
 #                   ├─ symlink.nix +
 #                   ├─ thunar.nix +
-#                   ├─ vm.nix +
 #                   └─ xremap.nix +
 #
 
@@ -36,7 +35,6 @@
     ./modules/ssh.nix
     ./modules/symlink.nix
     ./modules/thunar.nix
-    ./modules/vm.nix
     ./modules/xremap.nix
   ];
 

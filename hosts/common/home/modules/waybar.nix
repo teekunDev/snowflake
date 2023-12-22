@@ -21,9 +21,9 @@ let
     else [ ];
   modules-right = with host;
     if hostName == "desktop" then
-      [ "custom/record" "tray" "custom/mic" "idle_inhibitor" "pulseaudio" "custom/brightness" "clock" ]
+      [ "custom/record" "tray" "custom/mic" "pulseaudio" "custom/brightness" "clock" ]
     else if hostName == "laptop" then
-      [ "custom/record" "tray" "custom/mic" "idle_inhibitor" "pulseaudio" "backlight" "battery" "clock" ]
+      [ "custom/record" "tray" "custom/mic" "pulseaudio" "backlight" "battery" "clock" ]
     else [ ];
   smooth-scrolling-threshold = with host;
     if hostName == "laptop" then 5
@@ -92,13 +92,6 @@ in
           interval = 1;
           on-click = "audio.sh source toggle-mute";
           on-click-right = "pavucontrol";
-        };
-        idle_inhibitor = {
-          format = "{icon}";
-          format-icons = {
-            "activated" = " ";
-            "deactivated" = " ";
-          };
         };
         pulseaudio = {
           format = "{icon} {volume}%";
@@ -217,14 +210,11 @@ in
         border-radius: 1rem;
       }
 
-      #tray,
       #backlight,
       #custom-brightness,
       #clock,
       #battery,
       #pulseaudio,
-      #custom-vpn,
-      #idle_inhibitor,
       #custom-mic,
       #cpu,
       #memory {
@@ -277,15 +267,6 @@ in
         margin-right: 0.5rem;
       }
 
-      #custom-mic {
-        border-radius: 1rem 0px 0px 1rem;
-        margin-left: 0.5rem;
-      }
-
-      #idle_inhibitor {
-        border-radius: 0px 1rem 1rem 0px;
-      }
-
       #pulseaudio {
         color: @maroon;
         border-radius: 1rem 0px 0px 1rem;
@@ -293,7 +274,17 @@ in
       }
 
       #tray {
-        border-radius: 1rem;
+        border-radius: 1rem 0px 0px 1rem;
+        background-color: @surface0_t;
+        padding: 0px 0px 0px 0.7rem;
+        margin: 5px 0;
+      }
+
+      #custom-mic {
+        border-radius: 0px 1rem 1rem 0px;
+        padding: 0px 1rem 0px 0.7rem;
+        font-size: 1rem;
+        color: #DFDFDF;
       }
     '';
   };

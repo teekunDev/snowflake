@@ -22,7 +22,6 @@
 #                   ├─ swaylock.nix +
 #                   ├─ theming.nix +
 #                   ├─ thunar.nix +
-#                   ├─ vm.nix +
 #                   ├─ vscode.nix +
 #                   ├─ waybar.nix +
 #                   ├─ wlogout.nix +
@@ -49,7 +48,6 @@
     ./modules/swaylock.nix
     ./modules/theming.nix
     ./modules/thunar.nix
-    ./modules/vm.nix
     ./modules/vscode.nix
     ./modules/waybar.nix
     ./modules/wlogout.nix
