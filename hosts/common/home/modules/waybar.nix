@@ -290,7 +290,6 @@ in
         font-family: FantasqueSansMono Nerd Font;
         background: unset;
         min-height: 0;
-        color: @text;
         border: unset;
       }
 
@@ -318,9 +317,6 @@ in
         margin-right: 0.5rem;
       }
 
-      #workspaces {
-      }
-
       #workspaces button {
         color: @lavender;
         padding-left: 0.4rem;
@@ -337,9 +333,11 @@ in
         color: @sapphire;
       }
 
-
+      #cpu,
+      #memory,
+      #custom-mic,
       #custom-wnp {
-        /* color: @sky; */
+        color: @text;
       }
 
       #clock {
