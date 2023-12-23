@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ $# -ne 2 ]; then
+if [ $# -lt 2 ]; then
   echo "Usage: wnpctl.sh (get|execute) (key|command)"
   exit 1
 fi
@@ -16,7 +16,20 @@ if [[ "$1" == "get" ]]; then
   elif [[ "$key" == "formatted" ]]; then
     artist=$(echo "$json_data" | jq -r ".artist" | sed 's/&/\&amp;/g')
     title=$(echo "$json_data" | jq -r ".title" | sed 's/&/\&amp;/g')
-    echo "󰎈  $artist - $title"
+
+    if [ -z "$title" ]; then
+      formatted="No media found"
+    else
+      # 󰎈
+      formatted="$artist - $title"
+    fi
+
+    if [ "$#" -eq 3 ] && [ "$3" == "--json" ]; then
+      tooltip="Left-click: Previous Song\nMidde click: Play/Pause\nRight-click: Next Song\nScroll: Change Volume"
+      echo "{\"text\": \"$formatted\",\"tooltip\": \"$tooltip\"}"
+    else
+      echo $formatted
+    fi
   else
     echo "$json_data" | jq -r ".$key"
   fi
