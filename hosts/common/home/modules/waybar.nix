@@ -370,6 +370,7 @@ in
 
       #custom-mic {
         margin-right: 0.2rem;
+        margin-left: 0.7rem;
       }
 
       #pulseaudio {
