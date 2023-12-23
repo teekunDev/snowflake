@@ -15,15 +15,95 @@
 let 
   output = with host;
     if hostName == "desktop" then
-      [ "DP-1" ]
+      [ "DP-1" "DP-2" "HDMI-A-1" ]
     else if hostName == "laptop" then
       [ "eDP-1" ]
     else [ ];
+  fontsize1080p = "1.1rem";
+  fontsize1440p = "1.3rem";
+  horzmargin1080p = "1.2rem";
+  horzmargin1440p = "1.5rem";
+  vertmargin1080p = "0.2rem";
+  vertmargin1440p = "0.5rem";
+  sepmargin1080p = "0.8rem";
+  sepmargin1440p = "1rem";
+  stylevars = with host;
+    if hostName == "desktop" then ''
+    window.DP-1 * {
+      font-size: ${fontsize1440p};
+    }
+    window.DP-1 #custom-nix {
+      margin-left: ${horzmargin1440p};
+    }
+    window.DP-1 #workspaces {
+      margin-top: ${vertmargin1440p};
+      margin-bottom: ${vertmargin1440p};
+    }
+    window.DP-1 #custom-sep {
+      padding-left: ${sepmargin1440p};
+      padding-right: ${sepmargin1440p};
+    }
+    window.DP-1 #clock {
+      margin-right: ${horzmargin1440p};
+    }
+    window.DP-2 * {
+      font-size: ${fontsize1080p};
+    }
+    window.DP-2 #custom-nix {
+      margin-left: ${horzmargin1080p};
+    }
+    window.DP-2 #workspaces {
+      margin-top: ${vertmargin1080p};
+      margin-bottom: ${vertmargin1080p};
+    }
+    window.DP-2 #custom-sep {
+      padding-left: ${sepmargin1080p};
+      padding-right: ${sepmargin1080p};
+    }
+    window.DP-2 #clock {
+      margin-right: ${horzmargin1080p};
+    }
+    window.HDMI-A-1 * {
+      font-size:  ${fontsize1080p};
+    }
+    window.HDMI-A-1 #custom-nix {
+      margin-left: ${horzmargin1080p};
+    }
+    window.HDMI-A-1 #workspaces {
+      margin-top: ${vertmargin1080p};
+      margin-bottom: ${vertmargin1080p};
+    }
+    window.HDMI-A-1 #custom-sep {
+      padding-left: ${sepmargin1080p};
+      padding-right: ${sepmargin1080p};
+    }
+    window.HDMI-A-1 #clock {
+      margin-right: ${horzmargin1080p};
+    }
+    '' else if hostName == "laptop" then ''
+    window.eDP-1 * {
+      font-size: ${fontsize1080p}
+    }
+    window.eDP-1 #custom-nix {
+      margin-left: ${horzmargin1080p};
+    }
+    window.eDP-1 #workspaces {
+      margin-top: ${vertmargin1080p};
+      margin-bottom: ${vertmargin1080p};
+    }
+    window.eDP-1 #custom-sep {
+      padding-left: ${sepmargin1080p};
+      padding-right: ${sepmargin1080p};
+    }
+    window.eDP-1 #clock {
+      margin-right: ${horzmargin1080p};
+    }
+    '' else '''';
   modules-right = with host;
     if hostName == "desktop" then
-      [ "custom/record" "tray" "custom/mic" "pulseaudio" "custom/brightness" "clock" ]
+      [ "custom/record" "tray" "custom/mic" "custom/sep" "pulseaudio" "custom/sep" "custom/brightness" "custom/sep" "clock" ]
     else if hostName == "laptop" then
-      [ "custom/record" "tray" "custom/mic" "pulseaudio" "backlight" "battery" "clock" ]
+      [ "custom/record" "tray" "custom/mic" "custom/sep" "pulseaudio" "custom/sep" "backlight" "custom/sep" "battery" "custom/sep" "clock" ]
     else [ ];
   smooth-scrolling-threshold = with host;
     if hostName == "laptop" then 5
@@ -41,9 +121,15 @@ in
         margin-bottom = 0;
         margin-left = 0;
         margin-right = 0;
-        modules-left = ["hyprland/workspaces" "cpu" "memory" "custom/wnp" ];
-        modules-center = [ ];
+        modules-left = [ "custom/nix" "custom/sep" "hyprland/workspaces" "custom/sep" "cpu" "memory" ];
+        modules-center = [ "custom/wnp" ];
         modules-right = modules-right;
+        "custom/nix" = {
+          format = "";
+          interval = "once";
+          tooltip = false;
+          on-click = "launcher.sh";
+        };
         "hyprland/workspaces" = {
           all-outputs = true;
           format = "{icon}";
@@ -54,6 +140,11 @@ in
             urgent = "";
           };
           on-click = "activate";
+        };
+        "custom/sep" = {
+          format = "|";
+          interval = "once";
+          tooltip = false;
         };
         cpu = {
           format = "󰻠  {usage}%";
@@ -66,10 +157,11 @@ in
           interval = 5;
         };
         "custom/wnp" = {
-          format = "<span>{}</span>";
+          format = "{}";
+          return-type = "json";
           interval = 1;
-          tooltip = false;
-          exec = "wnpctl.sh get formatted";
+          tooltip = true;
+          exec = "wnpctl.sh get formatted --json";
           on-click-middle = "wnpctl.sh execute play_pause";
           on-click = "wnpctl.sh execute skip_previous";
           on-click-right = "wnpctl.sh execute skip_next";
@@ -87,11 +179,11 @@ in
           reverse-direction = true;
         };
         "custom/mic" = {
+          format = "{}";
           exec = "audio.sh source get --waybar";
           return-type = "json";
           interval = 1;
           on-click = "audio.sh source toggle-mute";
-          on-click-right = "pavucontrol";
         };
         pulseaudio = {
           format = "{icon} {volume}%";
@@ -136,6 +228,27 @@ in
         clock = {
           format = "  {:%H:%M}";
           format-alt = "  {:%Y-%m-%d}";
+          tooltip = true;
+          tooltip-format = "<tt>{calendar}</tt>";
+          calendar = {
+            mode = "year";
+            mode-mon-col = 3;
+            weeks-pos = "right";
+            on-scroll = 1;
+            on-scroll-right = "mode";
+            format = {
+              months = "<span color='#ffead3'><b>{}</b></span>";
+              days = "<span color='#ecc6d9'><b>{}</b></span>";
+              weeks = "<span color='#99ffdd'><b>W{}</b></span>";
+              weekdays = "<span color='#ffcc66'><b>{}</b></span>";
+              today = "<span color='#ff6699'><b><u>{}</u></b></span>";
+            };
+          };
+          actions = {
+            on-scroll-right = "mode";
+            on-scroll-up = "shift_up";
+            on-scroll-down = "shift_down";
+          };
         };
       };
     };
@@ -175,67 +288,62 @@ in
 
       * {
         font-family: FantasqueSansMono Nerd Font;
-        font-size: 17px;
+        background: unset;
         min-height: 0;
+        color: @text;
+        border: unset;
+      }
+
+      ${stylevars}
+
+      tooltip {
+        background: @mantle;
+        border-radius: 0.5rem;
+      }
+
+      tooltip label {
+        color: @color;
+      }
+
+      #custom-sep {
+        color: rgba(205, 214, 244, 0.1);
       }
 
       #waybar {
         background: @mantle_t;
-        color: @text;
+      }
+
+      #custom-nix {
+        color: #7DAAD3;
+        margin-right: 0.5rem;
       }
 
       #workspaces {
-        border-radius: 1rem;
-        margin: 5px;
-        background-color: @surface0_t;
-        margin-left: 1rem;
       }
 
       #workspaces button {
         color: @lavender;
-        border-radius: 1rem;
-        padding-left: 0.7rem;
-        padding-right: 0.7rem;
+        padding-left: 0.4rem;
+        padding-right: 0.4rem;
         transition: none;
       }
 
       #workspaces button.active {
         color: @mauve;
-        border-radius: 1rem;
-        padding-left: 0.4rem;
+        padding-right: 0.6rem;
       }
 
       #workspaces button:hover {
         color: @sapphire;
-        border-radius: 1rem;
       }
 
-      #tray,
-      #backlight,
-      #custom-brightness,
-      #clock,
-      #battery,
-      #pulseaudio,
-      #custom-mic,
-      #cpu,
-      #memory {
-        background-color: @surface0_t;
-        padding: 0.5rem 0.7rem;
-        margin: 5px 0;
-      }
 
       #custom-wnp {
         /* color: @sky; */
-        background-color: @surface0_t;
-        margin: 5px 0;
-        padding: 0.5rem 1rem;
-        border-radius: 1rem 1rem;
       }
 
       #clock {
         color: @blue;
-        border-radius: 0px 1rem 1rem 0px;
-        margin-right: 1rem;
       }
 
       #battery {
@@ -259,30 +367,15 @@ in
       }
 
       #cpu {
-        border-radius: 1rem 0px 0px 1rem;
-        padding-right: 0rem;
-      }
-
-      #memory {
-        border-radius: 0px 1rem 1rem 0px;
-        margin-right: 0.5rem;
+        padding-right: 1.5rem;
       }
 
       #custom-mic {
-        border-radius: 1rem;
-        margin-left: 0.5rem;
-        padding: 0 0.7rem 0 0.7rem;
-        color: #DFDFDF;
+        margin-right: 0.2rem;
       }
 
       #pulseaudio {
         color: @maroon;
-        border-radius: 1rem 0px 0px 1rem;
-        margin-left: 0.5rem;
-      }
-
-      #tray {
-        border-radius: 1rem;
       }
     '';
   };

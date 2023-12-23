@@ -89,6 +89,6 @@
   "workbench.editor.empty.hint": "hidden",
   "workbench.layoutControl.enabled": false,
   "breadcrumbs.enabled": false,
-  "window.menuBarVisibility": "compact",
+  "window.menuBarVisibility": "toggle",
   "window.zoomLevel": 2
 }
