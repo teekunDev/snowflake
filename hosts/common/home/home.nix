@@ -65,7 +65,6 @@
       ranger            # File Manager
       tldr              # Manpage Helper
       eza               # Modern ls replacement
-      ddcutil           # I2C CLI
       libnotify         # Notification cli
       ntfy              # Ntfy cli
 

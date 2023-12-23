@@ -1,2 +1,3 @@
 ; eww is probably cool but like i tried to use it for 5 minutes and this bitch created a 4gb logfile?
 ; maybe wait for a solution to that until i bother using it :3
+; could be solved by either accepting a log filepath or a flag to disable logging to file

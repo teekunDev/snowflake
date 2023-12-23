@@ -112,6 +112,7 @@
   programs.corectrl.enable = true;
   programs.wireshark.enable = true;
   programs.wireshark.package = pkgs.wireshark;
+  services.ddccontrol.enable = true;
 
   services = {
     xserver.layout = "de";

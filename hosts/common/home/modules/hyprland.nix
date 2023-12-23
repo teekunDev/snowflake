@@ -159,27 +159,7 @@ let
       new_is_master = true
     }
 
-    ### STARTUP ###
-
-    exec-once = swaylock
-    exec-once = exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-    exec-once = ssh-add ${vars.secrets}/git-ssh-key
-    exec-once = gpg --import ${vars.secrets}/git-gpg-key
-    exec-once = /usr/lib/polkit-kde-authentication-agent-1
-    exec-once = hyprpaper
-    exec-once = firefox
-    exec-once = waybar
-    exec-once = mako
-    exec-once = wl-paste --type text --watch cliphist store
-    exec-once = wl-paste --type image --watch cliphist store
-    exec-once = startwnp.sh
-    exec-once = xwaylandvideobridge
-    ${execonce}
-
-    ### ENV ###
-    env=XCURSOR_SIZE,24
-
-    ### KEYBINDS ###
+    ### VARIABLES ###
 
     $scriptsDir = ${vars.location}/files/scripts
 
@@ -196,6 +176,29 @@ let
     $randomchars = $scriptsDir/randomchars.sh
     $files = thunar
     $browser = firefox
+
+    ### STARTUP ###
+
+    exec-once = swaylock
+    exec-once = exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+    exec-once = ssh-add ${vars.secrets}/git-ssh-key
+    exec-once = gpg --import ${vars.secrets}/git-gpg-key
+    exec-once = /usr/lib/polkit-kde-authentication-agent-1
+    exec-once = hyprpaper
+    exec-once = firefox
+    exec-once = waybar
+    exec-once = mako
+    exec-once = wl-paste --type text --watch cliphist store
+    exec-once = wl-paste --type image --watch cliphist store
+    exec-once = startwnp.sh
+    exec-once = xwaylandvideobridge
+    exec-once $brightness scan
+    ${execonce}
+
+    ### ENV ###
+    env=XCURSOR_SIZE,24
+
+    ### KEYBINDS ###
 
     # submap
     submap = reset

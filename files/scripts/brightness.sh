@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ "$#" -lt 1 ]; then
-  echo "Usage: brightness.sh <get|set> [(+|-)brightness]"
+  echo "Usage: brightness.sh <get|set|scan> [(+|-)brightness]"
   exit 1
 fi
 
@@ -17,6 +17,11 @@ if [ "$operation" == "get" ]; then
 elif [ "$operation" == "set" ]; then
   if [ "$#" -ne 2 ]; then
     echo "Usage: brightness.sh <get|set> [(+|-)brightness]"
+    exit 1
+  fi
+
+  if [ ! -f ~/.brightness-scan ]; then
+    echo "No scan output found"
     exit 1
   fi
 
@@ -36,13 +41,18 @@ elif [ "$operation" == "set" ]; then
   echo "$brightness" > ~/.brightness
   kill -9 $(pgrep -f ${BASH_SOURCE[0]} | grep -v $$) >/dev/null 2>&1
 
-  # Wait for 1 second to not spam ddcutil when scrolling waybar brightness
-  sleep 1
+  # Wait for a bit to not spam commands when scrolling brightness
+  sleep 0.3
 
-  ddcutil setvcp 10 "$brightness" --display 1
-  ddcutil setvcp 10 "$brightness" --display 2
-  ddcutil setvcp 10 "$brightness" --display 3
+  while IFS= read -r line; do
+    if [ -n "$line" ]; then
+      ddccontrol -r 0x10 -w "$brightness" "$line" &
+    fi
+  done < ~/.brightness-scan
+elif [ "$operation" == "scan" ]; then
+  ddccontrol -p | grep 'Device:' | awk -F': ' '{print $2}' > ~/.brightness-scan
+  cat ~/.brightness-scan
 else
-  echo "Usage: brightness.sh <get|set> [(+|-)brightness]"
+  echo "Usage: brightness.sh <get|set|scan> [(+|-)brightness]"
   exit 1
 fi
