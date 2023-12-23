@@ -27,6 +27,8 @@ let
   vertmargin1440p = "0.5rem";
   sepmargin1080p = "0.8rem";
   sepmargin1440p = "1rem";
+  custommicleft1080p = "0.7rem";
+  custommicleft1440p = "0.9rem";
   stylevars = with host;
     if hostName == "desktop" then ''
     window.DP-1 * {
@@ -42,6 +44,9 @@ let
     window.DP-1 #custom-sep {
       padding-left: ${sepmargin1440p};
       padding-right: ${sepmargin1440p};
+    }
+    window.DP-1 #custom-mic {
+      margin-left: ${custommicleft1440p};
     }
     window.DP-1 #clock {
       margin-right: ${horzmargin1440p};
@@ -60,6 +65,9 @@ let
       padding-left: ${sepmargin1080p};
       padding-right: ${sepmargin1080p};
     }
+    window.DP-2 #custom-mic {
+      margin-left: ${custommicleft1080p};
+    }
     window.DP-2 #clock {
       margin-right: ${horzmargin1080p};
     }
@@ -76,6 +84,9 @@ let
     window.HDMI-A-1 #custom-sep {
       padding-left: ${sepmargin1080p};
       padding-right: ${sepmargin1080p};
+    }
+    window.HDMI-A-1 #custom-mic {
+      margin-left: ${custommicleft1080p};
     }
     window.HDMI-A-1 #clock {
       margin-right: ${horzmargin1080p};
@@ -94,6 +105,9 @@ let
     window.eDP-1 #custom-sep {
       padding-left: ${sepmargin1080p};
       padding-right: ${sepmargin1080p};
+    }
+    window.eDP-1 #custom-mic {
+      margin-left: ${custommicleft1080p};
     }
     window.eDP-1 #clock {
       margin-right: ${horzmargin1080p};
@@ -370,7 +384,6 @@ in
 
       #custom-mic {
         margin-right: 0.2rem;
-        margin-left: 0.7rem;
       }
 
       #pulseaudio {
