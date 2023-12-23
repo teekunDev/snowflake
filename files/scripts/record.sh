@@ -1,24 +1,24 @@
 #!/usr/bin/env bash
 
+if [ "$1" == "status" ]; then
+  if pgrep -x "wf-recorder" > /dev/null; then
+    echo "󰑊 Recording"
+  fi
+  exit 0
+fi
+
 TOKEN=$(cat $NIXOS_SECRETS/yass_token);
 HOST=$(cat $NIXOS_SECRETS/yass_host);
 FILENAME=$(date '+%y-%m-%dT%H-%M-%S.mp4')
 TMPVIDEO="/tmp/recording.mp4" # has to be static and not mktemp
 TMPIMG=$(mktemp --suffix recording.png)
 
-if [ "$1" == "status" ]; then
-  if pgrep -f "wf-recorder" >/dev/null; then
-    echo "󰑊 Recording"
-  fi
-  exit 0
-fi
-
-if pgrep -f "wf-recorder" >/dev/null; then
-  pkill -SIGINT -f "wf-recorder"
+if pgrep -x "wf-recorder" > /dev/null; then
+  pkill -SIGINT -x "wf-recorder"
   
   id=$(notify-send -t 999999 "Uploading video..." --print-id)
 
-  while pgrep -f wf-recorder >/dev/null; do
+  while pgrep -x wf-recorder > /dev/null; do
     sleep 0.1
   done
 
