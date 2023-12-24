@@ -63,7 +63,13 @@
   '';
 
   services.getty.autologinUser = "${vars.user}";
-  programs.zsh.loginShellInit = "Hyprland";
+  programs.zsh.loginShellInit = ''
+    if [ -f "$HOME/.no-hypr" ]; then
+      rm "$HOME/.no-hypr"
+    else
+      Hyprland
+    fi
+  '';
 
   nix.settings = {
     substituters = ["https://hyprland.cachix.org"];

@@ -30,7 +30,7 @@
       }
       {
         label = "logout";
-        action = "loginctl terminate-user $USER";
+        action = "touch ~/.no-hypr && loginctl terminate-user $USER";
         text = "Logout";
         keybind = "e";
       }
