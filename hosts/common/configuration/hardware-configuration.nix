@@ -25,6 +25,8 @@ in
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback.out ];
   boot.initrd.kernelModules = [ "amdgpu" "v4l2loopback" ];
 
+  swapDevices = [ { device = "/dev/disk/by-label/SWAP"; } ];
+
   boot = {
     swraid.enable = false; # https://github.com/NixOS/nixpkgs/issues/254807
     kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
