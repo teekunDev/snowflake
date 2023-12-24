@@ -93,6 +93,7 @@
       NIXOS_ALLOW_UNFREE = "1";
       NIXOS_SECRETS = "${vars.secrets}";
       NIXOS_FILES = "${vars.location}/files";
+      NIXOS_WALLDIR = "${vars.walldir}";
       PATH = [
         "${vars.location}/files/scripts"
       ];
