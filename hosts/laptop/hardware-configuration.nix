@@ -17,7 +17,7 @@
   services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
     nvidiaPersistenced = lib.mkForce true;
     modesetting.enable = lib.mkForce true;
     powerManagement.enable = lib.mkForce true;

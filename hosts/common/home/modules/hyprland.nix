@@ -195,9 +195,6 @@ let
     exec-once $brightness scan
     ${execonce}
 
-    ### ENV ###
-    env=XCURSOR_SIZE,24
-
     ### KEYBINDS ###
 
     # submap

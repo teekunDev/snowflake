@@ -64,6 +64,7 @@
   hardware.opengl.enable = true;
   hardware.opengl.driSupport = true;
   hardware.opengl.driSupport32Bit = true;
+  hardware.opengl.extraPackages = with pkgs; [ nvidia-vaapi-driver ];
   hardware.i2c.enable = true;
 
   time.timeZone = "Europe/Berlin";
