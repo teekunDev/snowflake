@@ -7,7 +7,7 @@ if [[ $(pgrep -c -f "wall.sh") -gt 1 ]]; then
 fi
 
 
-files=("$NIXOS_FILES/wall"/*)
+files=("/stuff/wall"/*)
 formatted_files=()
 for file in "${files[@]}"; do
   filename=$(basename "$file")
@@ -20,8 +20,8 @@ if [[ -n "$image" ]]; then
   opacity=$(echo "$opacity" | sed 's/%//')
   opacity_fraction=$((opacity * 100 / 10000))
 
-  input="$NIXOS_FILES/wall/$image"
-  output="$NIXOS_FILES/wall.png"
+  input="/stuff/wall/$image"
+  output="$HOME/wall.png"
 
   convert -size $(identify -format "%wx%h" "$input") xc:black -fill "rgba(0,0,0,$opacity_fraction)" -draw "rectangle 0,0 $(identify -format "%w,%h" "$input")" overlay.png
   composite -dissolve $opacity% -gravity center overlay.png "$input" "$output"

@@ -17,7 +17,7 @@
     enable = true;
     package = pkgs.swaylock-effects;
     settings = {
-      image = "${vars.location}/files/wall.png";
+      image = "/home/${vars.user}/wall.png";
       indicator = true;
       clock = true;
       datestr = "%a, %Y-%m-%d";

@@ -408,7 +408,7 @@ in
 {
   home.file.".config/hypr/hyprland.conf".text = hyprlandConf;
   home.file.".config/hypr/hyprpaper.conf".text = ''
-    preload=${vars.location}/files/wall.png
-    wallpaper=,${vars.location}/files/wall.png
+    preload=/home/${vars.user}/wall.png
+    wallpaper=,/home/${vars.user}/wall.png
   '';
 }
