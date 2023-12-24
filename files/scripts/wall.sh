@@ -6,13 +6,17 @@ if [[ $(pgrep -c -f "wall.sh") -gt 1 ]]; then
   exit 0
 fi
 
-# TODO: some way to see the images im selecting
 
-# script to preprocess wallpapers that are too big to be smaller?
-
-image=$(find "$NIXOS_FILES/wall" -type f -exec basename {} \; | wofi -d --normal-window)
+files=("$NIXOS_FILES/wall"/*)
+formatted_files=()
+for file in "${files[@]}"; do
+  filename=$(basename "$file")
+  formatted_files+=("img:$file:text:$filename")
+done
+selected=$(printf "%s\n" "${formatted_files[@]}" | wofi --dmenu --normal-window)
+image=$(basename "$(echo "$selected" | cut -d':' -f4)")
 if [[ -n "$image" ]]; then
-  opacity=$(echo -e "0%\n5%\n10%\n15%\n20%\n25%\n30%\n35%\n40%\n45%\n50%" | wofi -d --normal-window)
+  opacity=$(echo -e "0%\n5%\n10%\n15%\n20%\n25%\n30%\n35%\n40%\n45%\n50%" | wofi --dmenu --normal-window)
   opacity=$(echo "$opacity" | sed 's/%//')
   opacity_fraction=$((opacity * 100 / 10000))
 
