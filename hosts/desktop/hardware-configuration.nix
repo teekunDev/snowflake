@@ -25,7 +25,6 @@
 
   networking = {
     useDHCP = false;
-    enableIPv6 = false;
     interfaces = {
       enp4s0.ipv4.addresses = [{
         address = "192.168.2.112";

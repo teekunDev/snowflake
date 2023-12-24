@@ -361,8 +361,10 @@ let
     windowrulev2 = center,class:^(swappy)$
 
     # Wofi
-    windowrulev2 = noborder,class:^(wofi)$
     windowrulev2 = stayfocused,class:^(wofi)$
+    windowrulev2 = size 40%,class:^(wofi)$
+    windowrulev2 = float,class:^(wofi)$
+    windowrulev2 = center,class:^(wofi)$
 
     # windowrulev2 = move 50% 44%title:^(Volume Control)$
 
@@ -390,8 +392,10 @@ let
 
     layerrule = noanim, ^(gtk-layer-shell)$
 
-    windowrulev2 = float, class:^(wlogout)$
-    windowrulev2 = fullscreen, class:^(wlogout)$
+    windowrulev2 = float,class:^(wlogout)$
+    windowrulev2 = move 0 0,class:^(wlogout)$
+    windowrulev2 = size 100%,class:^(wlogout)$
+    windowrulev2 = animation slide,class:^(wlogout)$
 
     # explorer.exe (wine)
     windowrulev2 = float,class:^(.*explorer.exe.*)$

@@ -10,15 +10,12 @@
 #                   └─ vm.nix *
 #
 
-{ pkgs, lib, host, vars, ... }:
+{ pkgs, vars, ... }:
 
 {
-  # TODO: write cpu-split-up whatever files
-  # TODO: steal gpu from host when vm starts, give it back when it stops
-
-  # TODO: only for laptop and server, desktop won't need a vm
-
-  # TODO: network default needs to autostart too
+  # write cpu-split-up whatever files
+  # steal gpu from host when vm starts, give it back when it stops
+  # network default needs to autostart too
 
   users.users.${vars.user}.extraGroups = [ "libvirtd" ];
   programs.dconf.enable = true;

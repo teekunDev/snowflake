@@ -10,7 +10,7 @@
 #               └─ hardware-configuration.nix *
 #
 
-{ config, lib, pkgs, host, vars, ... }:
+{ config, lib, pkgs, vars, ... }:
 
 let
   getSambaHost = path: fallback:
@@ -67,13 +67,5 @@ in
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
-  networking = {
-    hostName = "${host.hostName}";
-    nameservers = [ "1.1.1.1" "1.0.0.1" ];
-    extraHosts = ''
-      192.168.2.1 speedport.ip
-      192.168.2.2 asus.router
-    '';
-  };
+  powerManagement.enable = true;
 }

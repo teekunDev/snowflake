@@ -2,6 +2,8 @@
 
 This isn't meant for anyone to follow really, it's just a reminder for myself.
 
+`sudo loadkeys de`
+
 <details>
 <summary>Enabling wifi</summary>
 
@@ -13,6 +15,7 @@ This isn't meant for anyone to follow really, it's just a reminder for myself.
 - `set_network 0 ssid "<SSID>"`
 - `set_network 0 psk "<PASS>"`
 - `enable_network 0`
+
 </details>
 
 <details>
@@ -65,8 +68,8 @@ This isn't meant for anyone to follow really, it's just a reminder for myself.
 
 - nvme0n1
   - 1 - 500MB EFI
-  - 2 - 15GB SWAP
-  - 3 - 450GB ROOT
+  - 2 - 38GB SWAP
+  - 3 - 461.5GB ROOT
 - nvme1n1
   - \* - 1TB STUFF
 
@@ -74,17 +77,16 @@ This isn't meant for anyone to follow really, it's just a reminder for myself.
 
 - nvme0n1
   - 1 - 500MB EFI
-  - 2 - 15GB SWAP
-  - 3 - 100GB ROOT
-  - 4 - 100GB STUFF
-  - 5 - 784.5GB GAMES
+  - 2 - 20GB SWAP
+  - 3 - 250GB ROOT
+  - 4 - 729.5GB STUFF
 
 ### Server
 
 - sda
   - 1 - 500MB EFI
-  - 2 - 15GB Swap
-  - 3 - 208.1GB ROOT
+  - 2 - 20GB Swap
+  - 3 - 229.5GB ROOT
 - nvme0n1
   - p1 - 2TB STUFF
 
@@ -103,7 +105,7 @@ This isn't meant for anyone to follow really, it's just a reminder for myself.
 
 ## Install NixOS
 
-`sudo nixos-install --flake .#<host> --impure`
+`sudo nixos-install --flake .#<host>`
 
 ## After install
 

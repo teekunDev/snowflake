@@ -21,7 +21,7 @@
 #                   └─ xremap.nix +
 #
 
-{ config, lib, pkgs, inputs, vars, ... }:
+{ config, lib, pkgs, inputs, vars, host, ... }:
 
 {
   imports = [
@@ -46,10 +46,21 @@
     shell = pkgs.zsh;
   };
 
+
+  networking = {
+    hostName = "${host.hostName}";
+    nameservers = [ "1.1.1.1" "1.0.0.1" ];
+    networkmanager.enable = true;
+    networkmanager.insertNameservers = [ "1.1.1.1" "1.0.0.1" ];
+    extraHosts = ''
+      192.168.2.1 speedport.ip
+      192.168.2.2 asus.router
+    '';
+  };
+
   security.rtkit.enable = true;
   security.polkit.enable = true;
   security.sudo.wheelNeedsPassword = false;
-  networking.networkmanager.enable = true;
   hardware.opengl.enable = true;
   hardware.opengl.driSupport = true;
   hardware.opengl.driSupport32Bit = true;
