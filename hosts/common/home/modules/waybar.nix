@@ -166,7 +166,7 @@ in
           interval = 5;
         };
         memory = {
-          format = "󰍛  {}%";
+          format = " 󰍛  {}%";
           format-alt = "󰍛  {used}/{total} GiB";
           interval = 5;
         };
@@ -376,10 +376,6 @@ in
 
       #custom-record {
         margin-right: 0.5rem;
-      }
-
-      #cpu {
-        padding-right: 1.5rem;
       }
 
       #custom-mic {
