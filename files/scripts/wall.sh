@@ -6,7 +6,6 @@ if [[ $(pgrep -c -f "wall.sh") -gt 1 ]]; then
   exit 0
 fi
 
-
 files=("$NIXOS_WALLDIR"/*)
 formatted_files=()
 for file in "${files[@]}"; do
