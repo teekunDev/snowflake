@@ -117,8 +117,12 @@
       ungoogled-chromium # need it for stupid webdev
       file
       yt-dlp
+      man-pages
+      man-pages-posix
     ];
   };
+
+  documentation.dev.enable = true;
 
   programs.corectrl.enable = true;
   programs.wireshark.enable = true;

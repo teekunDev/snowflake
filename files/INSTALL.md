@@ -59,7 +59,7 @@ This isn't meant for anyone to follow really, it's just a reminder for myself.
 
 - `sudo mkfs.fat -F 32 /dev/nvme0n1p1`
 - `sudo fatlabel /dev/nvme0n1p1 BOOT`
-- `sudo mkswap /dev/nvme0n1p2`
+- `sudo mkswap /dev/nvme0n1p2 -L SWAP`
 - `sudo mkfs.ext4 /dev/nvme0n1p3 -L ROOT`
 
 </details>
@@ -109,6 +109,11 @@ This isn't meant for anyone to follow really, it's just a reminder for myself.
 
 ## After install
 
-- set password
+- set root password
+- `touch /mnt/home/keifufu/.no-hypr`
+- `sudo reboot`
+- `sudo passwd keifufu`
 - `git clone https://github.com/keifufu/snowflake ~/.snowflake`
+- `Hyprland`
+
 - server: sudo smbpasswd -a \<user>
