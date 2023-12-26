@@ -103,20 +103,20 @@
       VISUAL = "code";
     };
     systemPackages = with pkgs; [
-      imagemagick   # image manipulation
-      ffmpeg        # ffmpeg
-      cifs-utils    # samba
-      alsa-utils    # alsa
-      jq            # json parser
-      killall       # killall
-      nano          # nano
-      pciutils      # pciutils
-      inotify-tools # mainly for inotifywait
-      curl          # curl
-      wget          # some scripts use wget instead of curl
-      solaar        # Logitech device manager
+      imagemagick
+      ffmpeg
+      cifs-utils
+      alsa-utils
+      jq
+      killall
+      nano
+      pciutils
+      inotify-tools
+      curl
+      wget
+      solaar
       parsec-bin
-      ungoogled-chromium # need it for stupid webdev
+      ungoogled-chromium
       file
       yt-dlp
       man-pages

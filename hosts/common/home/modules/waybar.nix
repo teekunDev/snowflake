@@ -302,7 +302,6 @@ in
 
       * {
         font-family: FantasqueSansMono Nerd Font;
-        background: unset;
         min-height: 0;
         border: unset;
       }

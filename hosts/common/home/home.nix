@@ -59,37 +59,30 @@
     homeDirectory = "/home/${vars.user}";
 
     packages = with pkgs; [
-      # Terminal
-      btop              # Resource Manager
-      nvtop             # Resource Manager (GPU)
-      ranger            # File Manager
-      tldr              # Manpage Helper
-      eza               # Modern ls replacement
-      libnotify         # Notification cli
-      ntfy              # Ntfy cli
-
-      # Media
-      feh               # Image Viewer
-      mpv               # Media Player
-      vlc               # Media Player
-      gimp              # Image Editor
-
-      # File Management
-      gnome.file-roller # Archive Manager
-      okular            # PDF Viewer
-      p7zip             # Zip Encryption
-      unzip             # Zip Files
-      unrar             # Rar Files
-      zip               # Zip
-
-      # Other
-      libsForQt5.polkit-kde-agent # Polkit Agent
-      networkmanagerapplet        # Networkmanager app
-      mako                        # Notification Daemon
-      appimage-run                # appimage
-
+      btop
+      nvtop
+      ranger
+      tldr
+      eza
+      libnotify
+      ntfy
+      feh
+      mpv
+      vlc
+      gimp
+      gnome.file-roller
+      okular
+      p7zip
+      unzip
+      unrar
+      zip
+      libsForQt5.polkit-kde-agent
+      networkmanagerapplet
+      mako
+      appimage-run
       xwaylandvideobridge
       eww-wayland
+      qbittorrent-qt5
     ];
 
     stateVersion = "23.11";

@@ -28,7 +28,6 @@ in
   swapDevices = [ { device = "/dev/disk/by-label/SWAP"; } ];
 
   boot = {
-    swraid.enable = false; # https://github.com/NixOS/nixpkgs/issues/254807
     kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
     loader = {
       systemd-boot = {
