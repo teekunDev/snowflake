@@ -191,7 +191,7 @@ let
     exec-once = wl-paste --type text --watch cliphist store
     exec-once = wl-paste --type image --watch cliphist store
     exec-once = startwnp.sh
-    exec-once = xwaylandvideobridge
+    # exec-once = xwaylandvideobridge
     exec-once $brightness scan
     ${execonce}
 
