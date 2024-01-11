@@ -14,10 +14,9 @@
 
 {
   environment.systemPackages = with pkgs; [
-    playerctl   # MPRIS cli
-    pavucontrol # Audio Control
-    pulseaudio  # for pactl
-    helvum      # pipewire patchbay
+    pavucontrol
+    pulseaudio  # just for pactl
+    helvum # patchbay
   ];
 
   services.pipewire = {

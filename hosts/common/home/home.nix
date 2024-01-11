@@ -58,33 +58,6 @@
     username = "${vars.user}";
     homeDirectory = "/home/${vars.user}";
 
-    packages = with pkgs; [
-      btop
-      nvtop
-      ranger
-      tldr
-      eza
-      libnotify
-      ntfy
-      feh
-      mpv
-      vlc
-      gimp
-      gnome.file-roller
-      okular
-      p7zip
-      unzip
-      unrar
-      zip
-      libsForQt5.polkit-kde-agent
-      networkmanagerapplet
-      mako
-      appimage-run
-      xwaylandvideobridge
-      eww-wayland
-      qbittorrent-qt5
-    ];
-
     stateVersion = "23.11";
   };
 

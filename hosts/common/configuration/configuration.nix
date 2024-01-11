@@ -103,6 +103,27 @@
       VISUAL = "code";
     };
     systemPackages = with pkgs; [
+      zip
+      unzip
+      p7zip
+      unrar
+      eza
+      libnotify
+      ntfy
+      btop nvtop
+      feh
+      mpv
+      vlc
+      gimp
+      gnome.file-roller
+      okular
+      libsForQt5.polkit-kde-agent
+      networkmanagerapplet
+      mako
+      appimage-run
+      eww-wayland
+      qbittorrent-qt5
+      libreoffice-qt
       imagemagick
       ffmpeg
       cifs-utils
@@ -114,13 +135,15 @@
       inotify-tools
       curl
       wget
-      solaar
       parsec-bin
       ungoogled-chromium
       file
       yt-dlp
       man-pages
       man-pages-posix
+      moonlight-qt
+      virt-manager
+      xivlauncher
     ];
   };
 
@@ -130,6 +153,7 @@
   programs.wireshark.enable = true;
   programs.wireshark.package = pkgs.wireshark;
   services.ddccontrol.enable = true;
+  services.fstrim.enable = true;
 
   services = {
     xserver.layout = "de";

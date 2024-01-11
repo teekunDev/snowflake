@@ -182,6 +182,16 @@ in
           on-scroll-up = "wnpctl.sh execute volume_up";
           on-scroll-down = "wnpctl.sh execute volume_down";
         };
+        # "custom/wnp" = {
+        #   format = "{}";
+        #   interval = 1;
+        #   exec = "wnpcli metadata -f \"{{artist}} - {{title}}\"";
+        #   on-click-middle = "wnpcli play-pause";
+        #   on-click = "wnpcli skip-previous";
+        #   on-click-right = "wnpcli skip-next";
+        #   on-scroll-up = "wnpcli set-volume 2+";
+        #   on-scroll-down = "wnpcli set-volume 2-";
+        # };
         "custom/record" = {
           exec = "record.sh status";
           format = "{}";
