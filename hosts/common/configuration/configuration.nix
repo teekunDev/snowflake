@@ -144,6 +144,7 @@
       moonlight-qt
       virt-manager
       xivlauncher
+      xclip
     ];
   };
 
