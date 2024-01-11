@@ -41,8 +41,8 @@
   "editor.suggestSelection": "first",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": true,
-    "source.sortImports": true
+    "source.fixAll": "explicit",
+    "source.sortImports": "explicit"
   },
   "[css]": { "editor.suggest.insertMode": "replace" },
   // "[prisma]": { "editor.defaultFormatter": "Prisma.prisma" },

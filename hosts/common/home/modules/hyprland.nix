@@ -193,9 +193,6 @@ let
     exec-once = startwnp.sh
     # exec-once = xwaylandvideobridge
     exec-once = $brightness scan
-
-    # https://github.com/hyprwm/Hyprland/issues/2319#issuecomment-1650958363
-    exec-once = wl-paste -t text -w xclip -selection clipboard
     
     ${execonce}
 
