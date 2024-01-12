@@ -16,8 +16,6 @@
 let
   system = "x86_64-linux";
   hmModule = inputs.home-manager.nixosModules.home-manager;
-  hyprlandModule = inputs.hyprland.homeManagerModules.default;
-  xremapModule = inputs.xremap.nixosModules.default;
   inherit (inputs.nixpkgs.lib) nixosSystem;
 in
 {
@@ -32,7 +30,6 @@ in
     modules = [
       ./common/configuration/configuration.nix
       ./desktop/configuration.nix
-      xremapModule
       hmModule {
         home-manager = {
           useGlobalPkgs = true;
@@ -62,7 +59,6 @@ in
     modules = [
       ./common/configuration/configuration.nix
       ./laptop/configuration.nix
-      xremapModule
       hmModule {
         home-manager = {
           useGlobalPkgs = true;
