@@ -193,7 +193,9 @@ let
     exec-once = startwnp.sh
     # exec-once = xwaylandvideobridge
     exec-once = $brightness scan
-    
+    # xremap doesn't start by default for some reason
+    exec-once = systemctl --user start xremap
+    exec-once = cliphist wipe
     ${execonce}
 
     ### KEYBINDS ###

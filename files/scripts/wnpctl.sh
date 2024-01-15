@@ -14,8 +14,9 @@ if [[ "$1" == "get" ]]; then
   if [[ "$key" == "all" ]]; then
     echo "$json_data"
   elif [[ "$key" == "formatted" ]]; then
-    artist=$(echo "$json_data" | jq -r ".artist" | sed 's/&/\&amp;/g')
-    title=$(echo "$json_data" | jq -r ".title" | sed 's/&/\&amp;/g')
+    # sed replaces & with &amp and escapes quotes
+    artist=$(echo "$json_data" | jq -r ".artist" | sed 's/&/\&amp;/g; s/\"/\\"/g')
+    title=$(echo "$json_data" | jq -r ".title" | sed 's/&/\&amp;/g; s/\"/\\"/g')
 
     if [ -z "$title" ]; then
       formatted="No media found"

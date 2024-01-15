@@ -14,7 +14,10 @@
 {
   imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
+  powerManagement = {
+    enable = true;
+    cpuFreqGovernor = "ondemand";
+  };
   boot.supportedFilesystems = [ "ntfs" ];
 
   fileSystems."/osu" =

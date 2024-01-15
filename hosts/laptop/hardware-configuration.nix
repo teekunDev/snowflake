@@ -32,6 +32,9 @@
     };
   };
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  powerManagement = {
+    enable = true;
+    cpuFreqGovernor = "powersave";
+  };
   services.tlp.enable = true;
 }

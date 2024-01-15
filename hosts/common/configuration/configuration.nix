@@ -35,7 +35,6 @@
     ./modules/ssh.nix
     ./modules/symlink.nix
     ./modules/thunar.nix
-    ./modules/xremap.nix
   ];
 
   programs.zsh.enable = true;
@@ -46,6 +45,10 @@
     shell = pkgs.zsh;
   };
 
+  # for xremap
+  hardware.uinput.enable = true;
+  users.groups.uinput.members = [ "${vars.user}" ];
+  users.groups.input.members = [ "${vars.user}" ];
 
   networking = {
     hostName = "${host.hostName}";

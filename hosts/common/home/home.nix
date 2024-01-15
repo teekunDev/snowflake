@@ -51,6 +51,7 @@
     ./modules/vscode.nix
     ./modules/waybar.nix
     ./modules/wlogout.nix
+    ./modules/xremap.nix
     ./modules/zsh.nix
   ];
 
