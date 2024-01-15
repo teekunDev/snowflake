@@ -10,7 +10,7 @@
 #                   └─ xremap.nix *
 #
 
-{ inputs, vars, lib, pkgs, ... }:
+{ inputs, vars, lib, pkgs, host, ... }:
 
 # Using xremap in home-manager because the system one
 # would not work with application specific settings
@@ -27,7 +27,7 @@
   services.xremap = {
     withWlroots = true;
     watch = true;
-    mouse = true;
+    mouse = host.hostName == "desktop";
     debug = false;
     yamlConfig = ''
       modmap:
