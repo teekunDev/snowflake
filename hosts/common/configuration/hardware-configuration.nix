@@ -26,6 +26,11 @@ in
   boot.initrd.kernelModules = [ "amdgpu" "v4l2loopback" ];
 
   swapDevices = [ { device = "/dev/disk/by-label/SWAP"; } ];
+  boot.resumeDevice = "/dev/disk/by-label/SWAP";
+
+  systemd.sleep.extraConfig = ''
+    AllowHibernation=yes
+  '';
 
   boot = {
     kernelPackages = lib.mkForce pkgs.linuxPackages_latest;

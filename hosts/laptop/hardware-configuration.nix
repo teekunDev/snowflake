@@ -32,6 +32,8 @@
     };
   };
 
+  services.logind.lidSwitch = "hibernate";
+
   powerManagement = {
     enable = true;
     cpuFreqGovernor = "powersave";
