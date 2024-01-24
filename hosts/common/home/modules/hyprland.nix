@@ -248,7 +248,7 @@ let
 
     # Window Manager
     bind = SUPER, C, killactive,
-    bind = SUPER_SHIFT, Q, exit,
+    # bind = SUPER_SHIFT, Q, exit,
     bind = SUPER, F, fullscreen,
     bind = SUPER, V, togglefloating,
     bind = SUPER, P, pseudo, # dwindle

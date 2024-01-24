@@ -13,7 +13,7 @@
 { config, lib, pkgs, host, ... }:
 
 {
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "sdhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   boot = {
@@ -55,7 +55,7 @@
     hostName = "${host.hostName}";
     enableIPv6 = false;
     interfaces = {
-      enp5s0.ipv4.addresses = [{
+      enp3s0.ipv4.addresses = [{
         address = "192.168.2.111";
         prefixLength = 24;
       }];
