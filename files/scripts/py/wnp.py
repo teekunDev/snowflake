@@ -28,6 +28,8 @@ def handle_command(command):
     WNPRedux.media_info.controls.try_set_volume(clamp(WNPRedux.media_info.volume + 2, 0, 100))
   if command == "volume_down":
     WNPRedux.media_info.controls.try_set_volume(clamp(WNPRedux.media_info.volume - 2, 0, 100))
+  if command.startswith("setvolume"):
+    WNPRedux.media_info.controls.try_set_volume(clamp(int(command.replace("setvolume", "")), 0, 100))
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -37,10 +39,10 @@ server_socket.listen(1)
 def logger(type, message):
   print(f"{type}: {message}")
 
-WNPRedux.start(5468, '1.0.0', logger);
+WNPRedux.start(5468, '1.0.0', logger)
 
 while True:
-  conn, _ = server_socket.accept();
+  conn, _ = server_socket.accept()
   global state
   state = json.dumps(WNPRedux.media_info, default=lambda x: x.__dict__).replace('_title', 'title').replace('_state', 'state').replace('_volume', 'volume')
   client_data = conn.recv(1024).decode().strip()
