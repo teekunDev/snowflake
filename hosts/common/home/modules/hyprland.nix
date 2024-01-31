@@ -398,11 +398,11 @@ let
     windowrulev2 = animation slide,class:^(wlogout)$
 
     # explorer.exe (wine)
-    windowrulev2 = float,class:^(.*explorer.exe.*)$
-    windowrulev2 = nomaximizerequest,class:^(.*explorer.exe.*)$
-    windowrulev2 = opacity 0,class:^(.*explorer.exe.*)$
-    windowrulev2 = noblur,class:^(.*explorer.exe.*)$
-    windowrulev2 = nofocus,class:^(.*explorer.exe.*)$
+    # windowrulev2 = float,class:^(.*explorer.exe.*)$
+    # windowrulev2 = nomaximizerequest,class:^(.*explorer.exe.*)$
+    # windowrulev2 = opacity 0,class:^(.*explorer.exe.*)$
+    # windowrulev2 = noblur,class:^(.*explorer.exe.*)$
+    # windowrulev2 = nofocus,class:^(.*explorer.exe.*)$
   '';
 in
 {
@@ -410,5 +410,6 @@ in
   home.file.".config/hypr/hyprpaper.conf".text = ''
     preload=/home/${vars.user}/wall.png
     wallpaper=,/home/${vars.user}/wall.png
+    splash=false
   '';
 }
