@@ -39,7 +39,7 @@ server_socket.listen(1)
 def logger(type, message):
   print(f"{type}: {message}")
 
-WNPRedux.start(5468, '1.0.0', logger)
+WNPRedux.start(5468, '5.0.0', logger)
 
 while True:
   conn, _ = server_socket.accept()
