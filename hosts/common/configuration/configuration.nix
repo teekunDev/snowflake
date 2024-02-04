@@ -148,6 +148,7 @@
       virt-manager
       xivlauncher
       xclip
+      notepadqq
     ];
   };
 
