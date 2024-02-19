@@ -52,12 +52,14 @@
 
   networking = {
     hostName = "${host.hostName}";
+    enableIPv6 = false;
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
     networkmanager.enable = true;
     networkmanager.insertNameservers = [ "1.1.1.1" "1.0.0.1" ];
     extraHosts = ''
       192.168.2.1 speedport.ip
       192.168.2.2 asus.router
+      192.168.2.111 n.k.d
     '';
   };
 
@@ -159,6 +161,13 @@
   programs.wireshark.package = pkgs.wireshark;
   services.ddccontrol.enable = true;
   services.fstrim.enable = true;
+  services.blueman.enable = true;
+  services.syncthing = {
+    enable = true;
+    user = "${vars.user}";
+    dataDir = "/stuff/syncthing";
+    configDir = "/stuff/syncthing/.sc";
+  };
 
   services = {
     xserver.layout = "de";
