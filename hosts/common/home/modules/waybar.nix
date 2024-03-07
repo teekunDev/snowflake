@@ -27,8 +27,8 @@ let
   vertmargin1440p = "0.5rem";
   sepmargin1080p = "0.8rem";
   sepmargin1440p = "1rem";
-  custommicleft1080p = "0.7rem";
-  custommicleft1440p = "0.9rem";
+  customvpnleft1080p = "0.7rem";
+  customvpnleft1440p = "0.9rem";
   stylevars = with host;
     if hostName == "desktop" then ''
     window.DP-1 * {
@@ -45,8 +45,8 @@ let
       padding-left: ${sepmargin1440p};
       padding-right: ${sepmargin1440p};
     }
-    window.DP-1 #custom-mic {
-      margin-left: ${custommicleft1440p};
+    window.DP-1 #custom-vpn {
+      margin-left: ${customvpnleft1440p};
     }
     window.DP-1 #clock {
       margin-right: ${horzmargin1440p};
@@ -65,8 +65,8 @@ let
       padding-left: ${sepmargin1080p};
       padding-right: ${sepmargin1080p};
     }
-    window.DP-2 #custom-mic {
-      margin-left: ${custommicleft1080p};
+    window.DP-2 #custom-vpn {
+      margin-left: ${customvpnleft1080p};
     }
     window.DP-2 #clock {
       margin-right: ${horzmargin1080p};
@@ -85,8 +85,8 @@ let
       padding-left: ${sepmargin1080p};
       padding-right: ${sepmargin1080p};
     }
-    window.HDMI-A-1 #custom-mic {
-      margin-left: ${custommicleft1080p};
+    window.HDMI-A-1 #custom-vpn {
+      margin-left: ${customvpnleft1080p};
     }
     window.HDMI-A-1 #clock {
       margin-right: ${horzmargin1080p};
@@ -106,8 +106,8 @@ let
       padding-left: ${sepmargin1080p};
       padding-right: ${sepmargin1080p};
     }
-    window.eDP-1 #custom-mic {
-      margin-left: ${custommicleft1080p};
+    window.eDP-1 #custom-vpn {
+      margin-left: ${customvpnleft1080p};
     }
     window.eDP-1 #clock {
       margin-right: ${horzmargin1080p};
@@ -115,9 +115,9 @@ let
     '' else '''';
   modules-right = with host;
     if hostName == "desktop" then
-      [ "custom/record" "tray" "custom/mic" "custom/sep" "pulseaudio" "custom/sep" "custom/brightness" "custom/sep" "clock" ]
+      [ "custom/record" "tray" "custom/vpn" "custom/mic" "custom/sep" "pulseaudio" "custom/sep" "custom/brightness" "custom/sep" "clock" ]
     else if hostName == "laptop" then
-      [ "custom/record" "tray" "custom/mic" "custom/sep" "pulseaudio" "custom/sep" "backlight" "custom/sep" "battery" "custom/sep" "clock" ]
+      [ "custom/record" "tray" "custom/vpn" "custom/mic" "custom/sep" "pulseaudio" "custom/sep" "backlight" "custom/sep" "battery" "custom/sep" "clock" ]
     else [ ];
   smooth-scrolling-threshold = with host;
     if hostName == "laptop" then 5
@@ -201,6 +201,13 @@ in
           icon-size = 16;
           spacing = 10;
           reverse-direction = true;
+        };
+        "custom/vpn" = {
+          exec = "vpn.sh status --waybar";
+          return-type = "json";
+          interval = 1;
+          on-click = "vpn.sh connect";
+          on-click-right = "vpn.sh disconnect";
         };
         "custom/mic" = {
           format = "{}";
@@ -358,6 +365,7 @@ in
 
       #cpu,
       #memory,
+      #custom-vpn,
       #custom-mic,
       #custom-wnp {
         color: @text;
@@ -385,6 +393,10 @@ in
 
       #custom-record {
         margin-right: 0.5rem;
+      }
+
+      #custom-vpn {
+        margin-right: 0.6rem;
       }
 
       #custom-mic {

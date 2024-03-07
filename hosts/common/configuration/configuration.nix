@@ -151,6 +151,9 @@
       xivlauncher
       xclip
       notepadqq
+      vesktop
+      ahoviewer
+      wireguard-tools
     ];
   };
 
