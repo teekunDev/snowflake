@@ -47,6 +47,7 @@ let
     }
     window.DP-1 #custom-vpn {
       margin-left: ${customvpnleft1440p};
+      margin-right: ${customvpnleft1440p};
     }
     window.DP-1 #clock {
       margin-right: ${horzmargin1440p};
@@ -67,6 +68,7 @@ let
     }
     window.DP-2 #custom-vpn {
       margin-left: ${customvpnleft1080p};
+      margin-right: ${customvpnleft1080p};
     }
     window.DP-2 #clock {
       margin-right: ${horzmargin1080p};
@@ -87,6 +89,7 @@ let
     }
     window.HDMI-A-1 #custom-vpn {
       margin-left: ${customvpnleft1080p};
+      margin-right: ${customvpnleft1080p};
     }
     window.HDMI-A-1 #clock {
       margin-right: ${horzmargin1080p};
@@ -108,6 +111,7 @@ let
     }
     window.eDP-1 #custom-vpn {
       margin-left: ${customvpnleft1080p};
+      margin-right: ${customvpnleft1080p};
     }
     window.eDP-1 #clock {
       margin-right: ${horzmargin1080p};
@@ -203,6 +207,7 @@ in
           reverse-direction = true;
         };
         "custom/vpn" = {
+          format = "{}";
           exec = "vpn.sh status --waybar";
           return-type = "json";
           interval = 1;
@@ -393,10 +398,6 @@ in
 
       #custom-record {
         margin-right: 0.5rem;
-      }
-
-      #custom-vpn {
-        margin-right: 0.6rem;
       }
 
       #custom-mic {

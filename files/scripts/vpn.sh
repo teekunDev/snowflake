@@ -32,11 +32,11 @@ elif [[ "$1" == "status" ]]; then
     server=$(cat ~/.last_vpn_server)
     if [[ "$res" =~ "latest handshake" ]]; then
       icon=""
-      class=on
+      class="on"
       status="Connected to $server"
     else
-      icon=""
-      class=off
+      icon=" "
+      class="off"
       status="Disconnected from $server"
     fi
     printf '{"text": "%s", "class": "%s", "tooltip": "%s"}\n' "$icon" "$class" "$status"
