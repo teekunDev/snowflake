@@ -159,7 +159,7 @@ let
       new_is_master = true
     }
 
-    ### VARIABLES ###
+    #--VARIABLES --#
 
     $scriptsDir = ${vars.location}/files/scripts
 
@@ -177,7 +177,7 @@ let
     $files = thunar
     $browser = firefox
 
-    ### STARTUP ###
+    #--STARTUP --#
 
     exec-once = swaylock
     exec-once = exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
@@ -198,7 +198,7 @@ let
     exec-once = cliphist wipe
     ${execonce}
 
-    ### KEYBINDS ###
+    #--KEYBINDS --#
 
     # submap
     submap = reset
@@ -306,7 +306,7 @@ let
     submap = none
     bind = SUPER, escape, submap, reset
 
-    ### WINDOW RULES ###
+    #--WINDOW RULES --#
 
     # Opacity
     windowrulev2 = opacity 0.9 0.9,class:^(firefox)$
@@ -342,7 +342,6 @@ let
 
     # Fuck "Sharing Indicator" window
     windowrulev2 = float,title:^(.*Sharing Indicator.*)$
-    windowrulev2 = nomaximizerequest,title:^(.*Sharing Indicator.*)$
     windowrulev2 = opacity 0,title:^(.*Sharing Indicator.*)$
     windowrulev2 = noblur,title:^(.*Sharing Indicator.*)$
     windowrulev2 = nofocus,title:^(.*Sharing Indicator.*)$
@@ -383,7 +382,6 @@ let
 
     # xwaylandvideobridge
     windowrulev2 = float,class:^(xwaylandvideobridge)$
-    windowrulev2 = nomaximizerequest,class:^(xwaylandvideobridge)$
     windowrulev2 = opacity 0,class:^(xwaylandvideobridge)$
     windowrulev2 = noblur,class:^(xwaylandvideobridge)$
     windowrulev2 = nofocus,class:^(xwaylandvideobridge)$
@@ -399,7 +397,6 @@ let
 
     # explorer.exe (wine)
     # windowrulev2 = float,class:^(.*explorer.exe.*)$
-    # windowrulev2 = nomaximizerequest,class:^(.*explorer.exe.*)$
     # windowrulev2 = opacity 0,class:^(.*explorer.exe.*)$
     # windowrulev2 = noblur,class:^(.*explorer.exe.*)$
     # windowrulev2 = nofocus,class:^(.*explorer.exe.*)$

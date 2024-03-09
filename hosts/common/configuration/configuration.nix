@@ -114,7 +114,10 @@
       unrar
       eza
       libnotify
-      ntfy
+      # ntfy 
+      # ^ currently breaks the build with some python errors.
+      # | cant be bothered to investigate since i dont use this
+      # | package right now anyway?
       btop nvtop
       feh
       mpv
@@ -126,7 +129,7 @@
       networkmanagerapplet
       mako
       appimage-run
-      eww-wayland
+      eww
       qbittorrent-qt5
       libreoffice-qt
       imagemagick
@@ -173,7 +176,7 @@
   };
 
   services = {
-    xserver.layout = "de";
+    xserver.xkb.layout = "de";
     flatpak.enable = true;
     printing.enable = true;
     printing.drivers = with pkgs; [ hplip ];
