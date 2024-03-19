@@ -271,7 +271,7 @@ in
     style = ''
       @define-color base   #1e1e2e;
       @define-color mantle #181825;
-      @define-color mantle_t rgba(24, 24, 37, 0.6);
+      @define-color mantle_t rgba(24, 24, 37, 0.3);
       @define-color crust  #11111b;
 
       @define-color text     #cdd6f4;
@@ -279,7 +279,7 @@ in
       @define-color subtext1 #bac2de;
 
       @define-color surface0 #313244;
-      @define-color surface0_t rgba(49, 50, 68, 0.6);
+      @define-color surface0_t rgba(49, 50, 68, 0.3);
       @define-color surface1 #45475a;
       @define-color surface2 #585b70;
 
