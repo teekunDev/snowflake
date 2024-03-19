@@ -25,6 +25,10 @@ in
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback.out ];
   boot.initrd.kernelModules = [ "amdgpu" "v4l2loopback" ];
 
+  boot.extraModprobeConfig = ''
+    options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
+  '';
+
   swapDevices = [ { device = "/dev/disk/by-label/SWAP"; } ];
   boot.resumeDevice = "/dev/disk/by-label/SWAP";
 

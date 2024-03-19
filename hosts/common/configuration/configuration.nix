@@ -23,6 +23,9 @@
 
 { config, lib, pkgs, inputs, vars, host, ... }:
 
+let
+  xivlauncher = pkgs.callPackage ../../../pkgs/xivlauncher { };
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -144,19 +147,23 @@
       curl
       wget
       parsec-bin
-      ungoogled-chromium
+      # ungoogled-chromium
       file
       yt-dlp
       man-pages
       man-pages-posix
       moonlight-qt
       virt-manager
-      xivlauncher
       xclip
       notepadqq
       vesktop
       ahoviewer
       wireguard-tools
+      brave
+      google-chrome
+      chromium
+    ] ++ [
+      xivlauncher
     ];
   };
 

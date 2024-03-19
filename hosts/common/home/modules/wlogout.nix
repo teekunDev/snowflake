@@ -61,7 +61,7 @@
 
       window {
         background-color: rgba(17, 17, 27, 0.1);
-        background-image: url('${vars.location}/files/images/wlogout/noise.png');
+        background-image: url("${vars.location}/files/images/wlogout/noise.png");
       }
 
       button {
@@ -86,37 +86,37 @@
       #lock {
         margin: 10px;
         border-radius: 20px;
-        background-image: image(url("${vars.location}/files/images/wlogout/lock.png"), url("/usr/local/share/wlogout/icons/lock.png"));
+        background-image: url("${vars.location}/files/images/wlogout/lock.png");
       }
 
       #logout {
         margin: 10px;
         border-radius: 20px;
-        background-image: image(url("${vars.location}/files/images/wlogout/logout.png"), url("/usr/local/share/wlogout/icons/logout.png"));
+        background-image: url("${vars.location}/files/images/wlogout/logout.png");
       }
 
       #suspend {
         margin: 10px;
         border-radius: 20px;
-        background-image: image(url("${vars.location}/files/images/wlogout/suspend.png"), url("/usr/local/share/wlogout/icons/suspend.png"));
+        background-image: url("${vars.location}/files/images/wlogout/suspend.png");
       }
 
       #hibernate {
         margin: 10px;
         border-radius: 20px;
-        background-image: image(url("${vars.location}/files/images/wlogout/hibernate.png"), url("/usr/local/share/wlogout/icons/hibernate.png"));
+        background-image: url("${vars.location}/files/images/wlogout/hibernate.png");
       }
 
       #shutdown {
         margin: 10px;
         border-radius: 20px;
-        background-image: image(url("${vars.location}/files/images/wlogout/shutdown.png"), url("/usr/local/share/wlogout/icons/shutdown.png"));
+        background-image: url("${vars.location}/files/images/wlogout/shutdown.png");
       }
 
       #reboot {
         margin: 10px;
         border-radius: 20px;
-        background-image: image(url("${vars.location}/files/images/wlogout/reboot.png"), url("/usr/local/share/wlogout/icons/reboot.png"));
+        background-image: url("${vars.location}/files/images/wlogout/reboot.png");
       }
     '';
   };

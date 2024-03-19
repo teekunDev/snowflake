@@ -7,8 +7,24 @@ fi
 
 SCRIPT_PATH=$(dirname "$(readlink -f "$0")")
 
+function connect_to_server() {
+  cd "$NIXOS_FILES/scripts/pia"
+
+  pia_credentials=$(cat "$NIXOS_SECRETS/pia_credentials")
+  sudo $pia_credentials VPN_PROTOCOL=wireguard PREFERRED_REGION="$1" ./get_region.sh
+
+  echo "$1" > "$NIXOS_SECRETS/.last_vpn_server"
+
+  cd "$SCRIPT_PATH"
+}
+
 if [[ "$1" == "connect" ]]; then
-  wg-quick up pia
+  if [ -f "$NIXOS_SECRETS/.last_vpn_server" ]; then
+    server=$(cat "$NIXOS_SECRETS/.last_vpn_server")
+    connect_to_server "$server"
+  else
+    wg-quick up pia
+  fi
 elif [[ "$1" == "disconnect" ]]; then
   wg-quick down pia
 elif [[ "$1" == "server" ]]; then
@@ -18,18 +34,11 @@ elif [[ "$1" == "server" ]]; then
     exit 1
   fi
 
-  cd "$NIXOS_FILES/scripts/pia"
-
-  pia_credentials=$(cat "$NIXOS_SECRETS/pia_credentials")
-  sudo $pia_credentials VPN_PROTOCOL=wireguard PREFERRED_REGION="$2" ./get_region.sh
-
-  echo "$2" > ~/.last_vpn_server
-
-  cd "$SCRIPT_PATH"
+  connect_to_server "$2"
 elif [[ "$1" == "status" ]]; then
   if [[ "$2" == "--waybar" ]]; then
     res=$(sudo wg show pia)
-    server=$(cat ~/.last_vpn_server)
+    server=$(cat "$NIXOS_SECRETS/.last_vpn_server")
     if [[ "$res" =~ "latest handshake" ]]; then
       icon=""
       class="on"

@@ -196,6 +196,7 @@ let
     # xremap doesn't start by default for some reason
     exec-once = systemctl --user start xremap
     exec-once = cliphist wipe
+    exec-once = vpn.sh connect
     ${execonce}
 
     #--KEYBINDS --#
