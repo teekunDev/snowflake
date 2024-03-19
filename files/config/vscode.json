@@ -1,5 +1,4 @@
 {
-  "search.followSymlinks": false,
   "window.titleBarStyle": "custom",
   "zenMode.fullScreen": false,
   "keyboard.dispatch": "keyCode", // fixes wrong keyboard shortcut layout
@@ -86,9 +85,9 @@
   "git.openRepositoryInParentFolders": "never",
   "rust-analyzer.check.command": "clippy",
   "C_Cpp.default.compilerPath": "",
+  "workbench.iconTheme": "catppuccin-mocha",
   "workbench.editor.empty.hint": "hidden",
   "workbench.layoutControl.enabled": false,
   "breadcrumbs.enabled": false,
-  "window.menuBarVisibility": "toggle",
-  "window.zoomLevel": 2
+  "window.menuBarVisibility": "toggle"
 }

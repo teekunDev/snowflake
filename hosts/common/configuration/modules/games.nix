@@ -20,6 +20,17 @@
     mangohud
     wineWowPackages.wayland
     protontricks
+    xemu          # XBOX Emulator
+
+    (retroarch.override {
+    cores = with libretro; [
+      flycast
+      snes9x
+      fceumm
+      desmume
+    ];
+  })
+
   ];
 
   programs = {

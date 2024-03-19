@@ -14,11 +14,11 @@
 
 let
   monitor-size = with host;
-    if hostName == "desktop" then "6400 1440"
+    if hostName == "desktop" then "3840 1080"
     else if hostName == "laptop" then "1920 1080"
     else "";
   leftmost-monitor = with host;
-    if hostName == "desktop" then "HDMI-A-1"
+    if hostName == "desktop" then "DP-1"
     else if hostName == "laptop" then "eDP-1"
     else "";
   touchpad = with host;
@@ -37,9 +37,9 @@ let
     '' else "";
   monitors = with host;
     if hostName == "desktop" then ''
-      monitor = HDMI-A-1, 1920x1080@144, 0x0, 1
-      monitor = DP-1, 2560x1440@165, 1920x0, 1
-      monitor = DP-2, 1920x1080@60, 4480x0, 1
+      monitor = DP-1,1920x1080@144,0x0,1
+      monitor = HDMI-A-1, 1920x1080@60, 1920x0, 1
+      monitor = HDMI-A-2, 1920x1080@60, 0x0,1,mirror, DP-1
     '' else if hostName == "laptop" then ''
       monitor = eDP-1, 1920x1080@144, 0x0, 1
     '' else "";
@@ -51,10 +51,6 @@ let
       workspace = 4, monitor:HDMI-A-1, default:true
       workspace = 5, monitor:HDMI-A-1, default:false
       workspace = 6, monitor:HDMI-A-1, default:false
-      workspace = 7, monitor:DP-2, default:true
-      workspace = 8, monitor:DP-2, default:false
-      workspace = 9, monitor:DP-2, default:false
-
       windowrulev2 = workspace 4,class:^(firefox)$
     '' else if hostName == "laptop" then ''
       workspace = 1, monitor:eDP-1, default:true
@@ -222,9 +218,6 @@ let
     bind = , XF86AudioMute, exec, $audio sink toggle-mute
     bind = SUPER, M, exec, $audio source toggle-mute --ping
 
-    # Alt Tab
-    bind = ALT, TAB, exec, $alttab
-
     # Screenshot & Recording
     bind = , Print, exec, $screenshot
     bind = CTRL, Print, exec, $record
@@ -237,7 +230,7 @@ let
     # Misc
     bind = SUPER, W, exec, $wall
     bind = CTRL_SHIFT, R, exec, $randomchars
-    bind = CTRL_SHIFT, SPACE, exec, $launcher
+    bind = SUPER, R, exec, $launcher
     bind = CTRL_SHIFT, Escape, exec, $term --hold btop
     bind = SUPER, P, exec, $colorpicker
     bind = CTRL_ALT, L, exec, swaylock
@@ -245,7 +238,7 @@ let
     bind = SUPER, E, exec, $files
     bind = SUPER, H, exec, cliphist list | wofi --dmenu --normal-window | cliphist decode | wl-copy
     bind = SUPER, L, exec, swaylock
-    bind = SUPER, Q, exec, wlogout
+    bind = SUPER_CTRL, S, exec, wlogout
 
     # Window Manager
     bind = SUPER, C, killactive,

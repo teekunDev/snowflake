@@ -30,11 +30,11 @@
   outputs = { nixpkgs, ... } @ inputs:
     let
       vars = {
-        user = "keifufu";
-        location = "/home/keifufu/.snowflake";
+        user = "teekun";
+        location = "/home/teekun/.snowflake";
         symlink = "/stuff/symlink";
         secrets = "/stuff/secrets";
-        walldir = "/smb/wall";
+        walldir = "/home/teekun/.wall";
       };
       system = "x86_64-linux";
       pkgs = import nixpkgs {

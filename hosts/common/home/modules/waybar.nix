@@ -15,7 +15,7 @@
 let 
   output = with host;
     if hostName == "desktop" then
-      [ "DP-1" "DP-2" "HDMI-A-1" ]
+      [ "DP-1" "HDMI-A-1" ]
     else if hostName == "laptop" then
       [ "eDP-1" ]
     else [ ];
@@ -32,47 +32,27 @@ let
   stylevars = with host;
     if hostName == "desktop" then ''
     window.DP-1 * {
-      font-size: ${fontsize1440p};
-    }
-    window.DP-1 #custom-nix {
-      margin-left: ${horzmargin1440p};
-    }
-    window.DP-1 #workspaces {
-      margin-top: ${vertmargin1440p};
-      margin-bottom: ${vertmargin1440p};
-    }
-    window.DP-1 #custom-sep {
-      padding-left: ${sepmargin1440p};
-      padding-right: ${sepmargin1440p};
-    }
-    window.DP-1 #custom-vpn {
-      margin-left: ${customvpnleft1440p};
-      margin-right: ${customvpnleft1440p};
-    }
-    window.DP-1 #clock {
-      margin-right: ${horzmargin1440p};
-    }
-    window.DP-2 * {
       font-size: ${fontsize1080p};
     }
-    window.DP-2 #custom-nix {
+    window.DP-1 #custom-nix {
       margin-left: ${horzmargin1080p};
     }
-    window.DP-2 #workspaces {
+    window.DP-1 #workspaces {
       margin-top: ${vertmargin1080p};
       margin-bottom: ${vertmargin1080p};
     }
-    window.DP-2 #custom-sep {
+    window.DP-1 #custom-sep {
       padding-left: ${sepmargin1080p};
       padding-right: ${sepmargin1080p};
     }
-    window.DP-2 #custom-vpn {
+    window.DP-1 #custom-vpn {
       margin-left: ${customvpnleft1080p};
       margin-right: ${customvpnleft1080p};
     }
-    window.DP-2 #clock {
+    window.DP-1 #clock {
       margin-right: ${horzmargin1080p};
     }
+    
     window.HDMI-A-1 * {
       font-size:  ${fontsize1080p};
     }

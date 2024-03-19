@@ -121,7 +121,7 @@ in
       # ^ currently breaks the build with some python errors.
       # | cant be bothered to investigate since i dont use this
       # | package right now anyway?
-      btop nvtop
+      btop #nvtop
       feh
       mpv
       vlc
@@ -175,12 +175,7 @@ in
   services.ddccontrol.enable = true;
   services.fstrim.enable = true;
   services.blueman.enable = true;
-  services.syncthing = {
-    enable = true;
-    user = "${vars.user}";
-    dataDir = "/stuff/syncthing";
-    configDir = "/stuff/syncthing/.sc";
-  };
+  
 
   services = {
     xserver.xkb.layout = "de";

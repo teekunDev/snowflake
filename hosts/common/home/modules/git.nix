@@ -15,12 +15,12 @@
 {
   programs.git = {
     enable = true;
-    userName = "keifufu";
-    userEmail = "github@keifufu.dev";
+    userName = "teekunDev";
+    userEmail = "teekun@teekun.dev";
     signing = {
       # imported by exec-once in hyprland, scuffed but it'll do for now :v
-      key = "861CB7ABE74F8EAD";
-      signByDefault = true;
+       key = "2A3AD143587974A4";
+       signByDefault = true;
     };
     extraConfig = {
       core.sshcommand = "ssh -i ${vars.secrets}/git-ssh-key";

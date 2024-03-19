@@ -29,8 +29,8 @@ in
     options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
   '';
 
-  swapDevices = [ { device = "/dev/disk/by-label/SWAP"; } ];
-  boot.resumeDevice = "/dev/disk/by-label/SWAP";
+  # swapDevices = [ { device = "/dev/disk/by-label/SWAP"; } ];
+  # boot.resumeDevice = "/dev/disk/by-label/SWAP";
 
   systemd.sleep.extraConfig = ''
     AllowHibernation=yes
@@ -68,7 +68,7 @@ in
 
   fileSystems."/smb" =
     {
-      device = "//${smb-host}/data";
+      device = "//192.168.1.6/data";
       fsType = "cifs";
       options = let
         automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
