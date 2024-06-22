@@ -162,6 +162,13 @@ in
       brave
       google-chrome
       chromium
+      veracrypt     # Encryption Tool
+      xow_dongle-firmware
+      qbittorrent
+      tor-browser
+      keepassxc
+      wayvnc
+      geekbench
     ] ++ [
       xivlauncher
     ];
@@ -175,6 +182,9 @@ in
   services.ddccontrol.enable = true;
   services.fstrim.enable = true;
   services.blueman.enable = true;
+
+  #Tablet Driver for osu!
+  hardware.opentabletdriver.enable = true;
   
 
   services = {

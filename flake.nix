@@ -34,7 +34,7 @@
         location = "/home/teekun/.snowflake";
         symlink = "/stuff/symlink";
         secrets = "/stuff/secrets";
-        walldir = "/home/teekun/.wall";
+        walldir = "/stuff/wall";
       };
       system = "x86_64-linux";
       pkgs = import nixpkgs {

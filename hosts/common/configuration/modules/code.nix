@@ -20,6 +20,7 @@
     gcc
     php
     php82Packages.composer
+    glibc
     
 
     (pkgs.python3.withPackages(ps: with ps; [ aiohttp opencv4 ]))

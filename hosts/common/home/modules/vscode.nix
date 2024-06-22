@@ -34,6 +34,7 @@
       bbenoist.nix
       esbenp.prettier-vscode
       humao.rest-client
+      golang.go
       llvm-vs-code-extensions.vscode-clangd
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
