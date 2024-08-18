@@ -17,8 +17,7 @@
     file:///stuff
     file:///stuff/code
     file:///smb
-    file:///smb/pictures
-    file:///smb/other
     file:///home/${vars.user}/Downloads
+    file:///tmp/veracrypt_mnt1
   '';
 }

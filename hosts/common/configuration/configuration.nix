@@ -25,6 +25,7 @@
 
 let
   xivlauncher = pkgs.callPackage ../../../pkgs/xivlauncher { };
+  blc = pkgs.callPackage ../../../pkgs/blc { };
 in
 {
   imports = [
@@ -44,7 +45,7 @@ in
   users.users.${vars.user} = {
     isNormalUser = true;
     password = "123";
-    extraGroups = [ "wheel" "networkmanager" "corectrl" "wireshark" ];
+    extraGroups = [ "wheel" "networkmanager" "corectrl" "wireshark" "libvirtd" ];
     shell = pkgs.zsh;
   };
 
@@ -65,6 +66,8 @@ in
       192.168.2.111 n.k.d
     '';
   };
+
+  virtualisation.libvirtd.enable = true;
 
   security.rtkit.enable = true;
   security.polkit.enable = true;
@@ -169,8 +172,10 @@ in
       keepassxc
       wayvnc
       geekbench
+      rpcs3
     ] ++ [
       xivlauncher
+      blc
     ];
   };
 
