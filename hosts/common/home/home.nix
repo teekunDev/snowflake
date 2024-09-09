@@ -46,7 +46,7 @@
     ./modules/rnnoise.nix
     ./modules/wofi.nix
     ./modules/swaylock.nix
-    ./modules/theming.nix
+    #./modules/theming.nix
     ./modules/thunar.nix
     ./modules/vscode.nix
     ./modules/waybar.nix
