@@ -82,11 +82,11 @@
 		CALIBRE_USE_DARK_PALETTE = "1";
   };
   xdg.configFile."Kvantum/catppuccin/catppuccin.kvconfig".source = builtins.fetchurl {
-    url = "https://raw.githubusercontent.com/catppuccin/Kvantum/main/src/Catppuccin-Mocha-Mauve/Catppuccin-Mocha-Mauve.kvconfig";
+    url = "https://raw.githubusercontent.com/catppuccin/Kvantum/main/themes/catppuccin-frappe-mauve/catppuccin-frappe-mauve.kvconfig";
     sha256 = "sha256:1hwb6j5xjkmnsi55c6hsdwcn8r4n4cisfbsfya68j4dq5nj0z3r6";
   };
   xdg.configFile."Kvantum/catppuccin/catppuccin.svg".source = builtins.fetchurl {
-    url = "https://raw.githubusercontent.com/catppuccin/Kvantum/main/src/Catppuccin-Mocha-Mauve/Catppuccin-Mocha-Mauve.svg";
+    url = "https://raw.githubusercontent.com/catppuccin/Kvantum/main/themes/catppuccin-frappe-mauve/catppuccin-frappe-mauve.svg";
     sha256 = "sha256:06w5nfp89v1zzzrxm38i77wpfrvbknfzjrrnsixw7r1ljk017ijh";
   };
   xdg.configFile."Kvantum/kvantum.kvconfig".text = "theme=catppuccin";
