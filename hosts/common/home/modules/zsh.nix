@@ -20,6 +20,10 @@ if [[ -n "$IN_NIX_SHELL" ]]; then
   VIRTUAL_ENV=nix-shell
   VIRTUAL_ENV_DISABLE_PROMPT=0
 fi
+export PRISMA_QUERY_ENGINE_LIBRARY=/run/current-system/sw/lib/libquery_engine.node
+export PRISMA_QUERY_ENGINE_BINARY=/run/current-system/sw/bin/query-engine
+export PRISMA_MIGRATION_ENGINE_BINARY=/run/current-system/sw/bin/migration-engine
+export PRISMA_FMT_BINARY=/run/current-system/sw/bin/prisma-fmt
 
     '';
     shellAliases = {

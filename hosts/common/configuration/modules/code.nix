@@ -16,11 +16,13 @@
   environment.systemPackages = with pkgs; [
     nodejs_18
     nodePackages.pnpm
+    yarn
     rustup
     gcc
     php
     php82Packages.composer
     glibc
+    prisma-engines
     
 
     (pkgs.python3.withPackages(ps: with ps; [ aiohttp opencv4 ]))

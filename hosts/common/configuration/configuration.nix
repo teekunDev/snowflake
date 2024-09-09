@@ -25,7 +25,6 @@
 
 let
   xivlauncher = pkgs.callPackage ../../../pkgs/xivlauncher { };
-  blc = pkgs.callPackage ../../../pkgs/blc { };
 in
 {
   imports = [
@@ -112,6 +111,7 @@ in
       TERMINAL = "kitty";
       EDITOR = "code";
       VISUAL = "code";
+      PRISMA_ENGINES_CHECKSUM_IGNORE_MISSING = "1";
     };
     systemPackages = with pkgs; [
       zip
@@ -173,9 +173,9 @@ in
       wayvnc
       geekbench
       rpcs3
+      fuse
     ] ++ [
       xivlauncher
-      blc
     ];
   };
 
