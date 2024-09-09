@@ -38,6 +38,7 @@ in
     ./modules/ssh.nix
     ./modules/symlink.nix
     ./modules/thunar.nix
+    ./modules/plasma.nix
   ];
 
   programs.zsh.enable = true;
