@@ -10,11 +10,11 @@
 
 { pkgs, ... }:
 
-let
-  osu = pkgs.callPackage ../../pkgs/osu-lazer/bin.nix { };
-in
-{
-  home.packages = [
-    osu
-  ];
-}
+# let
+#   osu = pkgs.callPackage ../../pkgs/osu-lazer/bin.nix { };
+# in
+# {
+#   home.packages = [
+#     osu
+#   ];
+# }
