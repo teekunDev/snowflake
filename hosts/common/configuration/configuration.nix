@@ -72,10 +72,10 @@ in
   security.rtkit.enable = true;
   security.polkit.enable = true;
   security.sudo.wheelNeedsPassword = false;
-  hardware.opengl.enable = true;
-  hardware.opengl.driSupport = true;
-  hardware.opengl.driSupport32Bit = true;
-  hardware.opengl.extraPackages = with pkgs; [ nvidia-vaapi-driver ];
+  hardware.graphics.enable = true;
+  # hardware.graphics.driSupport = true;
+  hardware.graphics.enable32Bit = true;
+  hardware.graphics.extraPackages = with pkgs; [ nvidia-vaapi-driver ];
   hardware.i2c.enable = true;
 
   time.timeZone = "Europe/Berlin";
@@ -130,7 +130,7 @@ in
       mpv
       vlc
       gimp
-      gnome.file-roller
+      file-roller
       okular
       libsForQt5.polkit-kde-agent
       networkmanagerapplet
