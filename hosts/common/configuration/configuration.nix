@@ -33,7 +33,7 @@ in
     ./modules/code.nix
     ./modules/docker.nix
     ./modules/games.nix
-    ./modules/hyprland.nix
+    # ./modules/hyprland.nix
     ./modules/openrgb.nix
     ./modules/ssh.nix
     ./modules/symlink.nix

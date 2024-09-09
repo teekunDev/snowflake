@@ -28,7 +28,7 @@ This isn't meant for anyone to follow really, it's just a reminder for myself.
 
 ### EFI
 
-- `sudo fdisk /dev/nvme0n1`
+- `sudo fdisk /dev/nvme1n1`
 - `g (gpt disk label)`
 - `n`
 - `1`
@@ -47,7 +47,7 @@ This isn't meant for anyone to follow really, it's just a reminder for myself.
 - `2`
 - `19 (Linux swap)`
 
-### root
+### Root
 
 - `n`
 - `3`
