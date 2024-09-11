@@ -60,13 +60,13 @@
     '';
   };
 
-  # programs = {
-  #   hyprland = {
-  #     enable = true;
-  #     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-  #     portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
-  #   };
-  # };
+  programs = {
+    hyprland = {
+      enable = true;
+      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+    };
+  };
 
   systemd.sleep.extraConfig = ''
     AllowSuspend=yes
@@ -75,14 +75,14 @@
     AllowHybridSleep=yes
   '';
 
-  # services.getty.autologinUser = "${vars.user}";
-  # programs.zsh.loginShellInit = ''
-  #   if [ -f "$HOME/.no-hypr" ]; then
-  #     rm "$HOME/.no-hypr"
-  #   else
-  #     Hyprland
-  #   fi
-  # '';
+  services.getty.autologinUser = "${vars.user}";
+  programs.zsh.loginShellInit = ''
+    if [ -f "$HOME/.no-hypr" ]; then
+      rm "$HOME/.no-hypr"
+    else
+      Hyprland
+    fi
+  '';
 
   nix.settings = {
     substituters = ["https://hyprland.cachix.org"];

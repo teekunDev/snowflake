@@ -83,11 +83,11 @@
   };
   xdg.configFile."Kvantum/catppuccin/catppuccin.kvconfig".source = builtins.fetchurl {
     url = "https://raw.githubusercontent.com/catppuccin/Kvantum/main/themes/catppuccin-frappe-mauve/catppuccin-frappe-mauve.kvconfig";
-    sha256 = "sha256:06112bxgpg5662x6iqsm3z9myxg7wrzjkhg7xp68vxy88c2";
+    sha256 = "sha256:06l12bxgpg566bs2x6iqsm3z9myxgdyz7wrzjkhg7xp68vxy88c2";
   };
   xdg.configFile."Kvantum/catppuccin/catppuccin.svg".source = builtins.fetchurl {
     url = "https://raw.githubusercontent.com/catppuccin/Kvantum/main/themes/catppuccin-frappe-mauve/catppuccin-frappe-mauve.svg";
-    sha256 = "sha256:06w5nfp89v1zzzrxm38i77wpfrvbknfzjrrnsixw7r1ljk017ijh";
+    sha256 = "sha256:05z5j0lnf1fi3bw52nr1vcfvajdjgpx79rs71cbsbn601mzwffgk";
   };
   xdg.configFile."Kvantum/kvantum.kvconfig".text = "theme=catppuccin";
 }

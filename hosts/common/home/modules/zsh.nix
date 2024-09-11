@@ -28,8 +28,8 @@ export PRISMA_FMT_BINARY=/run/current-system/sw/bin/prisma-fmt
     '';
     shellAliases = {
       ls = "eza --icons -a --group-directories-first";
-      rebuild = "sudo nixos-rebuild switch --flake ${vars.location}# --impure && reload.sh";
-      rebuild-upgrade = "nix flake update ${vars.location} && sudo nixos-rebuild switch --flake ${vars.location}# --impure && reload.sh";
+      rebuild = "sudo nixos-rebuild switch --flake ${vars.location}# --impure";
+      rebuild-upgrade = "nix flake update ${vars.location} && sudo nixos-rebuild switch --flake ${vars.location}# --impure";
       lazypush = "lazypush.sh";
     };
     oh-my-zsh = {

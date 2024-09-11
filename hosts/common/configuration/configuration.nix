@@ -163,8 +163,6 @@ in
       vesktop
       ahoviewer
       wireguard-tools
-      brave
-      google-chrome
       chromium
       veracrypt     # Encryption Tool
       xow_dongle-firmware
@@ -187,7 +185,7 @@ in
   programs.wireshark.package = pkgs.wireshark;
   services.ddccontrol.enable = true;
   services.fstrim.enable = true;
-  services.blueman.enable = true;
+  # services.blueman.enable = true;
 
   #Tablet Driver for osu!
   hardware.opentabletdriver.enable = true;
