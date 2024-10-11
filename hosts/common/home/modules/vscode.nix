@@ -35,7 +35,7 @@
       esbenp.prettier-vscode
       humao.rest-client
       golang.go
-      llvm-vs-code-extensions.vscode-clangd
+      vue.volar
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "markdown-preview-github-styles";

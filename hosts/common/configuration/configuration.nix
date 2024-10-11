@@ -173,6 +173,10 @@ in
       geekbench
       rpcs3
       fuse
+      teamspeak_client
+      remmina
+      nomachine-client
+      traceroute
     ] ++ [
       xivlauncher
     ];
@@ -185,6 +189,7 @@ in
   programs.wireshark.package = pkgs.wireshark;
   services.ddccontrol.enable = true;
   services.fstrim.enable = true;
+  programs.openvpn3.enable = true;
   # services.blueman.enable = true;
 
   #Tablet Driver for osu!
@@ -214,19 +219,3 @@ in
       substituters = [ "https://nix-community.cachix.org" ];
       trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
     };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-    registry.nixpkgs.flake = inputs.nixpkgs;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      keep-outputs          = true
-      keep-derivations      = true
-    ''; 
-  };
-
-  nixpkgs.config.allowUnfree = true;
-  system.stateVersion = "23.11";
-}
