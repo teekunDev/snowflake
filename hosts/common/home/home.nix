@@ -38,7 +38,7 @@
     ./modules/firefox.nix
     ./modules/git.nix
     ./modules/gpg.nix
-    #./modules/hyprland.nix
+    ./modules/hyprland.nix
     ./modules/kitty.nix
     ./modules/mako.nix
     ./modules/neofetch.nix
@@ -49,8 +49,8 @@
     #./modules/theming.nix
     ./modules/thunar.nix
     ./modules/vscode.nix
-    #./modules/waybar.nix
-    #./modules/wlogout.nix
+    ./modules/waybar.nix
+    ./modules/wlogout.nix
     ./modules/xremap.nix
     ./modules/zsh.nix
   ];

@@ -10,7 +10,13 @@
 #                   └─ firefox.nix *
 #
 
+{pkgs,inputs,...}:
+
 {
+  home.packages = [
+    inputs.zen-browser.packages.${pkgs.system}.default
+  ];
+  
   programs.firefox = {
     enable = true;
   };

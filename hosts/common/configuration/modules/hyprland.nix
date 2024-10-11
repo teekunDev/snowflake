@@ -75,14 +75,14 @@
     AllowHybridSleep=yes
   '';
 
-  services.getty.autologinUser = "${vars.user}";
+  /* services.getty.autologinUser = "${vars.user}";
   programs.zsh.loginShellInit = ''
     if [ -f "$HOME/.no-hypr" ]; then
       rm "$HOME/.no-hypr"
     else
       Hyprland
     fi
-  '';
+  ''; */
 
   nix.settings = {
     substituters = ["https://hyprland.cachix.org"];

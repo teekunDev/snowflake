@@ -19,7 +19,7 @@
 
 
   environment = {
-    variables = {
+    /* variables = {
       XDG_CURRENT_DESKTOP = "KDE";
       XDG_SESSION_TYPE = "wayland";
       XDG_SESSION_DESKTOP = "KDE";
@@ -41,7 +41,7 @@
       wtype
       wlr-randr
       wf-recorder
-    ];
+    ]; */
     plasma6.excludePackages = with pkgs.kdePackages; [
       konsole
       plasma-browser-integration

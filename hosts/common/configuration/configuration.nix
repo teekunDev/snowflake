@@ -33,7 +33,7 @@ in
     ./modules/code.nix
     ./modules/docker.nix
     ./modules/games.nix
-    # ./modules/hyprland.nix
+    ./modules/hyprland.nix
     ./modules/openrgb.nix
     ./modules/ssh.nix
     ./modules/symlink.nix
@@ -137,7 +137,6 @@ in
       mako
       appimage-run
       eww
-      qbittorrent-qt5
       libreoffice-qt
       imagemagick
       ffmpeg
@@ -219,3 +218,19 @@ in
       substituters = [ "https://nix-community.cachix.org" ];
       trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
     };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+    registry.nixpkgs.flake = inputs.nixpkgs;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+      keep-outputs          = true
+      keep-derivations      = true
+    ''; 
+  };
+
+  nixpkgs.config.allowUnfree = true;
+  system.stateVersion = "24.11";
+}

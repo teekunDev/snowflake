@@ -175,7 +175,7 @@ let
 
     #--STARTUP --#
 
-    exec-once = swaylock
+    # exec-once = swaylock
     exec-once = exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     exec-once = ssh-add ${vars.secrets}/git-ssh-key
     exec-once = gpg --import ${vars.secrets}/git-gpg-key
@@ -192,7 +192,7 @@ let
     # xremap doesn't start by default for some reason
     exec-once = systemctl --user start xremap
     exec-once = cliphist wipe
-    exec-once = vpn.sh connect
+    # exec-once = vpn.sh connect
     ${execonce}
 
     #--KEYBINDS --#
