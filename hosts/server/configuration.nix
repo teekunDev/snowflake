@@ -15,7 +15,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./vm.nix
+    # ./vm.nix
   ];
 
   security.sudo.wheelNeedsPassword = false;
@@ -26,28 +26,33 @@
     isNormalUser = true;
     password = "123";
     extraGroups = [ "wheel" "docker" ];
-    openssh.authorizedKeys.keys = [
+    # No need when SSH is disabled
+    /* openssh.authorizedKeys.keys = [
       "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC9lCNP8EUEVlQFPZ9PJYEUqhxSlbJA8kYunpmy3ay5QNpLuGw7Gp9sjb0K/DXyzV3PgbSm6wxEbLmg1jXPiohGSqoXeTzgc500lKlpxtk89XKp6nmCF2uCykuKA8zSOhj+lWmfuyIZcsz23LHM8ksAji3VrhQy3Rb1jHLyvtm0yX2INlC3VsHWKazBtpqH3ZA5QdmVkYs5DzXOQS0THtq0R3+PRiUArQIZLiA5x5fkgnu1r6klPYvovlKNoyxp+SFxnN29mRKBVKhcvuUPxrWLlSYyhtV0Q3uz8kOAqUarRQpbOZJ8494z/ZwT+6K23wttyMfcSZJ1zX0m6viGQO4TQdMUa7l9cs4aOlqwMEB7dLo11LFQFkQBHJgxZICmXC9a74uhElbBVU9WFu1P+fVjmr8Jvl0th5/O2tCx3RegSxDBmcnVHGYJ1JkBkNGzPH9IkHJKZU6Tbe0PJpF1gsNY7LV8z6zzySFLVALbau7tFjS7xt6558pVbY4PU9blxW2hFZoYW9/wynuHtttOs7pQBffntA4I9pJR/B/Gf3NSCVqc3te83gvdMkbICPRknjbd88KhOHCmXa86wMvfCc9XnTGYoX5POHdVw/JR4gTuGcx/YAoDGiHrP1pGlXNhyhc1JxD/EpZz8KBMVz+9zkKuNUcFgP9V7xRUmgSEqC5yBQ== github@keifufu.dev"
-    ];
+    ]; */
   };
 
   networking.firewall = {
     enable = true;
-    # http https smb qbit minecraft
-    allowedTCPPorts = [ 80 443 445 8999 25565 ];
-    # qbit
-    allowedUDPPorts = [ 8999 ];
+    
+    # Will be added later on
+    /* allowedTCPPorts = [  ];
+
+    allowedUDPPorts = [  ]; */
   };
 
-  services.openssh = {
+  # Commented out because it will be managed by proxmox
+  /* services.openssh = {
     enable = true;
     settings.PasswordAuthentication = false;
     settings.KbdInteractiveAuthentication = false;
-  };
+  }; */
   
-  virtualisation.docker.enable = true;
+  #No need rn
+  #virtualisation.docker.enable = true;
 
-  services.samba = {
+  # Will be handled by Proxmox
+  /* services.samba = {
     enable = true;
     securityType = "user";
     extraConfig = ''
@@ -69,7 +74,7 @@
         "inherit permissions" = "yes";
       };
     };
-  };
+  }; */
 
   environment = {
     variables = {
