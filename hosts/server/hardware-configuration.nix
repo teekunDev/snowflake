@@ -27,7 +27,7 @@
       
       grub = {
         enable = true;
-        device = "/dev/disk/by-label/GRUB";
+        device = "/dev/disk/by-label/BOOT";
       };
 
       efi.canTouchEfiVariables = true;
