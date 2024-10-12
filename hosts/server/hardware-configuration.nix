@@ -13,10 +13,10 @@
 { config, lib, pkgs, host, ... }:
 
 {
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "sdhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
-  boot.initrd.kernelModules = [ "amdgpu" ];
-
   boot = {
+    initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "virtio_pci" "sr_mod" "virtio_blk" ];
+    kernelModules = [ "kvm-amd" ];
+
     swraid.enable = false; # https://github.com/NixOS/nixpkgs/issues/254807
     kernelPackages = pkgs.linuxPackages_latest;
     loader = {
@@ -24,6 +24,12 @@
         enable = true;
         configurationLimit = 3;
       };
+      
+      grub = {
+        enable = true;
+        device = "/dev/disk/by-label/GRUB";
+      };
+
       efi.canTouchEfiVariables = true;
       timeout = 1;
     };
@@ -46,6 +52,8 @@
       device = "/dev/disk/by-label/STUFF";
       fsType = "ext4";
     };
+
+  services.qemuGuest.enable = true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

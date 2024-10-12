@@ -10,11 +10,12 @@
 #               └─ hardware-configuration.nix +
 #
 
-{ pkgs, inputs, vars, ... }:
+{ pkgs, inputs, vars, modulesPath, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
+    modulesPath + "/profiles/qemu-guest.nix"
     # ./vm.nix
   ];
 
